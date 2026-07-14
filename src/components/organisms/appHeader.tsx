@@ -14,7 +14,7 @@ export function AppHeader() {
           <Sparkles size={20} />
         </span>
         <span>
-          Play<span>Pal</span>
+          Play<span>Date</span>
         </span>
       </Link>
       <nav className="desktop-nav" aria-label="Hauptnavigation">
