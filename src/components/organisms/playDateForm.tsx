@@ -1,26 +1,156 @@
-import { useState, type FormEvent } from 'react'
-import { CalendarDays, Check } from 'lucide-react'
-import { Link, useNavigate } from '@tanstack/react-router'
-import { useUser } from '@clerk/clerk-react'
-import { readPlayDates } from '../../hooks/usePlayDates'
-import { readFamilyProfile } from '../../hooks/useFamilyProfile'
-import type { PlayDate } from '../../domain/playdates'
+import { useState, type FormEvent } from "react";
+import { CalendarDays, Check } from "lucide-react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useUser } from "@clerk/clerk-react";
+import { readPlayDates } from "../../hooks/usePlayDates";
+import { readFamilyProfile } from "../../hooks/useFamilyProfile";
+import type { PlayDate } from "../../domain/playdates";
 
-export function PlayDateForm({editId}:{editId?:number}){
-  const navigate=useNavigate();const {user}=useUser();if(!user)throw new Error('Anmeldung erforderlich')
-  const dates=readPlayDates(user.id);const family=readFamilyProfile(user.id);const existing=dates.find(date=>date.id===editId)
-  const [form,setForm]=useState<PlayDate>(existing??{id:Date.now(),title:'',child:'',friend:'',date:'',time:'',location:'',bring:'',status:'Ausstehend',color:'mint'})
-  const update=(key:keyof PlayDate,value:string)=>setForm(current=>({...current,[key]:value}))
-  const submit=(event:FormEvent)=>{event.preventDefault();const next=existing?dates.map(date=>date.id===existing.id?form:date):[...dates,form];localStorage.setItem(`playpal.playdates.${user.id}`,JSON.stringify(next));navigate({to:'/'})}
-  return <form onSubmit={submit} className="playdate-form">
-    <label className="full">Titel<span>Wie soll euer Treffen heißen?</span><input required value={form.title} onChange={event=>update('title',event.target.value)} placeholder="z. B. Abenteuer im Stadtpark"/></label>
-    <label>Dein Kind{family.children.length?<select required value={form.child} onChange={event=>update('child',event.target.value)}><option value="" disabled>Kind auswählen</option>{existing?.child&&!family.children.some(child=>child.name===existing.child)&&<option value={existing.child}>{existing.child}</option>}{family.children.map(child=><option key={child.id} value={child.name}>{child.name}</option>)}</select>:<span className="missing-children">Noch keine Kinder hinterlegt. <Link to="/families">Jetzt Familie einrichten</Link></span>}</label>
-    <label>Trifft sich mit<input required value={form.friend} onChange={event=>update('friend',event.target.value)} placeholder="Vorname"/></label>
-    <label>Datum<input required type="date" value={form.date} onChange={event=>update('date',event.target.value)}/></label><label>Uhrzeit<input required type="time" value={form.time} onChange={event=>update('time',event.target.value)}/></label>
-    <label className="full">Treffpunkt<input required value={form.location} onChange={event=>update('location',event.target.value)} placeholder="Adresse oder Lieblingsplatz"/></label>
-    <label className="full">Wer bringt was mit?<textarea value={form.bring} onChange={event=>update('bring',event.target.value)} placeholder="Snacks, Getränke, Spielsachen …"/></label>
-    <fieldset className="full"><legend>Erinnerung</legend><label className="check-row"><input type="checkbox" defaultChecked/> 24 Stunden vorher erinnern</label><label className="check-row"><input type="checkbox"/> Auch per E-Mail erinnern</label></fieldset>
-    <div className="consent full"><Check/><p><strong>Privat geteilt</strong><br/>Details, Kommentare und Fotos sehen ausschließlich eingeladene Familien.</p></div>
-    <div className="form-actions full"><Link to="/" className="secondary-button">Abbrechen</Link><button className="primary-button" type="submit" disabled={!family.children.length}><CalendarDays/>{existing?'Änderungen speichern':'PlayDate erstellen'}</button></div>
-  </form>
+export function PlayDateForm({ editId }: { editId?: number }) {
+  const navigate = useNavigate();
+  const { user } = useUser();
+  if (!user) throw new Error("Anmeldung erforderlich");
+  const dates = readPlayDates(user.id);
+  const family = readFamilyProfile(user.id);
+  const existing = dates.find((date) => date.id === editId);
+  const [form, setForm] = useState<PlayDate>(
+    existing ?? {
+      id: Date.now(),
+      title: "",
+      child: "",
+      friend: "",
+      date: "",
+      time: "",
+      location: "",
+      bring: "",
+      status: "Ausstehend",
+      color: "mint",
+    },
+  );
+  const update = (key: keyof PlayDate, value: string) =>
+    setForm((current) => ({ ...current, [key]: value }));
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    const next = existing
+      ? dates.map((date) => (date.id === existing.id ? form : date))
+      : [...dates, form];
+    localStorage.setItem(`playpal.playdates.${user.id}`, JSON.stringify(next));
+    navigate({ to: "/" });
+  };
+  return (
+    <form onSubmit={submit} className="playdate-form">
+      <label className="full">
+        Titel<span>Wie soll euer Treffen heißen?</span>
+        <input
+          required
+          value={form.title}
+          onChange={(event) => update("title", event.target.value)}
+          placeholder="z. B. Abenteuer im Stadtpark"
+        />
+      </label>
+      <label>
+        Dein Kind
+        {family.children.length ? (
+          <select
+            required
+            value={form.child}
+            onChange={(event) => update("child", event.target.value)}
+          >
+            <option value="" disabled>
+              Kind auswählen
+            </option>
+            {existing?.child &&
+              !family.children.some(
+                (child) => child.name === existing.child,
+              ) && <option value={existing.child}>{existing.child}</option>}
+            {family.children.map((child) => (
+              <option key={child.id} value={child.name}>
+                {child.name}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <span className="missing-children">
+            Noch keine Kinder hinterlegt.{" "}
+            <Link to="/families">Jetzt Familie einrichten</Link>
+          </span>
+        )}
+      </label>
+      <label>
+        Trifft sich mit
+        <input
+          required
+          value={form.friend}
+          onChange={(event) => update("friend", event.target.value)}
+          placeholder="Vorname"
+        />
+      </label>
+      <label>
+        Datum
+        <input
+          required
+          type="date"
+          value={form.date}
+          onChange={(event) => update("date", event.target.value)}
+        />
+      </label>
+      <label>
+        Uhrzeit
+        <input
+          required
+          type="time"
+          value={form.time}
+          onChange={(event) => update("time", event.target.value)}
+        />
+      </label>
+      <label className="full">
+        Treffpunkt
+        <input
+          required
+          value={form.location}
+          onChange={(event) => update("location", event.target.value)}
+          placeholder="Adresse oder Lieblingsplatz"
+        />
+      </label>
+      <label className="full">
+        Wer bringt was mit?
+        <textarea
+          value={form.bring}
+          onChange={(event) => update("bring", event.target.value)}
+          placeholder="Snacks, Getränke, Spielsachen …"
+        />
+      </label>
+      <fieldset className="full">
+        <legend>Erinnerung</legend>
+        <label className="check-row">
+          <input type="checkbox" defaultChecked /> 24 Stunden vorher erinnern
+        </label>
+        <label className="check-row">
+          <input type="checkbox" /> Auch per E-Mail erinnern
+        </label>
+      </fieldset>
+      <div className="consent full">
+        <Check />
+        <p>
+          <strong>Privat geteilt</strong>
+          <br />
+          Details, Kommentare und Fotos sehen ausschließlich eingeladene
+          Familien.
+        </p>
+      </div>
+      <div className="form-actions full">
+        <Link to="/" className="secondary-button">
+          Abbrechen
+        </Link>
+        <button
+          className="primary-button"
+          type="submit"
+          disabled={!family.children.length}
+        >
+          <CalendarDays />
+          {existing ? "Änderungen speichern" : "PlayDate erstellen"}
+        </button>
+      </div>
+    </form>
+  );
 }
