@@ -6,6 +6,7 @@ import { readPlayDates } from "../../hooks/usePlayDates";
 import { readFamilyProfile } from "../../hooks/useFamilyProfile";
 import type { PlayDate } from "../../domain/playdates";
 
+// Das Formular kann beides: einen neuen Termin anlegen oder einen vorhandenen bearbeiten.
 export function PlayDateForm({ editId }: { editId?: number }) {
   const navigate = useNavigate();
   const { user } = useUser();
@@ -29,6 +30,7 @@ export function PlayDateForm({ editId }: { editId?: number }) {
   );
   const update = (key: keyof PlayDate, value: string) =>
     setForm((current) => ({ ...current, [key]: value }));
+  // Beim Bearbeiten tauschen wir den passenden Eintrag aus, sonst hängen wir einen neuen hinten dran.
   const submit = (event: FormEvent) => {
     event.preventDefault();
     const next = existing

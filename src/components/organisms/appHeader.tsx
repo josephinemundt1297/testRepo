@@ -4,6 +4,7 @@ import { UserButton } from "@clerk/clerk-react";
 import { ThemeToggle } from "../atoms/themeToggle";
 import { useInstallApp } from "../../hooks/useInstallApp";
 
+// Der Header bündelt Navigation, Theme, PWA-Installation und das Clerk-Benutzermenü.
 export function AppHeader() {
   const { canInstall, installed, install } = useInstallApp();
   return (

@@ -7,13 +7,14 @@ import {
 } from "react";
 
 export type Theme = "light" | "dark" | "system";
-type themeContextValue = {
+type ThemeContextValue = {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   resolvedTheme: "light" | "dark";
 };
-const themeContext = createContext<themeContextValue | null>(null);
+const themeContext = createContext<ThemeContextValue | null>(null);
 
+// Der Provider hält das Farbschema zentral. Einzelne Komponenten müssen so nicht selbst herumrechnen.
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(
     () => (localStorage.getItem("playpal.theme") as Theme) || "system",
@@ -31,6 +32,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     media.addEventListener("change", listener);
     return () => media.removeEventListener("change", listener);
   }, []);
+  // data-theme landet am <html>-Element. Unsere CSS-Variablen reagieren direkt darauf.
   useEffect(() => {
     document.documentElement.dataset.theme = resolvedTheme;
     document.documentElement.style.colorScheme = resolvedTheme;

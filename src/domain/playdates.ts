@@ -1,3 +1,4 @@
+// Der gemeinsame Bauplan für ein PlayDate. So wissen alle Dateien, welche Felder vorhanden sind.
 export type PlayDate = {
   id: number;
   title: string;
@@ -11,6 +12,7 @@ export type PlayDate = {
   color: "mint" | "peach" | "lilac";
 };
 
+// Nur Startdaten für den Prototyp. Echte Termine kommen später aus dem Backend.
 export const initialPlayDates: PlayDate[] = [
   {
     id: 1,

@@ -5,6 +5,8 @@ interface InstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
+// Der Browser schickt dieses Event, sobald die PWA installiert werden darf.
+// Wir merken es uns, damit unser eigener Button den Dialog später öffnen kann.
 export function useInstallApp() {
   const [prompt, setPrompt] = useState<InstallPromptEvent | null>(null);
   const [installed, setInstalled] = useState(

@@ -1,4 +1,5 @@
 import { ChevronRight, type LucideIcon } from "lucide-react";
+// Eine Schnellaktion kombiniert Icon, Text und Klickverhalten zu einem kleinen wiederverwendbaren Paket.
 export function QuickAction({
   icon: Icon,
   tone,

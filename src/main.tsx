@@ -8,6 +8,7 @@ import "./app.css";
 
 const clerkKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
+// Ohne Clerk-Key zeigen wir keine Beispieldaten. So rutscht niemand aus Versehen am Login vorbei.
 function MissingConfiguration() {
   return (
     <main className="auth-page">
@@ -25,6 +26,7 @@ function MissingConfiguration() {
   );
 }
 
+// Hier stecken wir die großen Bausteine einmal zusammen: Clerk, Theme und unsere App.
 const content = clerkKey ? (
   <ClerkProvider publishableKey={clerkKey}>
     <App />
@@ -38,6 +40,7 @@ createRoot(document.getElementById("root")!).render(
   </StrictMode>,
 );
 
+// Der Service Worker macht PlayPal installierbar und hält wichtige Dateien offline bereit.
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () =>
     navigator.serviceWorker.register("/sw.js"),

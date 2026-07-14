@@ -8,8 +8,10 @@ import { PrivacyNote } from '../molecules/privacyNote'
 import type { PlayDate } from '../../domain/playdates'
 import { downloadCalendar, googleCalendarUrl } from '../../utils/calendar'
 
+// Die Dashboard-Page setzt mehrere kleinere Atomic-Bausteine zur fertigen Übersicht zusammen.
 export function DashboardPage({ showAll=false }: { showAll?:boolean }) {
   const {dates,save}=usePlayDates(); const [toast,setToast]=useState(''); const sorted=useMemo(()=>[...dates].sort((a,b)=>a.date.localeCompare(b.date)),[dates])
+  // Kleine Rückmeldung unten im Bildschirm. Nach drei Sekunden räumen wir sie wieder weg.
   const announce=(message:string)=>{setToast(message);setTimeout(()=>setToast(''),3000)}
   const remove=(id:number)=>{if(confirm('Möchtest du dieses PlayDate wirklich löschen?'))save(dates.filter(d=>d.id!==id))}
   const invite=(date:PlayDate)=>{window.open(`https://wa.me/?text=${encodeURIComponent(`Einladung zu „${date.title}“ am ${date.date} um ${date.time} Uhr.`)}`,'_blank','noopener,noreferrer');announce('WhatsApp-Einladung geöffnet')}

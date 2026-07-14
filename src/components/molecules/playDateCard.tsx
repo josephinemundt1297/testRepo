@@ -12,6 +12,7 @@ import { Link } from "@tanstack/react-router";
 import type { PlayDate } from "../../domain/playdates";
 import { StatusBadge } from "../atoms/statusBadge";
 
+// Eine Karte zeigt genau ein PlayDate und reicht Klicks an die übergeordnete Page zurück.
 export function PlayDateCard({
   date,
   onDelete,
@@ -23,6 +24,7 @@ export function PlayDateCard({
   onInvite: () => void;
   onCalendar: () => void;
 }) {
+  // 12 Uhr verhindert, dass Zeitzonen das Datum aus Versehen auf den Vortag schieben.
   const value = new Date(`${date.date}T12:00:00`);
   const weekday = new Intl.DateTimeFormat("de-DE", { weekday: "short" })
     .format(value)

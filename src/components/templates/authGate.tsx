@@ -1,5 +1,6 @@
 import { SignInButton, SignedIn, SignedOut } from "@clerk/clerk-react";
 import type { ReactNode } from "react";
+// Dieses Template ist die Tür zur App: Ausgeloggt gibt's Login, eingeloggt den echten Inhalt.
 export function AuthGate({ children }: { children: ReactNode }) {
   return (
     <>

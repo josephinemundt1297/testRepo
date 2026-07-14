@@ -9,6 +9,7 @@ import {
 
 const keyFor = (userId: string) => `playpal.family.${userId}`;
 const connectionsKey = (userId: string) => `playpal.shared-birthdays.${userId}`;
+// Alte Profile hatten nur Namen als Text. Beim Lesen bauen wir daraus automatisch das neue Format.
 export function readFamilyProfile(userId: string): FamilyProfile {
   const value = localStorage.getItem(keyFor(userId));
   if (!value) return emptyFamilyProfile;
@@ -27,6 +28,7 @@ export function readFamilyProfile(userId: string): FamilyProfile {
   );
   return { ...parsed, children };
 }
+// Hier landen später die freigegebenen Geburtstage aus echten Familienverbindungen.
 export function readSharedBirthdays(userId: string): SharedBirthday[] {
   const value = localStorage.getItem(connectionsKey(userId));
   return value ? JSON.parse(value) : [];

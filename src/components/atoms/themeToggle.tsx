@@ -6,6 +6,7 @@ const options: { value: Theme; label: string; icon: typeof Sun }[] = [
   { value: "dark", label: "Dunkles Design", icon: Moon },
   { value: "system", label: "Systemeinstellung", icon: Laptop },
 ];
+// Ein Atom bleibt klein: Es kennt nur die drei Theme-Optionen und ändert den gemeinsamen Context.
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   return (

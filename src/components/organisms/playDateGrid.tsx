@@ -1,5 +1,6 @@
 import { PlayDateCard } from "../molecules/playDateCard";
 import type { PlayDate } from "../../domain/playdates";
+// Das Grid kümmert sich nur um die Liste. Die einzelne Karte steckt im Molecule darunter.
 export function PlayDateGrid({
   dates,
   onDelete,

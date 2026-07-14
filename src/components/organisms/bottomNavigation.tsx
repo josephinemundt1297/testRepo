@@ -1,5 +1,6 @@
 import { CalendarDays, Home, Plus, Settings, Users } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+// Auf kleinen Displays ersetzt diese Leiste die große Navigation aus dem Header.
 export function BottomNavigation() {
   return (
     <nav className="bottom-nav" aria-label="Mobile Navigation">

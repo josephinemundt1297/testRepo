@@ -7,6 +7,7 @@ type BirthdayEntry = {
   birthday: string;
   own: boolean;
 };
+// Wir rechnen jeden Geburtstag auf das nächste Vorkommen um. So lässt sich die Liste sauber sortieren.
 const nextBirthday = (birthday: string) => {
   const [, month, day] = birthday.split("-").map(Number);
   const now = new Date();
