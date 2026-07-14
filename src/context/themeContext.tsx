@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 
 export type Theme = 'light' | 'dark' | 'system'
-type ThemeContextValue = { theme: Theme; setTheme: (theme: Theme) => void; resolvedTheme: 'light' | 'dark' }
-const ThemeContext = createContext<ThemeContextValue | null>(null)
+type themeContextValue = { theme: Theme; setTheme: (theme: Theme) => void; resolvedTheme: 'light' | 'dark' }
+const themeContext = createContext<themeContextValue | null>(null)
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => (localStorage.getItem('playpal.theme') as Theme) || 'system')
@@ -18,11 +18,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => { document.documentElement.dataset.theme = resolvedTheme; document.documentElement.style.colorScheme = resolvedTheme }, [resolvedTheme])
 
   const setTheme = (next: Theme) => { setThemeState(next); localStorage.setItem('playpal.theme', next) }
-  return <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme }}>{children}</ThemeContext.Provider>
+  return <themeContext.Provider value={{ theme, setTheme, resolvedTheme }}>{children}</themeContext.Provider>
 }
 
 export function useTheme() {
-  const value = useContext(ThemeContext)
+  const value = useContext(themeContext)
   if (!value) throw new Error('useTheme muss innerhalb des ThemeProvider verwendet werden')
   return value
 }

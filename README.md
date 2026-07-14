@@ -60,7 +60,7 @@ src/components/
 └── pages/       # Routenseiten als höchste Atomic-Design-Ebene
 ```
 
-`src/App.tsx` enthält ausschließlich die minimale Verbindung aus Authentifizierungsgrenze und Router. Geschäftsmodelle liegen in `src/domain`, wiederverwendbarer Zustand in `src/hooks` und globale UI-Zustände in `src/context`.
+`src/app.tsx` enthält ausschließlich die minimale Verbindung aus Authentifizierungsgrenze und Router. Alle selbst angelegten Dateinamen verwenden lower camelCase. Geschäftsmodelle liegen in `src/domain`, wiederverwendbarer Zustand in `src/hooks` und globale UI-Zustände in `src/context`.
 
 ## App installieren
 
@@ -111,7 +111,7 @@ src/
 ├── context/     # Theme-Zustand
 ├── domain/      # PlayDate-Modell und Beispieldaten
 ├── hooks/       # Daten- und Installationslogik
-├── App.tsx      # minimaler App-Einstieg
+├── app.tsx      # minimaler App-Einstieg
 ├── router.tsx   # TanStack-Routen
 └── main.tsx     # Clerk-Grenze und App-Start
 ```

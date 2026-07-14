@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ClerkProvider } from '@clerk/clerk-react'
-import { ThemeProvider } from './context/ThemeContext'
-import App from './App'
+import { ThemeProvider } from './context/themeContext'
+import App from './app'
 import './index.css'
-import './App.css'
+import './app.css'
 
 const clerkKey=import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 

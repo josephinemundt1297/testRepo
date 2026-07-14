@@ -1,7 +1,7 @@
 import { CalendarPlus, Clock3, Edit3, Gift, MapPin, Send, Trash2, Users } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 import type { PlayDate } from '../../domain/playdates'
-import { StatusBadge } from '../atoms/StatusBadge'
+import { StatusBadge } from '../atoms/statusBadge'
 
 export function PlayDateCard({ date, onDelete, onInvite, onCalendar }: { date: PlayDate; onDelete: (id:number)=>void; onInvite:()=>void; onCalendar:()=>void }) {
   const value=new Date(`${date.date}T12:00:00`); const weekday=new Intl.DateTimeFormat('de-DE',{weekday:'short'}).format(value).replace(/\.$/,''); const day=new Intl.DateTimeFormat('de-DE',{day:'2-digit'}).format(value); const month=new Intl.DateTimeFormat('de-DE',{month:'short'}).format(value).replace(/\.$/,'')

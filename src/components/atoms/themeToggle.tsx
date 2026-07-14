@@ -1,5 +1,5 @@
 import { Laptop, Moon, Sun } from 'lucide-react'
-import { useTheme, type Theme } from '../../context/ThemeContext'
+import { useTheme, type Theme } from '../../context/themeContext'
 
 const options: { value: Theme; label: string; icon: typeof Sun }[] = [
   { value: 'light', label: 'Helles Design', icon: Sun }, { value: 'dark', label: 'Dunkles Design', icon: Moon }, { value: 'system', label: 'Systemeinstellung', icon: Laptop },

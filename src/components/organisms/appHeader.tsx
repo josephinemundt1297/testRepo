@@ -1,7 +1,7 @@
 import { Download, Sparkles } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 import { UserButton } from '@clerk/clerk-react'
-import { ThemeToggle } from '../atoms/ThemeToggle'
+import { ThemeToggle } from '../atoms/themeToggle'
 import { useInstallApp } from '../../hooks/useInstallApp'
 
 export function AppHeader() {

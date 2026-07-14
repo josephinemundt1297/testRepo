@@ -8,6 +8,6 @@
   "theme_color": "#2d5a4d",
   "lang": "de",
   "icons": [
-    { "src": "/pwa-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    { "src": "/pwaIcon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]
 }
