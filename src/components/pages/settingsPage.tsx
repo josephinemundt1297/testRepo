@@ -2,6 +2,7 @@ import { Download } from "lucide-react";
 import { ThemeToggle } from "../atoms/themeToggle";
 import { useInstallApp } from "../../hooks/useInstallApp";
 // Alles, was die Darstellung oder Installation betrifft, landet gesammelt auf dieser Seite.
+// Alles, was die Darstellung oder Installation betrifft, landet gesammelt auf dieser Seite.
 export function SettingsPage() {
   const { canInstall, installed, install } = useInstallApp();
   return (

@@ -9,6 +9,10 @@ const escapeIcs = (value: string) =>
     .replace(/;/g, "\\;");
 const stamp = (date: string, time: string) =>
   `${date.replaceAll("-", "")}T${time.replace(":", "")}00`;
+const stampLocalDate = (date: Date) => {
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}00`;
+};
 
 export function downloadCalendar(dates: PlayDate[]) {
   // Aus jedem PlayDate wird ein VEVENT. Danach laden wir alles als eine .ics-Datei herunter.
@@ -54,10 +58,8 @@ export function googleCalendarUrl(date: PlayDate) {
   const start = stamp(date.date, date.time);
   const endDate = new Date(`${date.date}T${date.time}:00`);
   endDate.setHours(endDate.getHours() + 2);
-  const end = endDate
-    .toISOString()
-    .replace(/[-:]/g, "")
-    .replace(/\.\d{3}Z/, "");
+  // Lokal formatieren ist wichtig: toISOString() würde die Uhrzeit nach UTC verschieben.
+  const end = stampLocalDate(endDate);
   const query = new URLSearchParams({
     action: "TEMPLATE",
     text: date.title,

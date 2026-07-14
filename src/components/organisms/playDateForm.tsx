@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type SyntheticEvent } from "react";
 import { CalendarDays, Check } from "lucide-react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useUser } from "@clerk/clerk-react";
@@ -31,7 +31,7 @@ export function PlayDateForm({ editId }: { editId?: number }) {
   const update = (key: keyof PlayDate, value: string) =>
     setForm((current) => ({ ...current, [key]: value }));
   // Beim Bearbeiten tauschen wir den passenden Eintrag aus, sonst hängen wir einen neuen hinten dran.
-  const submit = (event: FormEvent) => {
+  const submit = (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
     event.preventDefault();
     const next = existing
       ? dates.map((date) => (date.id === existing.id ? form : date))

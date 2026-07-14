@@ -15,6 +15,7 @@ import type { PlayDate } from "../../domain/playdates";
 import { downloadCalendar, googleCalendarUrl } from "../../utils/calendar";
 
 // Die Dashboard-Page setzt mehrere kleinere Atomic-Bausteine zur fertigen Übersicht zusammen.
+// Die Dashboard-Page setzt mehrere kleinere Atomic-Bausteine zur fertigen Übersicht zusammen.
 export function DashboardPage({ showAll = false }: { showAll?: boolean }) {
   const { dates, save } = usePlayDates();
   const [toast, setToast] = useState("");
@@ -22,6 +23,7 @@ export function DashboardPage({ showAll = false }: { showAll?: boolean }) {
     () => [...dates].sort((a, b) => a.date.localeCompare(b.date)),
     [dates],
   );
+  // Kleine Rückmeldung unten im Bildschirm. Nach drei Sekunden räumen wir sie wieder weg.
   // Kleine Rückmeldung unten im Bildschirm. Nach drei Sekunden räumen wir sie wieder weg.
   const announce = (message: string) => {
     setToast(message);

@@ -72,8 +72,22 @@ PlayPal ist als PWA konfiguriert. In unterstützten Browsern erscheint **App lad
 npm run dev      # Entwicklungsserver
 npm run build    # TypeScript-Prüfung und Produktions-Build
 npm run lint     # Statische Codeprüfung
+npm run test     # Alle Vitest-Tests einmal ausführen
+npm run test:watch # Tests beim Entwickeln automatisch wiederholen
+npm run check    # Linting, Tests und Build als komplette Prüfkette
 npm run preview  # Produktions-Build lokal ansehen
 ```
+
+## Tests
+
+Die Testbasis verwendet Vitest, Testing Library, jest-dom und jsdom. Abgedeckt sind aktuell:
+
+- Migration alter Familienprofile in das neue Kinderformat
+- Lesen freigegebener Geburtstage
+- Google-Kalender-Links und `.ics`-Download
+- Darstellung bestätigter und ausstehender Status-Badges
+
+Die Tests haben bereits einen echten Zeitzonenfehler bei der Google-Kalender-Endzeit gefunden und abgesichert.
 
 ## Integrationen: nächste Produktionsschritte
 

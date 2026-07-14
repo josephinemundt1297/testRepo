@@ -11,6 +11,8 @@ import { FamiliesPage } from "./components/pages/familiesPage";
 
 // Jede Route verbindet eine URL mit genau einer Page-Komponente.
 // Wenn später eine neue Seite dazukommt, wird sie hier eingetragen.
+// Jede Route verbindet eine URL mit genau einer Page-Komponente.
+// Wenn später eine neue Seite dazukommt, wird sie hier eingetragen.
 const rootRoute = createRootRoute({ component: AppShell });
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -44,6 +46,7 @@ const familiesRoute = createRoute({
   path: "/families",
   component: FamiliesPage,
 });
+// Der Route-Tree fasst alle Seiten zusammen, die innerhalb unseres AppShell laufen.
 // Der Route-Tree fasst alle Seiten zusammen, die innerhalb unseres AppShell laufen.
 const routeTree = rootRoute.addChildren([
   indexRoute,

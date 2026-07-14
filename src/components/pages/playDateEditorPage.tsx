@@ -1,5 +1,6 @@
 import { PlayDateForm } from "../organisms/playDateForm";
 // Die Page liefert Überschrift und Layout, das eigentliche Formular bleibt als Organism wiederverwendbar.
+// Die Page liefert Überschrift und Layout, das eigentliche Formular bleibt wiederverwendbar.
 export function PlayDateEditorPage({ editId }: { editId?: number }) {
   return (
     <div className="form-page">

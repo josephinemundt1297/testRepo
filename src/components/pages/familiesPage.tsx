@@ -1,8 +1,9 @@
-import { useState, type FormEvent } from "react";
+import { useState, type SyntheticEvent } from "react";
 import { Baby, Plus, Save, Trash2 } from "lucide-react";
 import { useFamilyProfile } from "../../hooks/useFamilyProfile";
 import { newChild, type ChildProfile } from "../../domain/family";
 import { BirthdayOverview } from "../organisms/birthdayOverview";
+// Hier pflegen Eltern ihr Familienprofil. Die Page speichert nur Daten des eingeloggten Users.
 // Hier pflegen Eltern ihr Familienprofil. Die Page speichert nur Daten des eingeloggten Users.
 export function FamiliesPage() {
   const { profile, save, sharedBirthdays } = useFamilyProfile();
@@ -17,7 +18,7 @@ export function FamiliesPage() {
         child.id === id ? { ...child, ...patch } : child,
       ),
     );
-  const submit = (event: FormEvent) => {
+  const submit = (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
     event.preventDefault();
     const next = {
       familyName: familyName.trim(),
