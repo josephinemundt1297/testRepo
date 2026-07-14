@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react'
 import { CalendarDays, ChevronRight, MessageCircle, Plus, Sparkles } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
-import { usePlayDates } from '../hooks/usePlayDates'
-import { QuickAction } from '../components/molecules/QuickAction'
-import { PlayDateGrid } from '../components/organisms/PlayDateGrid'
-import { PrivacyNote } from '../components/molecules/PrivacyNote'
-import type { PlayDate } from '../domain/playdates'
-import { downloadCalendar, googleCalendarUrl } from '../utils/calendar'
+import { usePlayDates } from '../../hooks/usePlayDates'
+import { QuickAction } from '../molecules/QuickAction'
+import { PlayDateGrid } from '../organisms/PlayDateGrid'
+import { PrivacyNote } from '../molecules/PrivacyNote'
+import type { PlayDate } from '../../domain/playdates'
+import { downloadCalendar, googleCalendarUrl } from '../../utils/calendar'
 
 export function DashboardPage({ showAll=false }: { showAll?:boolean }) {
   const {dates,save}=usePlayDates(); const [toast,setToast]=useState(''); const sorted=useMemo(()=>[...dates].sort((a,b)=>a.date.localeCompare(b.date)),[dates])

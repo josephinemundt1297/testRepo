@@ -1,9 +1,9 @@
 import { createRootRoute, createRoute, createRouter } from '@tanstack/react-router'
 import { AppShell } from './components/templates/AppShell'
-import { DashboardPage } from './pages/DashboardPage'
-import { PlayDateEditorPage } from './pages/PlayDateEditorPage'
-import { SettingsPage } from './pages/SettingsPage'
-import { FamiliesPage } from './pages/FamiliesPage'
+import { DashboardPage } from './components/pages/DashboardPage'
+import { PlayDateEditorPage } from './components/pages/PlayDateEditorPage'
+import { SettingsPage } from './components/pages/SettingsPage'
+import { FamiliesPage } from './components/pages/FamiliesPage'
 
 const rootRoute=createRootRoute({component:AppShell})
 const indexRoute=createRoute({getParentRoute:()=>rootRoute,path:'/',component:DashboardPage})

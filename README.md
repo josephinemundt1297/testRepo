@@ -6,6 +6,8 @@ PlayPal ist ein mobile-first React-Prototyp, mit dem Eltern sichere und übersic
 
 - PlayDates erstellen, bearbeiten und löschen
 - Familienprofil mit beliebig vielen Kindern verwalten
+- Geburtstage je Kind speichern und die Freigabe von Tag und Monat steuern
+- Geburtstagsübersicht für eigene und künftig verbundene Familien
 - eigenes Kind beim Erstellen eines PlayDates aus dem Familienprofil auswählen
 - Treffpunkt, Teilnehmende und Mitbringsel festhalten
 - Einladungen über die Web Share-/WhatsApp-Schnittstelle vorbereiten
@@ -54,10 +56,11 @@ src/components/
 ├── atoms/       # Buttons, Status und Theme-Steuerung
 ├── molecules/   # Quick Actions, Karten und Datenschutzhinweis
 ├── organisms/   # Header, Navigation, Grid und Formular
-└── templates/   # App-Shell und Authentifizierungsgrenze
+├── templates/   # App-Shell und Authentifizierungsgrenze
+└── pages/       # Routenseiten als höchste Atomic-Design-Ebene
 ```
 
-Routenspezifische Kompositionen liegen in `src/pages`, Geschäftsmodelle in `src/domain`, wiederverwendbarer Zustand in `src/hooks` und globale UI-Zustände in `src/context`.
+`src/App.tsx` enthält ausschließlich die minimale Verbindung aus Authentifizierungsgrenze und Router. Geschäftsmodelle liegen in `src/domain`, wiederverwendbarer Zustand in `src/hooks` und globale UI-Zustände in `src/context`.
 
 ## App installieren
 
@@ -108,7 +111,7 @@ src/
 ├── context/     # Theme-Zustand
 ├── domain/      # PlayDate-Modell und Beispieldaten
 ├── hooks/       # Daten- und Installationslogik
-├── pages/       # Routenseiten
+├── App.tsx      # minimaler App-Einstieg
 ├── router.tsx   # TanStack-Routen
 └── main.tsx     # Clerk-Grenze und App-Start
 ```
