@@ -23,6 +23,171 @@ Die Zeitangaben sind grobe Richtwerte für ein kleines Team. Sie sind keine fest
 
 Mehrere Arbeitspakete können parallel laufen. Eine Phase gilt aber erst als abgeschlossen, wenn ihre Abnahmekriterien erfüllt sind.
 
+## Zentrale Umsetzungscheckliste
+
+Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, dass der Punkt im vorhandenen Prototyp umgesetzt ist. Offene Punkte benötigen noch Entwicklung, fachliche Klärung oder eine Prüfung für den Produktivbetrieb.
+
+### Phase 0 – Prototyp und technische Basis
+
+- [x] React, TypeScript und Vite eingerichtet
+- [x] TanStack Router mit den zentralen App-Routen eingerichtet
+- [x] Komponenten nach Atomic Design aufgeteilt
+- [x] `app.tsx` auf die minimale App-Verbindung reduziert
+- [x] selbst angelegte Dateien und Ordner auf lower camelCase umgestellt
+- [x] Clerk-Anmeldung eingebunden
+- [x] PlayDate- und Familiendaten hinter der Anmeldung geschützt
+- [x] Light Mode, Dark Mode und Systemmodus umgesetzt
+- [x] mobile-first Oberfläche umgesetzt
+- [x] PWA-Manifest und Service Worker eingerichtet
+- [x] App und Repository einheitlich in PlayDate umbenannt
+- [x] erste Unit- und Komponententests mit Vitest eingerichtet
+- [x] gemeinsame Prüfkette über `npm run check` eingerichtet
+- [x] Projektspezifikation und Produktkonzept dokumentiert
+- [ ] bestehende Oxlint-Warnungen vollständig beheben
+- [ ] Error Boundary und einheitliche Fehlerzustände ergänzen
+- [ ] Lade-, Leer- und Offline-Zustände vollständig prüfen
+- [ ] Formularvalidierung für alle Randfälle erweitern
+- [ ] Tests für Auth-Grenze, Familienseite und PlayDate-Formular ergänzen
+- [ ] vollständige End-to-End-Tests einrichten
+- [ ] PWA-Updates auf mehreren Browsern und Geräten prüfen
+
+### Phase 1 – Produkt und Datenschutz
+
+- [x] Zielgruppe und Produktversprechen beschrieben
+- [x] MVP und spätere Funktionen im Konzept voneinander getrennt
+- [x] grundlegende DSGVO- und A11Y-Anforderungen dokumentiert
+- [x] öffentliche Kinderprofile und öffentliche Vermittlung als Nicht-Ziele festgelegt
+- [ ] MVP-Scope fachlich verbindlich freigeben
+- [ ] Rollen- und Berechtigungsmatrix erstellen
+- [ ] Rechtsgrundlagen je Datenart rechtlich prüfen
+- [ ] Einwilligungsabläufe fachlich freigeben
+- [ ] Speicher- und Löschfristen verbindlich festlegen
+- [ ] Auftragsverarbeiter und Drittlandtransfers prüfen
+- [ ] Datenschutzinformation und Impressum erstellen
+- [ ] Notwendigkeit einer Datenschutz-Folgenabschätzung prüfen
+- [ ] Bedrohungsmodell dokumentieren
+
+### Phase 2 – Backend und Datenmodell
+
+- [x] Datenmodelle für den Frontend-Prototyp definiert
+- [x] lokale Prototyp-Daten nach Clerk User-ID getrennt
+- [x] Migration alter lokaler PlayDate-Schlüssel eingebaut
+- [ ] Backend-Technologie und EU-Hosting auswählen
+- [ ] relationale Datenbank einrichten
+- [ ] produktives Datenmodell mit stabilen IDs erstellen
+- [ ] Clerk-Sitzungen serverseitig validieren
+- [ ] geschützte API für Familien und PlayDates implementieren
+- [ ] serverseitige Eingabevalidierung ergänzen
+- [ ] Rollen und Berechtigungen serverseitig durchsetzen
+- [ ] Secret-Management einrichten
+- [ ] Backups und Wiederherstellung testen
+- [ ] `localStorage` als produktiven Hauptspeicher ablösen
+
+### Phase 3 – Familien und Verbindungen
+
+- [x] Familienname lokal verwaltbar
+- [x] beliebig viele eigene Kinder lokal verwaltbar
+- [x] Geburtstag pro Kind speicherbar
+- [x] Freigabeeinstellung für Geburtstage vorhanden
+- [x] eigenes Kind im PlayDate-Formular auswählbar
+- [x] Oberfläche für freigegebene Geburtstage vorbereitet
+- [ ] Familienprofile über die API speichern
+- [ ] echte private Familienverbindungen implementieren
+- [ ] Verbindungsanfragen annehmen, ablehnen und widerrufen
+- [ ] kurzlebige und widerrufbare Einladungstoken verwenden
+- [ ] Geburtstagsfreigaben serverseitig prüfen
+- [ ] Geburtsjahr standardmäßig ausblenden
+- [ ] Blockieren und Entfernen von Verbindungen ermöglichen
+- [ ] Rate Limits und Missbrauchsschutz ergänzen
+
+### Phase 4 – PlayDates und Einladungen
+
+- [x] PlayDates lokal erstellen
+- [x] PlayDates lokal bearbeiten
+- [x] PlayDates nach Rückfrage lokal löschen
+- [x] eigenes Kind, anderes Kind, Datum und Uhrzeit erfassen
+- [x] Treffpunkt und Mitbringsel erfassen
+- [x] Status „Bestätigt“ und „Ausstehend“ anzeigen
+- [x] Teilen über Web Share beziehungsweise WhatsApp vorbereitet
+- [ ] PlayDates im Backend speichern
+- [ ] Teilnehmer über stabile IDs zuordnen
+- [ ] echte Einladung an verbundene Familien senden
+- [ ] Einladungen annehmen oder ablehnen
+- [ ] Änderungen bei allen Beteiligten aktualisieren
+- [ ] Absagen statt stiller Löschung umsetzen
+- [ ] private Inhalte vor weitergeleiteten Links schützen
+- [ ] Mitbringsel mit konkreten Zuständigkeiten erweitern
+- [ ] Aktivitätsverlauf für wichtige Änderungen ergänzen
+
+### Phase 5 – Kalender und Erinnerungen
+
+- [x] Export aller PlayDates als `.ics`-Datei umgesetzt
+- [x] Link zum Öffnen eines PlayDates in Google Kalender umgesetzt
+- [x] Kalenderfunktionen durch erste Tests abgesichert
+- [x] Erinnerungsoptionen im Formular dargestellt
+- [ ] `.ics`-Export mit mehreren Kalenderprogrammen prüfen
+- [ ] Zeitzonen und Sommerzeit umfassend testen
+- [ ] Erinnerungseinstellungen produktiv speichern
+- [ ] Queue oder Worker für Erinnerungen einrichten
+- [ ] ersten produktiven Benachrichtigungskanal anbinden
+- [ ] Opt-in und Abbestellung vollständig umsetzen
+- [ ] Erinnerungen bei Änderung oder Absage neu planen
+- [ ] OAuth-Konzept für spätere Kalendersynchronisation erstellen
+
+### Phase 6 – Datenschutz und Sicherheit
+
+- [x] private Bereiche erfordern eine Clerk-Anmeldung
+- [x] Hinweise zu privaten Fotos, Kommentaren und Daten eingebaut
+- [x] Secret Keys aus der Browserkonfiguration ausgeschlossen und dokumentiert
+- [ ] serverseitige Autorisierung für jede private Ressource umsetzen
+- [ ] Einwilligungsübersicht und Widerruf umsetzen
+- [ ] Datenauskunft und Datenexport anbieten
+- [ ] vollständige Konto- und Datenlöschung umsetzen
+- [ ] technische Löschfristen automatisieren
+- [ ] Audit-Protokolle datensparsam einführen
+- [ ] Content Security Policy und sichere HTTP-Header einrichten
+- [ ] Schutz gegen CSRF, XSS und IDOR testen
+- [ ] Abhängigkeiten automatisiert auf Schwachstellen prüfen
+- [ ] externe Sicherheitsprüfung durchführen
+
+### Phase 7 – A11Y, Qualität und Pilot
+
+- [x] semantische Grundstruktur und Skip-Link vorhanden
+- [x] sichtbare Fokusmarkierungen vorgesehen
+- [x] ausreichend große mobile Bedienelemente berücksichtigt
+- [x] reduzierte Animation über `prefers-reduced-motion` berücksichtigt
+- [x] Light und Dark Mode vorhanden
+- [ ] automatisierte axe-Tests einrichten
+- [ ] alle Kernabläufe ausschließlich per Tastatur testen
+- [ ] manuelle Tests mit VoiceOver und NVDA durchführen
+- [ ] Kontraste vollständig messen und dokumentieren
+- [ ] unterstützte mobile Geräte und Browser festlegen und testen
+- [ ] Pilotgruppe mit freiwilligen Testfamilien durchführen
+- [ ] kritische Ergebnisse aus dem Pilot beheben
+
+### Phase 8 – Produktionsstart
+
+- [ ] Produktionsumgebung und eigene Domain einrichten
+- [ ] Monitoring, Alarmierung und Fehlertracking aktivieren
+- [ ] Rollback und Wiederherstellung praktisch testen
+- [ ] finale Datenschutztexte veröffentlichen
+- [ ] Verantwortlichkeiten für Betrieb und Vorfälle festlegen
+- [ ] kontrollierten Einladungsbetrieb starten
+- [ ] datensparsame Produktkennzahlen beobachten
+
+### Phase 9 – Ausbau nach dem MVP
+
+- [ ] strukturierte Mitbringlisten mit Zuständigkeiten
+- [ ] Kommentare im geschützten PlayDate-Bereich
+- [ ] mehrere Sorgeberechtigte pro Familie
+- [ ] private Fotos mit geprüfter Einwilligung
+- [ ] bidirektionale Google- und Microsoft-Kalendersynchronisation
+- [ ] feinere Benachrichtigungseinstellungen
+
+### Fortschrittsregel
+
+Die Checkliste wird bei jeder abgeschlossenen Funktion aktualisiert. Ein Punkt wird erst abgehakt, wenn die Implementierung geprüft ist und die zugehörigen Abnahmekriterien erfüllt sind. Eine sichtbare Oberfläche ohne produktive Backend-Funktion bleibt deshalb als offener Punkt markiert.
+
 ## 3. Phase 0 – Prototyp stabilisieren
 
 **Status:** teilweise umgesetzt  
