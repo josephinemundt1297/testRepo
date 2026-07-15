@@ -564,6 +564,42 @@ Diese Regeln gelten in jeder Phase:
 
 Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrolle kurz vor dem Release. Jede Prüfung erzeugt nachvollziehbare Nachweise, konkrete Feststellungen und eine Entscheidung darüber, ob die nächste Phase beginnen darf.
 
+### Aktueller Auditstatus
+
+**Prüfdatum:** 15. Juli 2026
+
+**Geprüfter Stand:** Frontend-Prototyp im lokalen Projektordner
+
+**Gesamtergebnis:** teilweise bestanden, noch keine Freigabe für Pilot- oder Produktivbetrieb
+
+- [x] Oxlint ausgeführt
+- [x] alle 7 vorhandenen automatisierten Tests bestanden
+- [x] TypeScript-Prüfung bestanden
+- [x] Produktions-Build mit Vite erfolgreich erstellt
+- [x] Dependency-Audit für produktive npm-Abhängigkeiten ausgeführt
+- [x] Dependency-Audit meldet 0 bekannte Schwachstellen
+- [ ] zwei Oxlint-Warnungen beheben oder nachvollziehbar begründen
+- [ ] Testabdeckung für Authentifizierung, Formulare und vollständige Nutzerabläufe erweitern
+- [ ] Backend-, API- und Datenbank-Audit durchführen
+- [ ] formales Berechtigungs- und IDOR-Audit durchführen
+- [ ] vollständiges DSGVO-Audit mit fachkundiger rechtlicher Prüfung durchführen
+- [ ] manuelles WCAG-Audit mit Tastatur, VoiceOver und NVDA durchführen
+- [ ] PWA auf echten Android- und iOS-Geräten auditieren
+- [ ] Betriebs-, Backup- und Wiederherstellungs-Audit durchführen
+- [ ] externen Security- beziehungsweise Penetrationstest durchführen
+
+**Offene Feststellungen:**
+
+| ID | Schweregrad | Feststellung | Status |
+| --- | --- | --- | --- |
+| AUD-001 | Niedrig | `themeContext.tsx` löst eine Fast-Refresh-Warnung aus, weil dieselbe Datei Komponenten und weitere Exporte enthält. | offen |
+| AUD-002 | Niedrig | `main.tsx` löst eine Fast-Refresh-Warnung zur Komponentenstruktur aus. | offen |
+| AUD-003 | Hoch | Das Projekt besitzt noch kein produktives Backend; private Daten liegen im Prototyp in `localStorage`. | bekannt, Phase 2 geplant |
+| AUD-004 | Hoch | Serverseitige Autorisierungs-, IDOR- und Rollenprüfungen können ohne Backend noch nicht stattfinden. | bekannt, Phasen 2 bis 4 geplant |
+| AUD-005 | Hoch | Die rechtliche DSGVO-Prüfung für die Verarbeitung von Kinderdaten steht aus. | bekannt, Phase 1 geplant |
+
+Die erfolgreichen Prüfungen belegen ausschließlich den aktuellen Frontend-Build und die vorhandene Testbasis. Sie sind keine Aussage darüber, dass die Anwendung bereits produktionsreif, vollständig barrierefrei oder rechtlich DSGVO-konform ist.
+
 ### Auditziele
 
 - private Familien- und Kinderdaten vor unberechtigtem Zugriff schützen
@@ -603,7 +639,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 
 **Prüfungen und Nachweise:**
 
-- [ ] `npm run check` protokollieren
+- [x] `npm run check` protokollieren
 - [ ] offene Oxlint-Warnungen bewerten und beheben oder begründen
 - [ ] Architekturdiagramm mit tatsächlichem Code abgleichen
 - [ ] veraltete und ungenutzte Abhängigkeiten prüfen
@@ -690,7 +726,7 @@ Das Datenschutz-Audit benötigt vor dem Produktivstart eine fachkundige rechtlic
 
 **Prüfungen und Nachweise:**
 
-- [ ] automatisierten Dependency-Scan ausführen
+- [x] automatisierten Dependency-Scan ausführen
 - [ ] Secret-Scan für Repository und Build-Artefakte ausführen
 - [ ] Security-Header in der Produktionsumgebung prüfen
 - [ ] Eingabefelder und API-Endpunkte mit ungültigen Daten testen
