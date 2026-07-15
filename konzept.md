@@ -1,0 +1,294 @@
+# PlayDate – Produktkonzept
+
+## 1. Die Idee
+
+PlayDate ist eine private Organisations-App für Eltern und Sorgeberechtigte. Sie hilft dabei, Spieletreffen für Kinder unkompliziert zu planen, mit anderen Familien abzustimmen und zuverlässig im Blick zu behalten.
+
+Heute verteilen sich die nötigen Informationen häufig auf WhatsApp-Nachrichten, Kalender, Notizen und mündliche Absprachen. Dadurch entstehen Rückfragen: Wann treffen wir uns? Wo genau? Welches Kind kommt mit? Wer bringt Snacks mit? PlayDate bündelt diese Informationen in einem geschützten Termin.
+
+## 2. Das Problem
+
+Bei der Organisation eines Spieletreffens müssen Eltern mehrere kleine Aufgaben koordinieren:
+
+- einen passenden Termin finden
+- beteiligte Kinder und Eltern abstimmen
+- Ort und Uhrzeit festhalten
+- klären, wer was mitbringt
+- Änderungen an alle Beteiligten weitergeben
+- den Termin in den eigenen Kalender übernehmen
+- an das Treffen erinnert werden
+- Geburtstage befreundeter Kinder im Blick behalten
+
+Messenger sind gut für Gespräche, aber schlecht als dauerhafte Terminübersicht. Kalender enthalten den Termin, bilden jedoch Einladungen, Mitbringsel, Kommentare und private Fotos nur unzureichend ab.
+
+## 3. Das Produktversprechen
+
+> Mit PlayDate können Eltern ein privates Spieletreffen in wenigen Schritten planen, teilen und gemeinsam organisieren, ohne Informationen aus verschiedenen Chats zusammensuchen zu müssen.
+
+PlayDate soll nicht den persönlichen Austausch ersetzen. Die App strukturiert die organisatorischen Informationen und lässt Messenger wie WhatsApp weiterhin als freiwilligen Kommunikationskanal zu.
+
+## 4. Zielgruppe
+
+### Hauptzielgruppe
+
+Eltern und Sorgeberechtigte mit einem oder mehreren Kindern, die regelmäßig Spieletreffen mit bekannten Familien organisieren.
+
+### Bedürfnisse
+
+- wenig Zeit und möglichst wenige Eingaben
+- einfache Bedienung auf dem Smartphone
+- klare Übersicht über anstehende Treffen
+- Vertrauen in den Umgang mit Kinderdaten
+- leichte Weitergabe an andere Eltern
+- keine zusätzliche komplizierte Kommunikationsplattform
+
+### Nicht vorgesehen
+
+Kinder erhalten im ersten Produktumfang keine eigenen Konten. Öffentliche Profile, eine öffentliche Kindersuche und Treffen mit unbekannten Personen sind ebenfalls nicht vorgesehen.
+
+## 5. Leitprinzipien
+
+### Privat als Standard
+
+PlayDates und Familiendaten sind nur nach Anmeldung sichtbar. Informationen werden nur mit ausdrücklich eingeladenen oder verbundenen Familien geteilt.
+
+### Weniger Daten sind besser
+
+Die App fragt nur Informationen ab, die für die jeweilige Funktion benötigt werden. Ein Geburtstag kann beispielsweise ohne Geburtsjahr geteilt werden.
+
+### Mobile first
+
+Die wichtigsten Abläufe müssen auf kleinen Displays schnell, übersichtlich und mit gut erreichbaren Bedienelementen funktionieren.
+
+### Verständlich statt technisch
+
+Texte, Fehlermeldungen und Einwilligungen werden in einfacher deutscher Sprache formuliert. Nutzer sollen immer erkennen, was eine Aktion bewirkt.
+
+### Barrierearm von Anfang an
+
+Tastaturbedienung, ausreichende Kontraste, sichtbarer Fokus, verständliche Labels und Unterstützung für Screenreader gehören zur Grundarchitektur und sind keine spätere Ergänzung.
+
+## 6. Zentrale Nutzungsszenarien
+
+### 6.1 Einstieg und Familie einrichten
+
+1. Ein Elternteil öffnet PlayDate und meldet sich an.
+2. Die Person trägt einen Familiennamen ein.
+3. Sie legt die eigenen Kinder mit Name und optionalem Geburtstag an.
+4. Pro Kind entscheidet sie, ob der Geburtstag für verbundene Familien sichtbar sein darf.
+5. Danach gelangt sie zur persönlichen Übersicht.
+
+### 6.2 PlayDate erstellen
+
+1. Der Nutzer wählt „PlayDate planen“.
+2. Er wählt ein eigenes Kind aus dem Familienprofil.
+3. Er trägt das andere Kind, Datum, Uhrzeit und Treffpunkt ein.
+4. Optional ergänzt er Mitbringsel und eine Erinnerung.
+5. Nach dem Speichern erscheint das Treffen in der Übersicht.
+
+### 6.3 Einladung versenden
+
+1. Der Nutzer öffnet ein PlayDate und wählt „Einladung teilen“.
+2. PlayDate erzeugt eine verständliche Nachricht beziehungsweise einen geschützten Einladungslink.
+3. Die Einladung kann über die Teilen-Funktion des Geräts oder über WhatsApp versendet werden.
+4. Der eingeladene Elternteil sieht nur die für diese Einladung freigegebenen Informationen.
+
+### 6.4 Einladung beantworten
+
+1. Der eingeladene Elternteil öffnet den geschützten Link.
+2. Nach Anmeldung kann die Einladung angenommen oder abgelehnt werden.
+3. Der Status wird für die beteiligten Familien aktualisiert.
+4. Änderungen am Termin werden nachvollziehbar angezeigt.
+
+### 6.5 Termin in den Kalender übernehmen
+
+Der Nutzer kann ein einzelnes PlayDate in Google Kalender öffnen oder alle Termine als `.ics`-Datei exportieren. Eine spätere Synchronisation soll nur nach ausdrücklicher Freigabe und mit minimalen Kalenderberechtigungen erfolgen.
+
+### 6.6 Geburtstag sehen
+
+In der Familienübersicht sieht der Nutzer die freigegebenen Geburtstage eigener Kinder und verbundener Familien. Standardmäßig werden nur Name, Tag und Monat angezeigt.
+
+## 7. Funktionsbereiche
+
+### Persönliche Übersicht
+
+- nächste PlayDates
+- Status der Einladungen
+- schnelle Aktion zum Erstellen eines Treffens
+- Kalenderexport
+- Hinweis auf anstehende Geburtstage
+
+### PlayDate-Verwaltung
+
+- erstellen, anzeigen, bearbeiten und löschen
+- eigenes Kind auswählen
+- anderes Kind beziehungsweise eingeladene Familie angeben
+- Datum, Uhrzeit und Treffpunkt festlegen
+- Mitbringsel und Aufgaben eintragen
+- Status anzeigen
+- Einladung teilen
+
+### Familienbereich
+
+- Familienname verwalten
+- beliebig viele eigene Kinder anlegen
+- Geburtstage speichern
+- Geburtstagsfreigabe pro Kind steuern
+- verbundene Familien und freigegebene Geburtstage anzeigen
+
+### Gemeinsamer PlayDate-Bereich
+
+Für eine spätere Version ist ein geschützter Bereich pro Treffen vorgesehen:
+
+- Kommentare für organisatorische Absprachen
+- private Fotos mit Einwilligungsprüfung
+- übersichtliche Liste der Mitbringsel
+- nachvollziehbare Terminänderungen
+- Rollen für Organisator und eingeladene Familien
+
+### Einstellungen
+
+- Light Mode, Dark Mode oder Systemeinstellung
+- Installation als Progressive Web App
+- Benachrichtigungen verwalten
+- Einwilligungen prüfen und widerrufen
+- eigene Daten exportieren oder löschen
+
+## 8. Informationsarchitektur
+
+| Bereich | Inhalt |
+| --- | --- |
+| Übersicht | nächste Termine, Schnellaktionen und Erinnerungen |
+| PlayDates | vollständige Terminliste und Terminverwaltung |
+| Neues PlayDate | geführtes Formular zur Erstellung |
+| Familien | eigene Kinder, Geburtstage und Verbindungen |
+| Einstellungen | Darstellung, Installation, Datenschutz und Konto |
+
+Die mobile Navigation konzentriert sich auf diese Kernbereiche. Selten genutzte Datenschutz- und Kontofunktionen liegen gebündelt in den Einstellungen.
+
+## 9. MVP
+
+Das Minimum Viable Product soll einen vollständigen, aber bewusst kleinen Ablauf ermöglichen.
+
+### Im MVP enthalten
+
+- Anmeldung und geschützte Bereiche
+- Familienprofil mit mehreren Kindern
+- optionaler Geburtstag und Freigabe pro Kind
+- PlayDates erstellen, bearbeiten und löschen
+- Auswahl des eigenen Kindes
+- Termin, Ort und Mitbringsel
+- Einladungslink und Teilen über WhatsApp beziehungsweise Web Share
+- Einladung annehmen oder ablehnen
+- `.ics`-Export und Google-Kalender-Link
+- einfache Erinnerungen
+- Light und Dark Mode
+- installierbare PWA
+- Datenschutzfunktionen für Auskunft, Export und Löschung
+
+### Nach dem MVP
+
+- Kommentare
+- private Fotoalben
+- bidirektionale Kalendersynchronisation
+- Push-Benachrichtigungen
+- Aufgaben- und Mitbringlisten mit Zuständigkeiten
+- mehrere Sorgeberechtigte innerhalb einer Familie
+- feinere Rollen und Berechtigungen
+
+## 10. Datenschutz- und Sicherheitskonzept
+
+PlayDate verarbeitet besonders schützenswerte Informationen über Kinder. Deshalb folgt das Produkt dem Prinzip „Privacy by Design“.
+
+### Grundregeln
+
+- keine öffentlichen Kinderprofile
+- keine Suche nach unbekannten Kindern oder Familien
+- keine privaten Inhalte in frei lesbaren Einladungslinks
+- serverseitige Prüfung jeder Zugriffsberechtigung
+- standardmäßig minimale Sichtbarkeit
+- getrennte und widerrufbare Einwilligung für Kinderfotos
+- Geburtstage ohne Geburtsjahr teilen, sofern dieses nicht benötigt wird
+- klare Löschfristen für Termine, Kommentare und Fotos
+- verschlüsselte Übertragung und verschlüsselte Speicherung
+- bevorzugtes Hosting in der EU beziehungsweise im EWR
+- keine Werbung und kein Profiling von Kindern
+
+Vor einem Produktivstart sind Rechtsgrundlagen, Auftragsverarbeitungsverträge, Drittlandtransfers und eine mögliche Datenschutz-Folgenabschätzung fachkundig zu prüfen.
+
+## 11. Barrierefreiheitskonzept
+
+PlayDate strebt WCAG 2.2 AA an. Die Qualität wird nicht nur automatisiert, sondern auch manuell geprüft.
+
+- semantisches HTML und logische Überschriftenstruktur
+- vollständige Tastaturbedienung
+- sichtbare Fokuszustände
+- ausreichend große Touch-Ziele
+- kontrastreiche Light- und Dark-Modi
+- verständliche Fehlertexte direkt am jeweiligen Feld
+- Statusinformationen nicht nur über Farben
+- Unterstützung für Screenreader
+- reduzierte Animation bei entsprechender Systemeinstellung
+- Tests mit axe, Tastatur, VoiceOver und NVDA
+
+## 12. Technisches Konzept
+
+Der Prototyp verwendet React, TypeScript, Vite, TanStack Router und Clerk. Die Oberfläche folgt Atomic Design. Vitest und Testing Library bilden die Testbasis.
+
+Für den produktiven Betrieb wird zusätzlich benötigt:
+
+- ein geschütztes Backend
+- eine relationale Datenbank mit Familien- und Berechtigungsbeziehungen
+- objektbasierter Speicher für Fotos
+- Queue oder Worker für Erinnerungen
+- kurzlebige, nicht erratbare Einladungstoken
+- serverseitige Autorisierung für jeden Datenzugriff
+- Audit-Protokolle für sicherheitsrelevante Vorgänge
+- Monitoring, Backups und Wiederherstellungstests
+
+`localStorage` ist nur für den aktuellen Prototyp geeignet und darf nicht die produktive Hauptspeicherung privater Daten übernehmen.
+
+## 13. Erfolgskriterien
+
+Der Produkterfolg soll nicht an möglichst vielen gespeicherten Kinderdaten gemessen werden. Sinnvolle Kennzahlen sind:
+
+- Anteil erfolgreich abgeschlossener PlayDate-Erstellungen
+- benötigte Zeit bis zum gespeicherten ersten PlayDate
+- Anteil beantworteter Einladungen
+- Anteil der Termine, die ohne zusätzliche organisatorische Rückfrage stattfinden
+- freiwillige Wiederverwendung der App
+- Anzahl und Schwere von Bedienungs- und Barrierefreiheitsproblemen
+- Anzahl von Datenschutz- oder Sicherheitsvorfällen
+
+Analysen müssen datensparsam und möglichst ohne personenbezogenes Tracking erfolgen.
+
+## 14. Risiken und Gegenmaßnahmen
+
+| Risiko | Gegenmaßnahme |
+| --- | --- |
+| Einladung wird an falsche Person weitergeleitet | Anmeldung, kurzlebiges Token und Freigabeprüfung |
+| Zu viele Daten über Kinder werden sichtbar | minimale Standardfreigaben und klare Einwilligungen |
+| Eltern nutzen weiterhin nur WhatsApp | Teilen einfach integrieren statt Messenger ersetzen zu wollen |
+| Terminänderungen werden übersehen | Änderungsstatus und freiwillige Benachrichtigungen |
+| Kalenderzugriff wirkt zu umfassend | kleinste Berechtigungen und transparente Erklärung |
+| App ist für gestresste Nutzer zu kompliziert | kurze Formulare, klare Sprache und Nutzertests |
+| Fotos werden ohne passende Zustimmung geteilt | Einwilligungsstatus vor Upload und Ansicht prüfen |
+
+## 15. Abgrenzung
+
+PlayDate ist keine öffentliche Vermittlungsplattform, kein soziales Netzwerk für Kinder und kein Ortungsdienst. Die App bewertet weder Kinder noch Eltern und erstellt keine Verhaltensprofile. Der Fokus liegt ausschließlich auf der privaten Organisation bereits bekannter Familien.
+
+## 16. Aktueller Stand
+
+Der vorhandene Frontend-Prototyp bildet bereits wesentliche Teile des Konzepts ab:
+
+- geschützter PlayDate-Bereich mit Clerk
+- PlayDate-Verwaltung
+- Familienprofil und Kindergeburtstage
+- Kalenderexport
+- Teilen über die Geräteschnittstelle und WhatsApp
+- Light und Dark Mode
+- mobile PWA
+- Atomic-Design-Struktur und erste automatisierte Tests
+
+Noch nicht produktiv umgesetzt sind insbesondere ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos und eine dauerhafte Kalendersynchronisation.
