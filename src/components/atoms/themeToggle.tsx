@@ -1,5 +1,6 @@
 import { Laptop, Moon, Sun } from "lucide-react";
-import { useTheme, type Theme } from "../../context/themeContext";
+import type { Theme } from "../../context/themeContextDefinition";
+import { useTheme } from "../../hooks/useTheme";
 
 const options: { value: Theme; label: string; icon: typeof Sun }[] = [
   { value: "light", label: "Helles Design", icon: Sun },

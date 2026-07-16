@@ -6,6 +6,8 @@ PlayDate ist eine mobile-first Web-App, mit der Eltern private Spieletreffen fü
 
 Der aktuelle Stand ist ein Frontend-Prototyp. Funktionen, die ein Backend oder externe Freigaben benötigen, sind als Zielanforderungen beschrieben und klar vom bereits umgesetzten Stand getrennt.
 
+**Dokumentationsstand: 16. Juli 2026.** Der Prototyp besteht die lokale Prüfkette aus Oxlint, 7 Vitest-Tests, TypeScript und Produktions-Build ohne Fehler oder Warnungen. Er besitzt noch kein produktives Backend und ist nicht für den Betrieb mit echten Kinderdaten freigegeben. Der Umsetzungs- und Auditstatus wird in [`phasenPlan.md`](./phasenPlan.md) gepflegt.
+
 ## 2. Produktziele
 
 - PlayDates schnell und übersichtlich planen

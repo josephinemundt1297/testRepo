@@ -43,7 +43,7 @@ Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, 
 - [x] erste Unit- und Komponententests mit Vitest eingerichtet
 - [x] gemeinsame Prüfkette über `npm run check` eingerichtet
 - [x] Projektspezifikation und Produktkonzept dokumentiert
-- [ ] bestehende Oxlint-Warnungen vollständig beheben
+- [x] bestehende Oxlint-Warnungen vollständig behoben
 - [ ] Error Boundary und einheitliche Fehlerzustände ergänzen
 - [ ] Lade-, Leer- und Offline-Zustände vollständig prüfen
 - [ ] Formularvalidierung für alle Randfälle erweitern
@@ -566,7 +566,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 
 ### Aktueller Auditstatus
 
-**Prüfdatum:** 15. Juli 2026
+**Prüfdatum:** 16. Juli 2026
 
 **Geprüfter Stand:** Frontend-Prototyp im lokalen Projektordner
 
@@ -578,7 +578,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 - [x] Produktions-Build mit Vite erfolgreich erstellt
 - [x] Dependency-Audit für produktive npm-Abhängigkeiten ausgeführt
 - [x] Dependency-Audit meldet 0 bekannte Schwachstellen
-- [ ] zwei Oxlint-Warnungen beheben oder nachvollziehbar begründen
+- [x] die beiden zuvor dokumentierten Oxlint-Warnungen behoben
 - [ ] Testabdeckung für Authentifizierung, Formulare und vollständige Nutzerabläufe erweitern
 - [ ] Backend-, API- und Datenbank-Audit durchführen
 - [ ] formales Berechtigungs- und IDOR-Audit durchführen
@@ -592,8 +592,8 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 
 | ID | Schweregrad | Feststellung | Status |
 | --- | --- | --- | --- |
-| AUD-001 | Niedrig | `themeContext.tsx` löst eine Fast-Refresh-Warnung aus, weil dieselbe Datei Komponenten und weitere Exporte enthält. | offen |
-| AUD-002 | Niedrig | `main.tsx` löst eine Fast-Refresh-Warnung zur Komponentenstruktur aus. | offen |
+| AUD-001 | Niedrig | `themeContext.tsx` löste eine Fast-Refresh-Warnung aus, weil dieselbe Datei Komponenten und weitere Exporte enthielt. | behoben und mit Oxlint erneut geprüft |
+| AUD-002 | Niedrig | `main.tsx` löste eine Fast-Refresh-Warnung zur Komponentenstruktur aus. | behoben und mit Oxlint erneut geprüft |
 | AUD-003 | Hoch | Das Projekt besitzt noch kein produktives Backend; private Daten liegen im Prototyp in `localStorage`. | bekannt, Phase 2 geplant |
 | AUD-004 | Hoch | Serverseitige Autorisierungs-, IDOR- und Rollenprüfungen können ohne Backend noch nicht stattfinden. | bekannt, Phasen 2 bis 4 geplant |
 | AUD-005 | Hoch | Die rechtliche DSGVO-Prüfung für die Verarbeitung von Kinderdaten steht aus. | bekannt, Phase 1 geplant |
@@ -640,7 +640,7 @@ Die erfolgreichen Prüfungen belegen ausschließlich den aktuellen Frontend-Buil
 **Prüfungen und Nachweise:**
 
 - [x] `npm run check` protokollieren
-- [ ] offene Oxlint-Warnungen bewerten und beheben oder begründen
+- [x] offene Oxlint-Warnungen bewertet und behoben
 - [ ] Architekturdiagramm mit tatsächlichem Code abgleichen
 - [ ] veraltete und ungenutzte Abhängigkeiten prüfen
 - [ ] zentrale Komponenten stichprobenartig im Vier-Augen-Prinzip reviewen

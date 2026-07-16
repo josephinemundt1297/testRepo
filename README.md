@@ -2,6 +2,14 @@
 
 PlayDate ist ein mobile-first React-Prototyp, mit dem Eltern sichere und übersichtliche Spieletreffen für ihre Kinder planen können. Die Oberfläche ist deutschsprachig, tastaturbedienbar und für kleine Displays optimiert.
 
+## Aktueller Status
+
+**Stand: 16. Juli 2026 – Frontend-Prototyp, nicht für den Produktivbetrieb freigegeben.**
+
+Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Kalenderexport, Teilen, Themes und PWA funktionieren. Die Prüfkette besteht aktuell aus Oxlint, 7 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler oder Warnungen durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
+
+Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos, produktive Datenlöschung und bidirektionale Kalendersynchronisation sind noch nicht umgesetzt. `localStorage` ist ausschließlich die lokale Persistenz des Prototyps.
+
 ## Funktionen
 
 - PlayDates erstellen, bearbeiten und löschen
@@ -15,7 +23,7 @@ PlayDate ist ein mobile-first React-Prototyp, mit dem Eltern sichere und übersi
 - einzelne PlayDates direkt in Google Kalender öffnen
 - Status für bestätigte und ausstehende Treffen
 - Datenschutz-Hinweise für Fotos, Kommentare und eingeladene Familien
-- Clerk-Provider für Login vorbereitet
+- Clerk-Login und Abmeldung eingebunden
 - PlayDate-Bereich vollständig durch Clerk geschützt; ohne gültige Anmeldung werden keine Termindaten gerendert
 - Benutzerspezifische Trennung der lokalen Prototyp-Daten über die Clerk User-ID
 - Routing mit TanStack Router
@@ -93,7 +101,7 @@ Die Tests haben bereits einen echten Zeitzonenfehler bei der Google-Kalender-End
 
 Der aktuelle Stand ist ein funktionsfähiger Frontend-Prototyp. Für den Produktivbetrieb werden serverseitige Dienste benötigt:
 
-- **Authentifizierung:** Clerk-Komponenten für Sign-in/Sign-up und geschützte Routen ergänzen.
+- **Authentifizierung:** Clerk-Sitzungen später zusätzlich im Backend prüfen und jede private Ressource serverseitig autorisieren.
 - **Datenbank:** PlayDates, Einladungen, Kommentare und Einwilligungen mandantenfähig speichern (z. B. PostgreSQL).
 - **WhatsApp:** Einladungslinks über WhatsApp teilen; für automatisierte Nachrichten ausschließlich die offizielle WhatsApp Business Platform und ausdrückliches Opt-in verwenden.
 - **Kalender:** OAuth-Integration für Google/Microsoft sowie `.ics`-Export; nur die minimal notwendigen Kalenderrechte anfordern.
@@ -129,6 +137,13 @@ src/
 ├── router.tsx   # TanStack-Routen
 └── main.tsx     # Clerk-Grenze und App-Start
 ```
+
+## Projektdokumentation
+
+- [`konzept.md`](./konzept.md): Produktidee, Zielgruppe, MVP und Leitplanken
+- [`speck.md`](./speck.md): Anforderungen, Datenmodell und Abnahmekriterien
+- [`phasenPlan.md`](./phasenPlan.md): Phasen, Statuscheckliste, Risiken und Auditplan
+- [`AGENTS.md`](./AGENTS.md): verbindliche Arbeitsregeln für Entwickler und Coding-Agents
 
 ### Hinweis zur Kalendersynchronisation
 

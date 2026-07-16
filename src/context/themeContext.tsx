@@ -1,18 +1,12 @@
 import {
-  createContext,
-  useContext,
   useEffect,
   useState,
   type ReactNode,
 } from "react";
-
-export type Theme = "light" | "dark" | "system";
-type ThemeContextValue = {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-  resolvedTheme: "light" | "dark";
-};
-const themeContext = createContext<ThemeContextValue | null>(null);
+import {
+  themeContext,
+  type Theme,
+} from "./themeContextDefinition";
 const themeKey = "playDate.theme";
 const legacyThemeKey = "playpal.theme";
 
@@ -56,13 +50,4 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       {children}
     </themeContext.Provider>
   );
-}
-
-export function useTheme() {
-  const value = useContext(themeContext);
-  if (!value)
-    throw new Error(
-      "useTheme muss innerhalb des ThemeProvider verwendet werden",
-    );
-  return value;
 }
