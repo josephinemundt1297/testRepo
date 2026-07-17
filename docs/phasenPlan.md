@@ -192,6 +192,7 @@ Phase 1 ist für den Umfang des Übungsprojekts abgeschlossen. Annahmen und die 
 - [ ] alle Kernabläufe ausschließlich per Tastatur testen
 - [ ] manuelle Tests mit VoiceOver und NVDA durchführen
 - [x] zentrale Text- und Bedienkontraste für Light und Dark Mode gemessen und dokumentiert
+- [x] skalierbare CSS-Maße auf `rem` umgestellt und mit Regressionstest abgesichert
 - [ ] unterstützte mobile Geräte und Browser festlegen und testen
 - [ ] Pilotgruppe mit freiwilligen Testfamilien durchführen
 - [ ] kritische Ergebnisse aus dem Pilot beheben
@@ -611,7 +612,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 **Gesamtergebnis:** Phase 0 und 1 als React-Trainingsprojekt bestanden; freiwillige Geräteprüfungen und spätere Full-Stack-Phasen offen; keine Freigabe für echte Daten oder Produktivbetrieb
 
 - [x] Oxlint ausgeführt
-- [x] alle 46 vorhandenen Vitest-Tests bestanden
+- [x] alle 47 vorhandenen Vitest-Tests bestanden
 - [x] 40 Playwright-Szenarien werden von der E2E-Konfiguration erkannt
 - [ ] Playwright-Szenarien in echten Browser-Engines ausführen
 - [x] TypeScript-Prüfung bestanden

@@ -37,11 +37,12 @@ Mit PlayDate übe und belege ich:
 | Formulare und CRUD | Familienprofil und PlayDates erstellen, bearbeiten und löschen | erledigt |
 | TypeScript | typisierte Domainmodelle, Props und Hilfsfunktionen | erledigt |
 | Responsive Design | mobile Navigation, Kalender und schmale Viewports | erledigt |
+| Skalierbares Styling | Abstände und Größen in `rem`, abgesichert durch Regressionstest | erledigt |
 | UI und Themes | DaisyUI, Light/Dark/Systemmodus | erledigt |
 | A11Y | Semantik, Fokus, Tastatur, Kontraste und Statusmeldungen | als Frontend-Basis erledigt |
 | Authentifizierung | Clerk-Grenze vor privaten Routen | erledigt |
 | Persistenz | benutzerbezogener Prototyp mit `localStorage` | erledigt |
-| Tests | 46 Unit- und Komponententests | erledigt |
+| Tests | 47 Unit- und Komponententests | erledigt |
 | E2E-Vorbereitung | 40 Playwright-Szenarien konfiguriert | erledigt |
 | E2E auf realen Browsern/Geräten | Browser-Binaries und physische Geräte nötig | freiwilliger Zusatznachweis offen |
 | Produktkonzept | Zielgruppe, MVP, Rollen und Nicht-Ziele | erledigt |
@@ -53,7 +54,7 @@ Mit PlayDate übe und belege ich:
 
 **Ergebnis: für das React-Trainingsprojekt abgeschlossen.**
 
-Die App lässt sich bauen, besitzt eine nachvollziehbare Komponentenstruktur und deckt zentrale React-Themen ab. Linting, 46 automatisierte Tests, TypeScript und der Produktions-Build laufen fehlerfrei. Reale Mehrbrowser- und Gerätetests bleiben als zusätzlicher Praxisnachweis offen und sind kein fehlendes React-Lernziel.
+Die App lässt sich bauen, besitzt eine nachvollziehbare Komponentenstruktur und deckt zentrale React-Themen ab. Linting, 47 automatisierte Tests, TypeScript und der Produktions-Build laufen fehlerfrei. Reale Mehrbrowser- und Gerätetests bleiben als zusätzlicher Praxisnachweis offen und sind kein fehlendes React-Lernziel.
 
 ### Phase 1 – Produkt- und Datenschutzkonzept
 

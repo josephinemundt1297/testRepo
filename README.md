@@ -8,7 +8,7 @@ Die Oberfläche ist deutschsprachig, tastaturbedienbar und für kleine Displays 
 
 **Stand: 17. Juli 2026 – Phase 0 und 1 des React-Trainingsprojekts sind abgeschlossen. Es dürfen ausschließlich erfundene Demo-Daten verwendet werden.**
 
-Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Error Boundary, Lade-, Leer- und Offline-Zustände sowie zentrale Formularvalidierung sind vorhanden. Die Prüfkette besteht aktuell aus Oxlint, 46 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
+Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Error Boundary, Lade-, Leer- und Offline-Zustände sowie zentrale Formularvalidierung sind vorhanden. Die Prüfkette besteht aktuell aus Oxlint, 47 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
 
 Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos, produktive Datenlöschung und bidirektionale Kalendersynchronisation sind bewusst nicht Teil der abgeschlossenen React-Modul-Leistung. `localStorage` dient ausschließlich dazu, Persistenz im Frontend-Prototyp zu üben.
 
@@ -23,6 +23,7 @@ Die fachlichen Übungsunterlagen für Phase 1 stehen in [`docs/phase1Datenschutz
 - Formulare, Validierung und CRUD-Abläufe
 - Atomic Design und KISS
 - Responsive Design, A11Y und Themes
+- skalierbare Layoutmaße überwiegend in `rem`; Pixel nur für feine Linien und feste Breakpoints
 - Unit-, Komponenten- und vorbereitete End-to-End-Tests
 - GitHub-Workflow und technische Dokumentation
 
@@ -132,6 +133,7 @@ Die Testbasis verwendet Vitest, Testing Library, jest-dom und jsdom. Abgedeckt s
 - Monatsraster, Terminzuordnung und Monatswechsel der Kalenderansicht
 - modale Kalenderdetails, Website-Verknüpfung und Theme-Kontrastregression
 - Viewport, Tablet-Breakpoint und schrumpfbare Navigation als Responsive-Regression
+- A11Y-freundliche `rem`-Verwendung im Styling
 - erlaubte Cache-Anfragen und behandelte Service-Worker-Promises
 - Darstellung bestätigter und ausstehender Status-Badges
 - Auth-Grenze, Error Boundary, Lade-, Leer- und Offline-Zustände

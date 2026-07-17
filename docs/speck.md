@@ -10,7 +10,7 @@ Der aktuelle Stand ist ein Frontend-Prototyp. Funktionen, die ein Backend oder e
 
 Der bewertete Trainingsumfang umfasst Phase 0 und 1. React, TypeScript, Komponentenarchitektur, Routing, Formulare, Hooks, Context, Frontend-Persistenz, Responsive Design und Tests sind praktische Lernnachweise. Backend- und Produktionsanforderungen dienen nur als späterer Ausblick.
 
-**Dokumentationsstand: 17. Juli 2026.** Der Prototyp besteht die lokale Prüfkette aus Oxlint, 46 Vitest-Tests, TypeScript und Produktions-Build ohne Fehler. 40 Playwright-Szenarien sind eingerichtet, aber noch nicht auf realen Browserinstallationen und physischen Geräten nachgewiesen. Er besitzt noch kein produktives Backend und ist nicht für echte Kinderdaten freigegeben.
+**Dokumentationsstand: 17. Juli 2026.** Der Prototyp besteht die lokale Prüfkette aus Oxlint, 47 Vitest-Tests, TypeScript und Produktions-Build ohne Fehler. 40 Playwright-Szenarien sind eingerichtet, aber noch nicht auf realen Browserinstallationen und physischen Geräten nachgewiesen. Er besitzt noch kein produktives Backend und ist nicht für echte Kinderdaten freigegeben.
 
 [`phase1Datenschutz.md`](phase1Datenschutz.md) enthält den für die Übung freigegebenen MVP-Entwurf, die Rollenmatrix, das Dateninventar, Übungs-Löschfristen, die Anbieterübersicht, Pflichttext-Muster, eine DSFA-Vorprüfung und das Bedrohungsmodell. Eine echte Rechts- oder Produktfreigabe ist damit ausdrücklich nicht verbunden.
 
@@ -210,6 +210,7 @@ PlayDate soll mindestens WCAG 2.2 auf Konformitätsstufe AA anstreben.
 - fast schwarzer Dark Mode mit gedämpftem Blau als Haupt- und Grün als positiver Statusfarbe
 - stark gerundete DaisyUI-Komponenten mit ausgewogenen Abständen
 - Touch-Ziele von möglichst mindestens 44 × 44 CSS-Pixeln
+- skalierbare Abstände, Größen und Radien grundsätzlich in `rem`; Pixel nur für feine Linien und feste Breakpoints
 - Inhalte dürfen nicht ausschließlich über Farbe erklärt werden
 - Unterstützung für `prefers-reduced-motion`
 - sinnvolle Statusmeldungen über `aria-live`

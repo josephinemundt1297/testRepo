@@ -90,6 +90,7 @@ Behaupte deshalb niemals, dass der aktuelle Stand produktionsreif oder rechtlich
 ## A11Y und mobile Bedienung
 
 - Strebe WCAG 2.2 AA an.
+- Verwende für Abstände, Größen, Radien und Schriftbezüge möglichst `rem`. Pixel sind nur für feine 1-px-Linien, technisch feste Media-Query-Grenzen und begründete gerätespezifische Tests vorgesehen.
 - Verwende semantisches HTML und verständliche Labels.
 - Jeder Ablauf muss per Tastatur bedienbar sein.
 - Fokuszustände müssen sichtbar bleiben.
@@ -114,6 +115,7 @@ Das umfasst Oxlint, Vitest, TypeScript und den Vite-Produktions-Build.
 Für Browserabläufe zusätzlich `npm run test:e2e` ausführen. Angemeldete Abläufe benötigen einen sicheren Clerk-Testlogin über `E2E_STORAGE_STATE`; diese Datei darf nie committed werden.
 
 - Ergänze Tests für neue Logik und behobene Fehler.
+- Der Test `remUsage.test.ts` schützt die skalierbaren CSS-Maße. Neue Pixelwerte benötigen eine nachvollziehbare Ausnahme.
 - Tests dürfen keine echten personenbezogenen Daten enthalten.
 - Prüfe Datums- und Kalenderlogik mit festen Testwerten und relevanten Zeitzonen.
 - Teste sowohl erfolgreiche Abläufe als auch Fehler- und Berechtigungsfälle.
