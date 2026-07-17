@@ -21,6 +21,24 @@ describe("Responsive Layout", () => {
     expect(appCss).toMatch(
       /\.bottom-nav \{[\s\S]*?grid-template-columns: repeat\(5, 1fr\)/,
     );
+    expect(appCss).toMatch(
+      /\.bottom-nav \.new-mobile \{[\s\S]*?position: absolute;[\s\S]*?left: 50%;[\s\S]*?transform: translate\(-50%, -35%\)/,
+    );
+  });
+
+  it("zeigt einen eigenen Menüschalter im Header", () => {
+    const header = readFileSync(
+      `${process.cwd()}/src/components/organisms/appHeader.tsx`,
+      "utf8",
+    );
+    const menu = readFileSync(
+      `${process.cwd()}/src/components/organisms/appMenu.tsx`,
+      "utf8",
+    );
+
+    expect(header).toContain("<AppMenu />");
+    expect(menu).toContain('aria-controls="app-menu-panel"');
+    expect(menu).toContain("aria-expanded={open}");
   });
 
   it("stapelt breite Kalenderaktionen auf sehr schmalen Geräten", () => {
