@@ -8,18 +8,18 @@ Die Zeitangaben sind grobe Richtwerte für ein kleines Team. Sie sind keine fest
 
 ## 2. Überblick
 
-| Phase | Schwerpunkt | Richtwert | Ergebnis |
-| --- | --- | --- | --- |
-| 0 | Prototyp stabilisieren | 1–2 Wochen | belastbare technische Ausgangsbasis |
-| 1 | Produkt- und Datenschutzgrundlage | 1–2 Wochen | abgestimmter MVP und rechtliche Leitplanken |
-| 2 | Backend und Datenmodell | 2–4 Wochen | sichere serverseitige Speicherung |
-| 3 | Familien und Verbindungen | 2–3 Wochen | echte private Familienbeziehungen |
-| 4 | PlayDates und Einladungen | 2–4 Wochen | vollständiger gemeinsamer Planungsablauf |
-| 5 | Kalender und Erinnerungen | 2–3 Wochen | zuverlässige Terminübernahme und Benachrichtigung |
-| 6 | Datenschutzfunktionen und Sicherheit | 2–4 Wochen | kontrollierbarer Datenlebenszyklus |
-| 7 | A11Y, Qualität und Pilot | 2–3 Wochen | geprüfter MVP für Testfamilien |
-| 8 | Produktionsstart | 1–2 Wochen | kontrollierter öffentlicher Betrieb |
-| 9 | Ausbau nach dem MVP | fortlaufend | Kommentare, Fotos und weitere Komfortfunktionen |
+| Phase | Schwerpunkt                          | Richtwert   | Ergebnis                                          |
+| ----- | ------------------------------------ | ----------- | ------------------------------------------------- |
+| 0     | Prototyp stabilisieren               | 1–2 Wochen  | belastbare technische Ausgangsbasis               |
+| 1     | Produkt- und Datenschutzgrundlage    | 1–2 Wochen  | abgestimmter MVP und rechtliche Leitplanken       |
+| 2     | Backend und Datenmodell              | 2–4 Wochen  | sichere serverseitige Speicherung                 |
+| 3     | Familien und Verbindungen            | 2–3 Wochen  | echte private Familienbeziehungen                 |
+| 4     | PlayDates und Einladungen            | 2–4 Wochen  | vollständiger gemeinsamer Planungsablauf          |
+| 5     | Kalender und Erinnerungen            | 2–3 Wochen  | zuverlässige Terminübernahme und Benachrichtigung |
+| 6     | Datenschutzfunktionen und Sicherheit | 2–4 Wochen  | kontrollierbarer Datenlebenszyklus                |
+| 7     | A11Y, Qualität und Pilot             | 2–3 Wochen  | geprüfter MVP für Testfamilien                    |
+| 8     | Produktionsstart                     | 1–2 Wochen  | kontrollierter öffentlicher Betrieb               |
+| 9     | Ausbau nach dem MVP                  | fortlaufend | Kommentare, Fotos und weitere Komfortfunktionen   |
 
 Mehrere Arbeitspakete können parallel laufen. Eine Phase gilt aber erst als abgeschlossen, wenn ihre Abnahmekriterien erfüllt sind.
 
@@ -62,10 +62,10 @@ Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, 
 - [x] Tests für Auth-Grenze, Familienseite und PlayDate-Formular ergänzen
 - [x] vollständige End-to-End-Teststrecke einrichten
 - [ ] PWA-Updates auf mehreren Browsern und Geräten prüfen
-  - [x] Playwright-Prüfung für Service-Worker-Registrierung und Cache-Version eingerichtet
-  - [x] Chromium, Firefox, WebKit, Pixel 7 und iPhone 14 als Projekte konfiguriert
-  - [ ] Browserläufe auf einer Umgebung mit installierten Playwright-Browsern ausführen
-  - [ ] PWA-Update zusätzlich auf echten Android- und iOS-Geräten prüfen
+- [x] Playwright-Prüfung für Service-Worker-Registrierung und Cache-Version eingerichtet
+- [x] Chromium, Firefox, WebKit, Pixel 7 und iPhone 14 als Projekte konfiguriert
+- [ ] Browserläufe auf einer Umgebung mit installierten Playwright-Browsern ausführen
+- [ ] PWA-Update zusätzlich auf echten Android- und iOS-Geräten prüfen
 
 ### Phase 1 – Produkt und Datenschutz
 
@@ -159,7 +159,6 @@ Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, 
 - [x] Hinweise zu privaten Fotos, Kommentaren und Daten eingebaut
 - [x] Datenschutzhinweis mit technischer Datenschutzseite verknüpft
 - [x] Foto-Menü und sichere technische Anforderungen sichtbar dokumentiert
-- [x] Datenschutz- und Fotoseite über ein gemeinsames Sicherheitslayout vereinheitlicht
 - [x] Secret Keys aus der Browserkonfiguration ausgeschlossen und dokumentiert
 - [ ] serverseitige Autorisierung für jede private Ressource umsetzen
 - [ ] Einwilligungsübersicht und Widerruf umsetzen
@@ -597,7 +596,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 **Gesamtergebnis:** teilweise bestanden, noch keine Freigabe für Pilot- oder Produktivbetrieb
 
 - [x] Oxlint ausgeführt
-- [x] alle 45 vorhandenen Vitest-Tests bestanden
+- [x] alle 43 vorhandenen Vitest-Tests bestanden
 - [x] 40 Playwright-Szenarien werden von der E2E-Konfiguration erkannt
 - [ ] Playwright-Szenarien in echten Browser-Engines ausführen
 - [x] TypeScript-Prüfung bestanden
@@ -625,13 +624,13 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 
 **Offene Feststellungen:**
 
-| ID | Schweregrad | Feststellung | Status |
-| --- | --- | --- | --- |
-| AUD-001 | Niedrig | `themeContext.tsx` löste eine Fast-Refresh-Warnung aus, weil dieselbe Datei Komponenten und weitere Exporte enthielt. | behoben und mit Oxlint erneut geprüft |
-| AUD-002 | Niedrig | `main.tsx` löste eine Fast-Refresh-Warnung zur Komponentenstruktur aus. | behoben und mit Oxlint erneut geprüft |
-| AUD-003 | Hoch | Das Projekt besitzt noch kein produktives Backend; private Daten liegen im Prototyp in `localStorage`. | bekannt, Phase 2 geplant |
-| AUD-004 | Hoch | Serverseitige Autorisierungs-, IDOR- und Rollenprüfungen können ohne Backend noch nicht stattfinden. | bekannt, Phasen 2 bis 4 geplant |
-| AUD-005 | Hoch | Die rechtliche DSGVO-Prüfung für die Verarbeitung von Kinderdaten steht aus. | bekannt, Phase 1 geplant |
+| ID      | Schweregrad | Feststellung                                                                                                          | Status                                |
+| ------- | ----------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| AUD-001 | Niedrig     | `themeContext.tsx` löste eine Fast-Refresh-Warnung aus, weil dieselbe Datei Komponenten und weitere Exporte enthielt. | behoben und mit Oxlint erneut geprüft |
+| AUD-002 | Niedrig     | `main.tsx` löste eine Fast-Refresh-Warnung zur Komponentenstruktur aus.                                               | behoben und mit Oxlint erneut geprüft |
+| AUD-003 | Hoch        | Das Projekt besitzt noch kein produktives Backend; private Daten liegen im Prototyp in `localStorage`.                | bekannt, Phase 2 geplant              |
+| AUD-004 | Hoch        | Serverseitige Autorisierungs-, IDOR- und Rollenprüfungen können ohne Backend noch nicht stattfinden.                  | bekannt, Phasen 2 bis 4 geplant       |
+| AUD-005 | Hoch        | Die rechtliche DSGVO-Prüfung für die Verarbeitung von Kinderdaten steht aus.                                          | bekannt, Phase 1 geplant              |
 
 Die erfolgreichen Prüfungen belegen ausschließlich den aktuellen Frontend-Build und die vorhandene Testbasis. Sie sind keine Aussage darüber, dass die Anwendung bereits produktionsreif, vollständig barrierefrei oder rechtlich DSGVO-konform ist.
 
@@ -646,18 +645,18 @@ Die erfolgreichen Prüfungen belegen ausschließlich den aktuellen Frontend-Buil
 
 ### Auditarten und Zeitpunkte
 
-| Audit | Erster Zeitpunkt | Wiederholung | Ergebnis beziehungsweise Nachweis |
-| --- | --- | --- | --- |
-| Code- und Architektur-Audit | Ende Phase 0 | vor jedem Meilenstein | Review-Protokoll, technische Schulden und Architekturentscheidungen |
-| Datenschutz-Audit | Ende Phase 1 | bei neuen Datenarten oder Anbietern, mindestens jährlich | Dateninventar, Rechtsgrundlagen, Löschfristen und Maßnahmenliste |
-| Berechtigungs-Audit | Ende Phase 2 | nach Änderungen am Rollenmodell und vor Releases | Rollenmatrix und automatisierte Autorisierungstests |
-| Einladungs- und Token-Audit | Ende Phase 3 | bei Änderungen am Einladungsablauf | Missbrauchsszenarien, Token-Prüfung und Testnachweise |
-| PlayDate-Datenfluss-Audit | Ende Phase 4 | vor jedem größeren Release | Datenflussdiagramm und Prüfung fremder Zugriffsversuche |
-| Kalender- und Benachrichtigungs-Audit | Ende Phase 5 | bei jeder neuen Integration | Berechtigungsumfang, Opt-in-Nachweis und Zeitzonentests |
-| Security-Audit | Ende Phase 6 | vor Produktion, nach kritischen Änderungen und mindestens jährlich | Schwachstellenbericht, Risikoeinstufung und Behebungsnachweis |
-| A11Y-Audit | Ende Phase 7 | vor Releases und bei größeren UI-Änderungen | WCAG-Prüfbericht mit automatischen und manuellen Tests |
-| Betriebs-Audit | vor Phase 8 | halbjährlich sowie nach schweren Vorfällen | Backup-, Restore-, Monitoring- und Incident-Nachweise |
-| Lieferanten-Audit | vor Produktivnutzung eines Anbieters | jährlich und bei Vertragsänderungen | Anbieterübersicht, AV-Verträge und Transferbewertung |
+| Audit                                 | Erster Zeitpunkt                     | Wiederholung                                                       | Ergebnis beziehungsweise Nachweis                                   |
+| ------------------------------------- | ------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Code- und Architektur-Audit           | Ende Phase 0                         | vor jedem Meilenstein                                              | Review-Protokoll, technische Schulden und Architekturentscheidungen |
+| Datenschutz-Audit                     | Ende Phase 1                         | bei neuen Datenarten oder Anbietern, mindestens jährlich           | Dateninventar, Rechtsgrundlagen, Löschfristen und Maßnahmenliste    |
+| Berechtigungs-Audit                   | Ende Phase 2                         | nach Änderungen am Rollenmodell und vor Releases                   | Rollenmatrix und automatisierte Autorisierungstests                 |
+| Einladungs- und Token-Audit           | Ende Phase 3                         | bei Änderungen am Einladungsablauf                                 | Missbrauchsszenarien, Token-Prüfung und Testnachweise               |
+| PlayDate-Datenfluss-Audit             | Ende Phase 4                         | vor jedem größeren Release                                         | Datenflussdiagramm und Prüfung fremder Zugriffsversuche             |
+| Kalender- und Benachrichtigungs-Audit | Ende Phase 5                         | bei jeder neuen Integration                                        | Berechtigungsumfang, Opt-in-Nachweis und Zeitzonentests             |
+| Security-Audit                        | Ende Phase 6                         | vor Produktion, nach kritischen Änderungen und mindestens jährlich | Schwachstellenbericht, Risikoeinstufung und Behebungsnachweis       |
+| A11Y-Audit                            | Ende Phase 7                         | vor Releases und bei größeren UI-Änderungen                        | WCAG-Prüfbericht mit automatischen und manuellen Tests              |
+| Betriebs-Audit                        | vor Phase 8                          | halbjährlich sowie nach schweren Vorfällen                         | Backup-, Restore-, Monitoring- und Incident-Nachweise               |
+| Lieferanten-Audit                     | vor Produktivnutzung eines Anbieters | jährlich und bei Vertragsänderungen                                | Anbieterübersicht, AV-Verträge und Transferbewertung                |
 
 ### Audit 1 – Code und Architektur
 
@@ -794,20 +793,20 @@ Das Datenschutz-Audit benötigt vor dem Produktivstart eine fachkundige rechtlic
 
 **Gemessene zentrale Farbpaare, Stand 17. Juli 2026:**
 
-| Modus | Farbpaar | Verhältnis |
-| --- | --- | ---: |
-| Light | Haupttext auf Seitenhintergrund | 14,33:1 |
-| Light | Sekundärtext auf Seitenhintergrund | 5,53:1 |
-| Light | weißer Text auf Hauptaktion | 6,74:1 |
-| Light | UI-Linie auf weißer Oberfläche | 3,55:1 |
-| Light | Fokusmarkierung auf weißer Oberfläche | 6,70:1 |
-| Light | blaues Schnellaktions-Icon auf hellblauer Fläche | 4,79:1 |
-| Light | grünes Schnellaktions-Icon auf hellgrüner Fläche | 4,53:1 |
-| Dark | Haupttext auf Seitenhintergrund | 18,08:1 |
-| Dark | Sekundärtext auf Seitenhintergrund | 10,67:1 |
-| Dark | blauer Akzent auf Oberfläche | 7,76:1 |
-| Dark | grüner Akzent auf Oberfläche | 8,28:1 |
-| Dark | weißer Text auf Hauptaktion | 4,65:1 |
+| Modus | Farbpaar                                         | Verhältnis |
+| ----- | ------------------------------------------------ | ---------: |
+| Light | Haupttext auf Seitenhintergrund                  |    14,33:1 |
+| Light | Sekundärtext auf Seitenhintergrund               |     5,53:1 |
+| Light | weißer Text auf Hauptaktion                      |     6,74:1 |
+| Light | UI-Linie auf weißer Oberfläche                   |     3,55:1 |
+| Light | Fokusmarkierung auf weißer Oberfläche            |     6,70:1 |
+| Light | blaues Schnellaktions-Icon auf hellblauer Fläche |     4,79:1 |
+| Light | grünes Schnellaktions-Icon auf hellgrüner Fläche |     4,53:1 |
+| Dark  | Haupttext auf Seitenhintergrund                  |    18,08:1 |
+| Dark  | Sekundärtext auf Seitenhintergrund               |    10,67:1 |
+| Dark  | blauer Akzent auf Oberfläche                     |     7,76:1 |
+| Dark  | grüner Akzent auf Oberfläche                     |     8,28:1 |
+| Dark  | weißer Text auf Hauptaktion                      |     4,65:1 |
 
 Damit erfüllen die geprüften Textpaare mindestens 4,5:1 und die geprüfte erkennbare UI-Grenze mindestens 3:1. Das vollständige WCAG-Audit aller Komponenten, Zustände, Zoomstufen und Screenreader-Ausgaben bleibt offen.
 
@@ -868,12 +867,12 @@ Jede Feststellung erhält:
 - Status „offen“, „in Arbeit“, „behoben“ oder „akzeptiertes Risiko“
 - Ergebnis des erneuten Tests
 
-| Schweregrad | Bedeutung | Reaktion |
-| --- | --- | --- |
-| Kritisch | akuter unberechtigter Zugriff, Datenverlust oder vollständiger Ausfall | Release stoppen, sofort bearbeiten und erneut prüfen |
-| Hoch | erheblicher Schutz-, Datenschutz- oder A11Y-Verstoß | vor Pilot beziehungsweise Release beheben |
-| Mittel | begrenztes Risiko oder deutliche Qualitätsabweichung | verbindlich terminieren und zeitnah beheben |
-| Niedrig | geringe Auswirkung oder Verbesserung | ins Backlog aufnehmen und priorisieren |
+| Schweregrad | Bedeutung                                                              | Reaktion                                             |
+| ----------- | ---------------------------------------------------------------------- | ---------------------------------------------------- |
+| Kritisch    | akuter unberechtigter Zugriff, Datenverlust oder vollständiger Ausfall | Release stoppen, sofort bearbeiten und erneut prüfen |
+| Hoch        | erheblicher Schutz-, Datenschutz- oder A11Y-Verstoß                    | vor Pilot beziehungsweise Release beheben            |
+| Mittel      | begrenztes Risiko oder deutliche Qualitätsabweichung                   | verbindlich terminieren und zeitnah beheben          |
+| Niedrig     | geringe Auswirkung oder Verbesserung                                   | ins Backlog aufnehmen und priorisieren               |
 
 Ein akzeptiertes Risiko muss begründet, zeitlich begrenzt und von der fachlich verantwortlichen Person bestätigt werden. Kritische Befunde dürfen nicht als akzeptiertes Risiko in einen Release übernommen werden.
 
