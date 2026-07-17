@@ -25,7 +25,10 @@ createRoot(document.getElementById("root")!).render(
 
 // Der Service Worker macht PlayDate installierbar und hält wichtige Dateien offline bereit.
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () =>
-    navigator.serviceWorker.register("/sw.js"),
-  );
+  window.addEventListener("load", () => {
+    // Auch ein Registrierungsfehler wird behandelt und bleibt kein offenes Promise.
+    navigator.serviceWorker.register("/sw.js").catch((error: unknown) => {
+      console.warn("Service Worker konnte nicht gestartet werden", error);
+    });
+  });
 }

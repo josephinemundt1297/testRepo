@@ -6,7 +6,7 @@ PlayDate ist ein mobile-first React-Prototyp, mit dem Eltern sichere und übersi
 
 **Stand: 17. Juli 2026 – Frontend-Prototyp, nicht für den Produktivbetrieb freigegeben.**
 
-Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Die Prüfkette besteht aktuell aus Oxlint, 21 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
+Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Die Prüfkette besteht aktuell aus Oxlint, 24 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
 
 Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos, produktive Datenlöschung und bidirektionale Kalendersynchronisation sind noch nicht umgesetzt. `localStorage` ist ausschließlich die lokale Persistenz des Prototyps.
 
@@ -39,6 +39,7 @@ Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, ser
 - Grün ausschließlich als unterstützende Farbe für positive Zustände
 - nachgemessene WCAG-2.2-AA-Kontraste: mindestens 4,5:1 für normalen Text und 3:1 für erkennbare Grenzen wichtiger Bedienelemente
 - installierbare Progressive Web App (PWA) mit Manifest und Service Worker
+- Service Worker cached ausschließlich eigene HTTP-/HTTPS-GET-Anfragen und behandelt Cachefehler ohne Seitenabbruch
 - Persistenz des Prototyps über `localStorage`
 
 ## Lokale Entwicklung
@@ -108,6 +109,7 @@ Die Testbasis verwendet Vitest, Testing Library, jest-dom und jsdom. Abgedeckt s
 - Monatsraster, Terminzuordnung und Monatswechsel der Kalenderansicht
 - modale Kalenderdetails, Website-Verknüpfung und Theme-Kontrastregression
 - Viewport, Tablet-Breakpoint und schrumpfbare Navigation als Responsive-Regression
+- erlaubte Cache-Anfragen und behandelte Service-Worker-Promises
 - Darstellung bestätigter und ausstehender Status-Badges
 
 Die Tests haben bereits einen echten Zeitzonenfehler bei der Google-Kalender-Endzeit gefunden und abgesichert.

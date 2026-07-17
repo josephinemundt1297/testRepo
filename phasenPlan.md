@@ -589,7 +589,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 **Gesamtergebnis:** teilweise bestanden, noch keine Freigabe für Pilot- oder Produktivbetrieb
 
 - [x] Oxlint ausgeführt
-- [x] alle 21 vorhandenen automatisierten Tests bestanden
+- [x] alle 24 vorhandenen automatisierten Tests bestanden
 - [x] TypeScript-Prüfung bestanden
 - [x] Produktions-Build mit Vite erfolgreich erstellt
 - [x] Dependency-Audit für produktive npm-Abhängigkeiten ausgeführt
@@ -601,6 +601,9 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 - [x] Regressionstest für unsichtbare primäre Aktionen in Light und Dark Mode ergänzt
 - [x] Kalender-Detail-Layer und Website-Verknüpfung automatisiert geprüft
 - [x] Responsive-Regressionstest für Viewport, Tablet-Breakpoint und Navigation ergänzt
+- [x] fremde URL-Schemas im Service Worker vom Cache ausgeschlossen
+- [x] Cache- und Registrierungs-Promises gegen unbehandelte Fehler abgesichert
+- [x] Service-Worker-Regeln durch Regressionstests geschützt
 - [ ] Testabdeckung für Authentifizierung, Formulare und vollständige Nutzerabläufe erweitern
 - [ ] Backend-, API- und Datenbank-Audit durchführen
 - [ ] formales Berechtigungs- und IDOR-Audit durchführen

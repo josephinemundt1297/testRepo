@@ -6,7 +6,7 @@ PlayDate ist eine mobile-first Web-App, mit der Eltern private Spieletreffen fü
 
 Der aktuelle Stand ist ein Frontend-Prototyp. Funktionen, die ein Backend oder externe Freigaben benötigen, sind als Zielanforderungen beschrieben und klar vom bereits umgesetzten Stand getrennt.
 
-**Dokumentationsstand: 17. Juli 2026.** Der Prototyp besteht die lokale Prüfkette aus Oxlint, 21 Vitest-Tests, TypeScript und Produktions-Build ohne Fehler. Er besitzt noch kein produktives Backend und ist nicht für den Betrieb mit echten Kinderdaten freigegeben. Der Umsetzungs- und Auditstatus wird in [`phasenPlan.md`](./phasenPlan.md) gepflegt.
+**Dokumentationsstand: 17. Juli 2026.** Der Prototyp besteht die lokale Prüfkette aus Oxlint, 24 Vitest-Tests, TypeScript und Produktions-Build ohne Fehler. Er besitzt noch kein produktives Backend und ist nicht für den Betrieb mit echten Kinderdaten freigegeben. Der Umsetzungs- und Auditstatus wird in [`phasenPlan.md`](./phasenPlan.md) gepflegt.
 
 ## 2. Produktziele
 
@@ -176,6 +176,7 @@ In einer produktiven Datenbank werden Beziehungen über unveränderliche IDs sta
 - Vitest, Testing Library, jest-dom und jsdom für Tests
 - Oxlint für statische Codeprüfung
 - PWA mit Web App Manifest und Service Worker
+- Cache-Strategie nur für eigene HTTP-/HTTPS-GET-Anfragen mit abgefangenen Promise-Fehlern
 - `localStorage` ausschließlich als Persistenz des Prototyps
 
 Die Atomic-Design-Ebenen sind:
