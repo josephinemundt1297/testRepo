@@ -159,6 +159,7 @@ Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, 
 - [x] Hinweise zu privaten Fotos, Kommentaren und Daten eingebaut
 - [x] Datenschutzhinweis mit technischer Datenschutzseite verknüpft
 - [x] Foto-Menü und sichere technische Anforderungen sichtbar dokumentiert
+- [x] Datenschutz- und Fotoseite über ein gemeinsames Sicherheitslayout vereinheitlicht
 - [x] Secret Keys aus der Browserkonfiguration ausgeschlossen und dokumentiert
 - [ ] serverseitige Autorisierung für jede private Ressource umsetzen
 - [ ] Einwilligungsübersicht und Widerruf umsetzen
@@ -596,7 +597,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 **Gesamtergebnis:** teilweise bestanden, noch keine Freigabe für Pilot- oder Produktivbetrieb
 
 - [x] Oxlint ausgeführt
-- [x] alle 43 vorhandenen Vitest-Tests bestanden
+- [x] alle 45 vorhandenen Vitest-Tests bestanden
 - [x] 40 Playwright-Szenarien werden von der E2E-Konfiguration erkannt
 - [ ] Playwright-Szenarien in echten Browser-Engines ausführen
 - [x] TypeScript-Prüfung bestanden
