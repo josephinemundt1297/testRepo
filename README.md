@@ -6,7 +6,7 @@ PlayDate ist ein mobile-first React-Prototyp, mit dem Eltern sichere und übersi
 
 **Stand: 17. Juli 2026 – Frontend-Prototyp, nicht für den Produktivbetrieb freigegeben.**
 
-Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Die Prüfkette besteht aktuell aus Oxlint, 24 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
+Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Die Prüfkette besteht aktuell aus Oxlint, 27 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
 
 Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos, produktive Datenlöschung und bidirektionale Kalendersynchronisation sind noch nicht umgesetzt. `localStorage` ist ausschließlich die lokale Persistenz des Prototyps.
 
@@ -22,8 +22,9 @@ Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, ser
 - alle PlayDates als `.ics`-Kalenderdatei exportieren
 - PlayDates in einer responsiven Monatsansicht anzeigen und nach Tagen auswählen
 - Kalendertermine in einer modalen Detail-Ebene vergrößern
-- PlayDate-Listen ohne horizontales Überlaufen bis zur unterstützten Mindestbreite von 320 CSS-Pixeln nutzen
+- PlayDate-Listen ohne horizontales Überlaufen auch in sehr schmalen eingebetteten Ansichten ab 240 CSS-Pixeln nutzen
 - kompakte Navigation auf Mobilgeräten und Tablets bis einschließlich 1024 CSS-Pixel
+- reine Icon-Navigation unter 320 CSS-Pixeln, mit weiterhin vorhandenen zugänglichen Namen
 - einzelne PlayDates direkt in Google Kalender öffnen
 - Status für bestätigte und ausstehende Treffen
 - Datenschutz-Hinweise für Fotos, Kommentare und eingeladene Familien

@@ -47,6 +47,9 @@ Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, 
 - [x] mobile-first Oberfläche umgesetzt
 - [x] mobile PlayDate-Liste bei 320 CSS-Pixeln gegen horizontales Überlaufen abgesichert
 - [x] Tablet- und kleine Laptopbreiten bis 1024 CSS-Pixel mit kompakter Navigation abgesichert
+- [x] feste Mindestbreite des Seitenkörpers entfernt und Engstellen bis 240 CSS-Pixel abgesichert
+- [x] Kalenderaktionen auf sehr schmalen Ansichten gestapelt
+- [x] Datenschutzlink im mobilen Layout wieder sichtbar gemacht
 - [x] PWA-Manifest und Service Worker eingerichtet
 - [x] App und Repository einheitlich in PlayDate umbenannt
 - [x] erste Unit- und Komponententests mit Vitest eingerichtet
@@ -589,7 +592,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 **Gesamtergebnis:** teilweise bestanden, noch keine Freigabe für Pilot- oder Produktivbetrieb
 
 - [x] Oxlint ausgeführt
-- [x] alle 24 vorhandenen automatisierten Tests bestanden
+- [x] alle 27 vorhandenen automatisierten Tests bestanden
 - [x] TypeScript-Prüfung bestanden
 - [x] Produktions-Build mit Vite erfolgreich erstellt
 - [x] Dependency-Audit für produktive npm-Abhängigkeiten ausgeführt

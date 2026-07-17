@@ -109,7 +109,15 @@
 }
 .page-wrap {
   width: min(1160px, calc(100% - 2.5rem));
+  min-width: 0;
   margin: 2.2rem auto 7rem;
+}
+.page-wrap > *,
+.date-grid > *,
+.quick-grid > *,
+.privacy-topic-grid > *,
+.photo-security-steps > * {
+  min-width: 0;
 }
 .welcome-card {
   min-height: 230px;
@@ -837,9 +845,12 @@
   }
   .calendar-page-actions {
     width: 100%;
+    flex-wrap: wrap;
   }
   .calendar-page-actions > * {
     flex: 1;
+    min-width: min(100%, 220px);
+    white-space: normal;
   }
   .calendar-toolbar {
     padding: 1rem;
@@ -915,9 +926,10 @@
   }
   .privacy-note {
     align-items: flex-start;
+    flex-wrap: wrap;
   }
   .privacy-note a {
-    display: none;
+    margin-left: 52px;
   }
   .bottom-nav {
     position: fixed;
@@ -983,6 +995,15 @@
   .playdate-form {
     grid-template-columns: 1fr;
     padding: 1rem;
+  }
+  .playdate-form input,
+  .playdate-form select,
+  .playdate-form textarea,
+  .family-form input,
+  .family-form select {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
   .playdate-form > * {
     grid-column: 1 !important;
@@ -1109,6 +1130,50 @@
   }
   .card-actions {
     align-self: flex-end;
+  }
+  .calendar-page-actions {
+    flex-direction: column;
+  }
+  .calendar-page-actions > * {
+    width: 100%;
+  }
+  .privacy-note a {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .page-wrap,
+  .form-page,
+  .settings-page,
+  .families-page {
+    width: calc(100% - 1rem);
+  }
+  .topbar {
+    padding-inline: 0.5rem;
+  }
+  .brand > span:last-child,
+  .install-button {
+    display: none;
+  }
+  .bottom-nav a span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .bottom-nav {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 52px);
+    height: 104px;
+  }
+  .bottom-nav .new-mobile {
+    width: 44px;
+    height: 44px;
+    margin-top: 0;
   }
 }
 
@@ -1238,6 +1303,16 @@
   }
   .family-form > .primary-button {
     width: 100%;
+  }
+}
+
+/* Steht absichtlich am Ende, damit spätere Seitenregeln die schmale Breite nicht überstimmen. */
+@media (max-width: 320px) {
+  .page-wrap,
+  .form-page,
+  .settings-page,
+  .families-page {
+    width: calc(100% - 1rem);
   }
 }
 

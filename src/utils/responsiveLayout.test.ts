@@ -17,6 +17,24 @@ describe("Responsive Layout", () => {
     expect(mobileLinkRule).toContain("overflow: hidden");
   });
 
+  it("stapelt breite Kalenderaktionen auf sehr schmalen Geräten", () => {
+    expect(appCss).toContain("@media (max-width: 380px)");
+    expect(appCss).toMatch(
+      /@media \(max-width: 380px\)[\s\S]*\.calendar-page-actions \{[\s\S]*flex-direction: column/,
+    );
+  });
+
+  it("erzwingt keine feste Mindestbreite für den Seitenkörper", () => {
+    const indexCss = readFileSync(`${process.cwd()}/src/index.css`, "utf8");
+    expect(indexCss).toContain("body {");
+    expect(indexCss).toContain("min-width: 0");
+    expect(indexCss).not.toContain("min-width: 320px");
+  });
+
+  it("blendet den Datenschutzlink im kompakten Layout nicht aus", () => {
+    expect(appCss).not.toMatch(/\.privacy-note a \{\s*display: none/);
+  });
+
   it("enthält die notwendige Viewport-Angabe", () => {
     expect(indexHtml).toContain(
       'name="viewport" content="width=device-width, initial-scale=1.0"',
