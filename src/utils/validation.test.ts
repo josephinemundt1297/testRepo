@@ -3,7 +3,7 @@ import type { childProfile } from "../domain/family";
 import type { playDate } from "../domain/playdates";
 import { validateFamily, validatePlayDate } from "./validation";
 
-const validDate: playDate = { id: 1, title: "Treffen im Park", child: "Mila", friend: "Noah", date: "2026-08-20", time: "15:00", location: "Stadtpark", bring: "Wasser", status: "Ausstehend", color: "mint" };
+const validDate: playDate = { id: 1, title: "Treffen im Park", children: ["Mila"], friend: "Noah", date: "2026-08-20", time: "15:00", location: "Stadtpark", bring: "Wasser", status: "Ausstehend", color: "mint" };
 const child = (patch: Partial<childProfile> = {}): childProfile => ({ id: "1", name: "Mila", birthday: "2020-03-02", shareBirthday: false, ...patch });
 
 describe("Formularvalidierung", () => {
@@ -11,8 +11,8 @@ describe("Formularvalidierung", () => {
     expect(validatePlayDate(validDate, ["Mila"], false, new Date(2026, 6, 17))).toEqual({});
   });
   it("weist vergangene Termine und fremde Kinder zurück", () => {
-    const errors = validatePlayDate({ ...validDate, child: "Unbekannt", date: "2025-01-01" }, ["Mila"], false, new Date(2026, 6, 17));
-    expect(errors.child).toBeDefined();
+    const errors = validatePlayDate({ ...validDate, children: ["Unbekannt"], date: "2025-01-01" }, ["Mila"], false, new Date(2026, 6, 17));
+    expect(errors.children).toBeDefined();
     expect(errors.date).toContain("Vergangenheit");
   });
   it("begrenzt lange Texte", () => {

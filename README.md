@@ -8,7 +8,7 @@ Die Oberfläche ist deutschsprachig, tastaturbedienbar und für kleine Displays 
 
 **Stand: 17. Juli 2026 – Phase 0 und 1 des React-Trainingsprojekts sind abgeschlossen. Es dürfen ausschließlich erfundene Demo-Daten verwendet werden.**
 
-Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Eine lokale Repository-Schicht, Demo-Familienverbindungen, Erinnerungsoptionen, Kommentare, Datenexport/-löschung, Error Boundary sowie Lade-, Leer- und Offline-Zustände sind vorhanden. Die Prüfkette besteht aktuell aus Oxlint, 58 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
+Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Eine lokale Repository-Schicht, Demo-Familienverbindungen mit Trainingscodes, Mehrfachauswahl eigener Kinder, Erinnerungsoptionen, Kommentare, Datenexport/-löschung, Error Boundary sowie Lade-, Leer- und Offline-Zustände sind vorhanden. Die Prüfkette besteht aktuell aus Oxlint, 63 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
 
 Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos, produktive Datenlöschung und bidirektionale Kalendersynchronisation sind bewusst nicht Teil der abgeschlossenen React-Modul-Leistung. `localStorage` dient ausschließlich dazu, Persistenz im Frontend-Prototyp zu üben.
 
@@ -64,6 +64,8 @@ Der ausführliche Abgleich steht im [`docs/lernNachweis.md`](docs/lernNachweis.m
 - Persistenz des Prototyps über `localStorage`
 - lokale Repository-Schicht mit sicherem Rückfall bei beschädigten Browserdaten
 - simulierte Familienverbindungen annehmen, blockieren und entfernen
+- einmalige, 24 Stunden gültige Trainingscodes lokal erzeugen und einlösen
+- mehrere eigene Kinder für ein gemeinsames PlayDate auswählen
 - mehrere Sorgeberechtigte im lokalen Familienprofil simulieren
 - bestätigte Termine absagen, Änderungen nachvollziehen und Kommentare speichern
 - Zuständigkeiten für Mitbringsel und lokale Erinnerungsoptionen

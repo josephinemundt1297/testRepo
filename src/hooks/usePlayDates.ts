@@ -9,11 +9,16 @@ export const playDatesStorageKey = (userId: string) =>
 const legacyStorageKey = (userId: string) => `playpal.playdates.${userId}`;
 
 export function readPlayDates(userId: string): playDate[] {
-  return createLocalRepository<playDate[]>({
+  const stored = createLocalRepository<Array<playDate | (Omit<playDate, "children"> & { child: string })>>({
     key: playDatesStorageKey(userId),
     legacyKeys: [legacyStorageKey(userId)],
     fallback: initialPlayDates,
   }).read();
+
+  // Alte Termine hatten genau ein `child`. Hier wandert es ohne Datenverlust in die neue Liste.
+  return stored.map((date) =>
+    "children" in date ? date : { ...date, children: [date.child] },
+  );
 }
 
 export function usePlayDates() {

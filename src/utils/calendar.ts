@@ -29,7 +29,7 @@ export function downloadCalendar(dates: playDate[]) {
         `DURATION:PT2H`,
         `SUMMARY:${escapeIcs(date.title)}`,
         `LOCATION:${escapeIcs(date.location)}`,
-        `DESCRIPTION:${escapeIcs(`${date.child} mit ${date.friend}. Mitbringen: ${date.bring}`)}`,
+        `DESCRIPTION:${escapeIcs(`${date.children.join(", ")} mit ${date.friend}. Mitbringen: ${date.bring}`)}`,
         "END:VEVENT",
       ].join("\r\n"),
     )
@@ -65,7 +65,7 @@ export function googleCalendarUrl(date: playDate) {
     text: date.title,
     dates: `${start}/${end}`,
     location: date.location,
-    details: `${date.child} mit ${date.friend}. Mitbringen: ${date.bring}`,
+    details: `${date.children.join(", ")} mit ${date.friend}. Mitbringen: ${date.bring}`,
   });
   return `https://calendar.google.com/calendar/render?${query}`;
 }

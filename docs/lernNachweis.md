@@ -63,6 +63,8 @@ Da Backend noch nicht Teil meines Lernstands ist, werden ausgewählte Inhalte de
 - Repository-Schicht als Trennung zwischen React und Speicherung
 - sichere Behandlung beschädigter `localStorage`-Daten
 - Demo-Familienverbindungen mit offenen, verbundenen und blockierten Zuständen
+- lokal erzeugte, einmal verwendbare Trainingscodes für bekannte Familien
+- Mehrfachauswahl eigener Kinder bei einem PlayDate mit Migration alter Termine
 - mehrere Sorgeberechtigte als dynamische React-Formularliste
 - Absagen, Mitbringsel-Zuständigkeiten und Aktivitätsverlauf
 - lokale Erinnerungsoptionen und Kommentare

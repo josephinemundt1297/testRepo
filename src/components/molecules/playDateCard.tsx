@@ -82,7 +82,7 @@ export function PlayDateCard({
       </div>
       <h3>{date.title}</h3>
       <p>
-        <Users /> {date.child} & {date.friend}
+        <Users /> {date.children.join(", ")} & {date.friend}
       </p>
       <p>
         <Clock3 /> {weekday}, {date.time} Uhr

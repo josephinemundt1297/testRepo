@@ -2,7 +2,7 @@
 export type playDate = {
   id: number;
   title: string;
-  child: string;
+  children: string[];
   friend: string;
   date: string;
   time: string;
@@ -59,7 +59,7 @@ export const initialPlayDates: playDate[] = [
   {
     id: 1,
     title: "Abenteuer im Stadtpark",
-    child: "Mila",
+    children: ["Mila"],
     friend: "Noah",
     date: "2026-07-18",
     time: "15:00",
@@ -76,7 +76,7 @@ export const initialPlayDates: playDate[] = [
   {
     id: 2,
     title: "Kreativnachmittag",
-    child: "Mila",
+    children: ["Mila"],
     friend: "Leni",
     date: "2026-07-22",
     time: "16:00",
@@ -93,7 +93,7 @@ export const initialPlayDates: playDate[] = [
   {
     id: 3,
     title: "Planschen & Eis",
-    child: "Jonas",
+    children: ["Jonas"],
     friend: "Emil",
     date: "2026-07-27",
     time: "14:30",

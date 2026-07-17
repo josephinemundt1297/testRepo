@@ -24,7 +24,7 @@ export function PlayDateForm({ editId }: { editId?: number }) {
     existing ?? {
       id: Date.now(),
       title: "",
-      child: "",
+      children: [],
       friend: "",
       date: "",
       time: "",
@@ -104,36 +104,37 @@ export function PlayDateForm({ editId }: { editId?: number }) {
           <option>Gemeinsam</option>
         </select>
       </label>
-      <label>
-        Dein Kind
+      <fieldset className="children-choice">
+        <legend>Welche Kinder kommen mit?</legend>
+        <span className="field-help">Du kannst ein oder mehrere Kinder auswählen.</span>
         {family.children.length ? (
-          <select
-            className="select select-bordered w-full"
-            required
-            aria-invalid={Boolean(errors.child)}
-            value={form.child}
-            onChange={(event) => update("child", event.target.value)}
-          >
-            <option value="" disabled>
-              Kind auswählen
-            </option>
-            {existing?.child &&
-              !family.children.some(
-                (child) => child.name === existing.child,
-              ) && <option value={existing.child}>{existing.child}</option>}
+          <div className="children-checklist" aria-invalid={Boolean(errors.children)}>
             {family.children.map((child) => (
-              <option key={child.id} value={child.name}>
+              <label className="check-row" key={child.id}>
+                <input
+                  className="checkbox checkbox-primary"
+                  type="checkbox"
+                  checked={form.children.includes(child.name)}
+                  onChange={(event) =>
+                    setForm((current) => ({
+                      ...current,
+                      children: event.target.checked
+                        ? [...current.children, child.name]
+                        : current.children.filter((name) => name !== child.name),
+                    }))
+                  }
+                />
                 {child.name}
-              </option>
+              </label>
             ))}
-          </select>
+          </div>
         ) : (
           <span className="missing-children">
             Noch keine Kinder hinterlegt.{" "}
             <Link to="/families">Jetzt Familie einrichten</Link>
           </span>
         )}
-      </label>
+      </fieldset>
       <label>
         Trifft sich mit
         <input

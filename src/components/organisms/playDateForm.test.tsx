@@ -10,7 +10,10 @@ vi.mock("@tanstack/react-router", () => ({
   Link: ({ children }: { children: ReactNode }) => <a href="/">{children}</a>,
 }));
 vi.mock("../../hooks/usePlayDates", () => ({ readPlayDates: () => [], playDatesStorageKey: () => "playdates-test" }));
-vi.mock("../../hooks/useFamilyProfile", () => ({ readFamilyProfile: () => ({ familyName: "Muster", children: [{ id: "1", name: "Mila", birthday: "", shareBirthday: false }] }) }));
+vi.mock("../../hooks/useFamilyProfile", () => ({ readFamilyProfile: () => ({ familyName: "Muster", children: [
+  { id: "1", name: "Mila", birthday: "", shareBirthday: false },
+  { id: "2", name: "Lina", birthday: "", shareBirthday: false },
+] }) }));
 import { PlayDateForm } from "./playDateForm";
 
 describe("PlayDateForm", () => {
@@ -23,13 +26,16 @@ describe("PlayDateForm", () => {
   it("speichert ein vollständiges PlayDate", async () => {
     render(<PlayDateForm />);
     await userEvent.type(screen.getByLabelText(/Titel/), "Treffen im Park");
-    await userEvent.selectOptions(screen.getByLabelText("Dein Kind"), "Mila");
+    await userEvent.click(screen.getByRole("checkbox", { name: "Mila" }));
+    await userEvent.click(screen.getByRole("checkbox", { name: "Lina" }));
     await userEvent.type(screen.getByLabelText("Trifft sich mit"), "Noah");
     await userEvent.type(screen.getByLabelText("Datum"), "2027-08-20");
     await userEvent.type(screen.getByLabelText("Uhrzeit"), "15:00");
     await userEvent.type(screen.getByLabelText("Treffpunkt"), "Stadtpark");
     await userEvent.click(screen.getByRole("button", { name: "PlayDate erstellen" }));
-    expect(JSON.parse(localStorage.getItem("playdates-test") ?? "[]")).toHaveLength(1);
+    const stored = JSON.parse(localStorage.getItem("playdates-test") ?? "[]");
+    expect(stored).toHaveLength(1);
+    expect(stored[0].children).toEqual(["Mila", "Lina"]);
     expect(formMock.navigate).toHaveBeenCalledWith({ to: "/" });
   });
 });

@@ -91,7 +91,7 @@ Tastaturbedienung, ausreichende Kontraste, sichtbarer Fokus, verständliche Labe
 ### 6.2 PlayDate erstellen
 
 1. Der Nutzer wählt „PlayDate planen“.
-2. Er wählt ein eigenes Kind aus dem Familienprofil.
+2. Er wählt ein oder mehrere eigene Kinder aus dem Familienprofil.
 3. Er trägt das andere Kind, Datum, Uhrzeit und Treffpunkt ein.
 4. Optional ergänzt er Mitbringsel und eine Erinnerung.
 5. Nach dem Speichern erscheint das Treffen in der Übersicht.
@@ -131,7 +131,7 @@ In der Familienübersicht sieht der Nutzer die freigegebenen Geburtstage eigener
 ### PlayDate-Verwaltung
 
 - erstellen, anzeigen, bearbeiten und löschen
-- eigenes Kind auswählen
+- ein oder mehrere eigene Kinder auswählen
 - anderes Kind beziehungsweise eingeladene Familie angeben
 - Datum, Uhrzeit und Treffpunkt festlegen
 - Mitbringsel und Aufgaben eintragen
@@ -145,6 +145,7 @@ In der Familienübersicht sieht der Nutzer die freigegebenen Geburtstage eigener
 - Geburtstage speichern
 - Geburtstagsfreigabe pro Kind steuern
 - verbundene Familien und freigegebene Geburtstage anzeigen
+- bekannte Familien über einen lokalen, einmal verwendbaren Trainingscode verbinden
 
 ### Gemeinsamer PlayDate-Bereich
 
@@ -186,7 +187,7 @@ Das Minimum Viable Product soll einen vollständigen, aber bewusst kleinen Ablau
 - Familienprofil mit mehreren Kindern
 - optionaler Geburtstag und Freigabe pro Kind
 - PlayDates erstellen, bearbeiten und löschen
-- Auswahl des eigenen Kindes
+- Mehrfachauswahl der eigenen Kinder
 - Termin, Ort und Mitbringsel
 - Einladungslink und Teilen über WhatsApp beziehungsweise Web Share
 - Einladung annehmen oder ablehnen
@@ -320,6 +321,6 @@ Der vorhandene Frontend-Prototyp bildet bereits wesentliche Teile des Konzepts a
 - mobile PWA
 - Atomic-Design-Struktur und erste automatisierte Tests
 
-Die lokale Prüfkette aus Oxlint, 58 Vitest-Tests, TypeScript und Vite-Build läuft ohne Fehler. Eine Playwright-Strecke mit 40 Desktop-, Mobil-, Responsive- und PWA-Szenarien ist eingerichtet; reale Mehrbrowser- und Geräteläufe stehen noch aus. Der aktuelle Auditstand wird in [`phasenPlan.md`](phasenPlan.md) gepflegt.
+Die lokale Prüfkette aus Oxlint, 63 Vitest-Tests, TypeScript und Vite-Build läuft ohne Fehler. Eine Playwright-Strecke mit 40 Desktop-, Mobil-, Responsive- und PWA-Szenarien ist eingerichtet; reale Mehrbrowser- und Geräteläufe stehen noch aus. Der aktuelle Auditstand wird in [`phasenPlan.md`](phasenPlan.md) gepflegt.
 
 Noch nicht produktiv umgesetzt sind insbesondere ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos und eine dauerhafte Kalendersynchronisation.

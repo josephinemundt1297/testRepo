@@ -125,6 +125,8 @@ Phase 1 ist für den Umfang des Übungsprojekts abgeschlossen. Annahmen und die 
 - [x] Geburtstage nur aus angenommenen Demo-Verbindungen übernehmen
 - [ ] Familienprofile über die API speichern
 - [ ] echte private Familienverbindungen implementieren
+- [x] lokalen Trainingsablauf mit zufälligem, 24 Stunden gültigem Einmalcode simulieren
+- [x] mehrere eigene Kinder pro PlayDate auswählbar machen und alte Einzelauswahl migrieren
 - [ ] Verbindungsanfragen annehmen, ablehnen und widerrufen
 - [ ] kurzlebige und widerrufbare Einladungstoken verwenden
 - [ ] Geburtstagsfreigaben serverseitig prüfen

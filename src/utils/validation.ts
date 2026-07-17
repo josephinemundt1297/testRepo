@@ -9,7 +9,9 @@ export function validatePlayDate(date: playDate, childNames: string[], allowPast
   const errors: validationErrors = {};
   if (clean(date.title).length < 3) errors.title = "Der Titel braucht mindestens 3 Zeichen.";
   if (clean(date.title).length > 80) errors.title = "Der Titel darf höchstens 80 Zeichen haben.";
-  if (!childNames.includes(date.child)) errors.child = "Bitte wähle ein Kind aus deinem Familienprofil.";
+  if (!date.children.length || date.children.some((child) => !childNames.includes(child))) {
+    errors.children = "Bitte wähle mindestens ein Kind aus deinem Familienprofil.";
+  }
   if (clean(date.friend).length < 2) errors.friend = "Bitte gib einen Namen mit mindestens 2 Zeichen ein.";
   if (!validDate(date.date)) errors.date = "Bitte wähle ein gültiges Datum.";
   const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;

@@ -9,12 +9,19 @@ type birthdayEntry = {
 };
 // Wir rechnen jeden Geburtstag auf das nächste Vorkommen um. So lässt sich die Liste sauber sortieren.
 const nextBirthday = (birthday: string) => {
-  const [, month, day] = birthday.split("-").map(Number);
+  const parts = birthday.split("-").map(Number);
+  const [month, day] = parts.slice(-2);
   const now = new Date();
   let next = new Date(now.getFullYear(), month - 1, day);
   if (next < new Date(now.getFullYear(), now.getMonth(), now.getDate()))
     next = new Date(now.getFullYear() + 1, month - 1, day);
   return next;
+};
+// Geteilte Geburtstage enthalten absichtlich kein Geburtsjahr. Für die Anzeige reicht ein neutrales Jahr.
+const birthdayDate = (birthday: string) => {
+  const parts = birthday.split("-").map(Number);
+  const [month, day] = parts.slice(-2);
+  return new Date(2000, month - 1, day, 12);
 };
 export function BirthdayOverview({
   profile,
@@ -57,12 +64,12 @@ export function BirthdayOverview({
               <div className="birthday-date">
                 <strong>
                   {new Intl.DateTimeFormat("de-DE", { day: "2-digit" }).format(
-                    new Date(`${entry.birthday}T12:00:00`),
+                    birthdayDate(entry.birthday),
                   )}
                 </strong>
                 <span>
                   {new Intl.DateTimeFormat("de-DE", { month: "short" })
-                    .format(new Date(`${entry.birthday}T12:00:00`))
+                    .format(birthdayDate(entry.birthday))
                     .replace(".", "")}
                 </span>
               </div>
