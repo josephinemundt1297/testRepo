@@ -63,6 +63,7 @@ Behaupte deshalb niemals, dass der aktuelle Stand produktionsreif oder rechtlich
 - Halte Styling ebenfalls nach KISS: wenige wiederverwendbare Variablen, klare Zustände und keine unnötigen Sonderregeln.
 - Prüfe neue oder geänderte Farben in Light und Dark Mode.
 - Primäre Aktionen müssen ihre semantische DaisyUI-Textfarbe behalten. Ergänze bei Kontrastfehlern einen automatisierten Regressionstest.
+- Datenschutz- und Fotoseite verwenden gemeinsam `safetyPage.tsx`. Warnung, Farben, Kartenraster und Abstände dürfen nicht separat pro Seite nachgebaut werden.
 
 ## Authentifizierung, Datenschutz und Sicherheit
 

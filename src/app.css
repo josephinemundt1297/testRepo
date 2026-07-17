@@ -115,8 +115,7 @@
 .page-wrap > *,
 .date-grid > *,
 .quick-grid > *,
-.privacy-topic-grid > *,
-.photo-security-steps > * {
+.safety-grid > * {
   min-width: 0;
 }
 .welcome-card {
@@ -1027,74 +1026,47 @@
     width: 100%;
   }
 }
-.privacy-page > h1,
-.photos-page > h1 {
+.safety-header h1 {
   max-width: 760px;
   font-size: clamp(2rem, 5vw, 3.2rem);
 }
-.privacy-warning {
+.safety-notice {
   margin: 1.5rem 0;
 }
-.privacy-topic-grid {
+.safety-content > h2 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.safety-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
-.privacy-topic,
-.privacy-contact,
-.photo-intro {
+.safety-card,
+.safety-footer {
   padding: 1.4rem;
   border: 1px solid var(--line);
 }
-.privacy-topic {
+.safety-card {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
 }
-.privacy-topic > svg {
+.safety-card > svg {
   flex: 0 0 auto;
   color: var(--accent);
 }
-.privacy-topic h2,
-.photo-intro h2 {
+.safety-card h3 {
   font-size: 1.15rem;
 }
-.privacy-topic p,
-.privacy-contact p,
-.photo-intro p {
+.safety-card p,
+.safety-footer p {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
 }
-.privacy-contact {
+.safety-footer {
   margin-top: 1rem;
-}
-.photo-intro {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin: 1.5rem 0 2rem;
-}
-.photo-icon {
-  display: grid;
-  flex: 0 0 auto;
-  width: 58px;
-  height: 58px;
-  place-items: center;
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--color-primary) 16%, var(--surface));
-  color: var(--accent);
-}
-.photo-security-steps {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  padding: 0;
-  margin: 1rem 0 1.5rem;
-  list-style: none;
-}
-.photos-page > .alert {
-  margin-bottom: 1.5rem;
 }
 .playful-loader {
   display: grid;
@@ -1170,31 +1142,9 @@
 @media (prefers-reduced-motion: reduce) {
   .loader-orbit { animation: none; }
 }
-.photo-security-steps li {
-  display: flex;
-  gap: 0.8rem;
-  padding: 1.1rem;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--surface);
-  color: var(--muted);
-}
-.photo-security-steps svg {
-  flex: 0 0 auto;
-  color: var(--forest);
-}
-.photo-security-steps strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--ink);
-}
 @media (max-width: 1024px) {
-  .privacy-topic-grid,
-  .photo-security-steps {
+  .safety-grid {
     grid-template-columns: 1fr;
-  }
-  .photo-intro {
-    align-items: flex-start;
   }
 }
 
@@ -1253,7 +1203,7 @@
     height: 44px;
     margin-top: 0;
   }
-  .photos-page {
+  .safety-page {
     width: calc(100% - 1.5rem);
   }
 }
