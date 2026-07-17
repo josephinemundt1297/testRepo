@@ -1094,19 +1094,127 @@
 .family-connections {
   margin-top: 3rem;
 }
-.connection-form {
+.connection-token-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
-  align-items: end;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.connection-token-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: start;
   gap: 1rem;
   padding: 1.25rem;
-  margin-top: 1rem;
   border: 1px solid var(--line);
 }
-.connection-form label {
+.connection-token-card > svg {
+  color: var(--forest);
+}
+.connection-token-card h3,
+.connection-token-card p {
+  margin-bottom: 0.35rem;
+}
+.connection-token-card > button,
+.connection-token-card > label,
+.invitation-code {
+  grid-column: 1 / -1;
+}
+.connection-token-card label {
   display: grid;
   gap: 0.4rem;
   font-weight: 700;
+}
+.invitation-code {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--line);
+  border-radius: 1rem;
+  background: var(--color-base-200);
+}
+.invitation-code code {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.connection-training-note {
+  margin-top: 1rem;
+}
+.connection-message {
+  min-height: 1.5rem;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+.children-choice {
+  display: grid;
+  gap: 0.5rem;
+}
+.field-help {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.children-checklist {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--field);
+}
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+/* Die ganze Karte reagiert auf die Checkbox. Der Haken erklärt den Zustand zusätzlich zur Farbe. */
+.selection-option {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.75rem;
+  border: 0.125rem solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 700;
+}
+.children-checklist .selection-option {
+  grid-template-columns: auto 1fr auto;
+}
+.selection-option:has(input:checked) {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 18%, var(--surface));
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+.selection-check {
+  width: 1.2rem;
+  opacity: 0;
+}
+.selection-option input:checked ~ .selection-check {
+  opacity: 1;
+}
+.custom-friends {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.custom-friend-row {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr) 2.75rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+.custom-friend-row label {
+  font-weight: 700;
+}
+.add-friend {
+  justify-self: start;
 }
 .connection-list {
   display: grid;
@@ -1174,8 +1282,17 @@
   }
 }
 @media (max-width: 1024px) {
-  .connection-form {
+  .connection-token-grid {
     grid-template-columns: 1fr;
+  }
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+  .custom-friend-row {
+    grid-template-columns: 1fr 2.75rem;
+  }
+  .custom-friend-row label {
+    grid-column: 1 / -1;
   }
   .connection-list li {
     align-items: stretch;

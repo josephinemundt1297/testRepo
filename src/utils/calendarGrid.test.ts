@@ -10,8 +10,8 @@ import {
 const date: playDate = {
   id: 1,
   title: "Abenteuer im Stadtpark",
-  child: "Mila",
-  friend: "Noah",
+  children: ["Mila"],
+  friends: ["Noah"],
   date: "2026-07-18",
   time: "15:00",
   location: "Volkspark",

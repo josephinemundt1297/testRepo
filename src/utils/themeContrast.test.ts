@@ -38,4 +38,13 @@ describe("Theme-Kontraste", () => {
       /\.playdate-dialog \.btn-primary \{[\s\S]*?background: var\(--color-primary\);[\s\S]*?color: var\(--color-primary-content\);/,
     );
   });
+
+  it("macht ausgewählte Kinder und Kontakte zusätzlich mit einem Haken sichtbar", () => {
+    expect(appCss).toMatch(
+      /\.selection-option:has\(input:checked\) \{[\s\S]*?border-color: var\(--color-primary\);[\s\S]*?background:/,
+    );
+    expect(appCss).toMatch(
+      /\.selection-option input:checked ~ \.selection-check \{[\s\S]*?opacity: 1;/,
+    );
+  });
 });

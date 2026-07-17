@@ -7,10 +7,15 @@ const validDate = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value) && !Numbe
 
 export function validatePlayDate(date: playDate, childNames: string[], allowPast = false, today = new Date()): validationErrors {
   const errors: validationErrors = {};
+  // Jede Regel schreibt ihre Meldung unter den Feldnamen. Das Formular kann sie so leicht zuordnen.
   if (clean(date.title).length < 3) errors.title = "Der Titel braucht mindestens 3 Zeichen.";
   if (clean(date.title).length > 80) errors.title = "Der Titel darf höchstens 80 Zeichen haben.";
-  if (!childNames.includes(date.child)) errors.child = "Bitte wähle ein Kind aus deinem Familienprofil.";
-  if (clean(date.friend).length < 2) errors.friend = "Bitte gib einen Namen mit mindestens 2 Zeichen ein.";
+  if (!date.children.length || date.children.some((child) => !childNames.includes(child))) {
+    errors.children = "Bitte wähle mindestens ein Kind aus deinem Familienprofil.";
+  }
+  if (!date.friends.length || date.friends.some((friend) => clean(friend).length < 2)) {
+    errors.friends = "Wähle einen Kontakt oder trage einen Namen mit mindestens 2 Zeichen ein.";
+  }
   if (!validDate(date.date)) errors.date = "Bitte wähle ein gültiges Datum.";
   const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
   if (!allowPast && validDate(date.date) && date.date < todayKey) errors.date = "Ein neues PlayDate kann nicht in der Vergangenheit liegen.";
@@ -22,6 +27,7 @@ export function validatePlayDate(date: playDate, childNames: string[], allowPast
 
 export function validateFamily(familyName: string, children: childProfile[], today = new Date()): validationErrors {
   const errors: validationErrors = {};
+  // Namen vergleichen wir klein geschrieben, damit "Mila" und "mila" nicht doppelt durchgehen.
   const names = children.map((child) => clean(child.name)).filter(Boolean);
   if (clean(familyName).length < 2) errors.familyName = "Bitte gib einen Familiennamen mit mindestens 2 Zeichen ein.";
   if (!names.length) errors.children = "Lege mindestens ein Kind an.";

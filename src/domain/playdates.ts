@@ -2,8 +2,9 @@
 export type playDate = {
   id: number;
   title: string;
-  child: string;
-  friend: string;
+  // Listen erlauben Treffen mit mehreren Kindern auf beiden Seiten.
+  children: string[];
+  friends: string[];
   date: string;
   time: string;
   location: string;
@@ -28,6 +29,7 @@ export type playDateComment = {
 };
 
 export function cancelPlayDate(date: playDate): playDate {
+  // Absagen bleiben im Verlauf sichtbar. Löschen würde die Geschichte des Termins verlieren.
   return {
     ...date,
     status: "Abgesagt",
@@ -41,6 +43,7 @@ export function cancelPlayDate(date: playDate): playDate {
 }
 
 export function addPlayDateComment(date: playDate, text: string): playDate {
+  // Wir bauen ein neues Objekt, damit React die Änderung sicher erkennt.
   return {
     ...date,
     comments: [
@@ -59,8 +62,8 @@ export const initialPlayDates: playDate[] = [
   {
     id: 1,
     title: "Abenteuer im Stadtpark",
-    child: "Mila",
-    friend: "Noah",
+    children: ["Mila"],
+    friends: ["Noah"],
     date: "2026-07-18",
     time: "15:00",
     location: "Volkspark, Spielplatz West",
@@ -76,8 +79,8 @@ export const initialPlayDates: playDate[] = [
   {
     id: 2,
     title: "Kreativnachmittag",
-    child: "Mila",
-    friend: "Leni",
+    children: ["Mila"],
+    friends: ["Leni"],
     date: "2026-07-22",
     time: "16:00",
     location: "Bei Familie Berger",
@@ -93,8 +96,8 @@ export const initialPlayDates: playDate[] = [
   {
     id: 3,
     title: "Planschen & Eis",
-    child: "Jonas",
-    friend: "Emil",
+    children: ["Jonas"],
+    friends: ["Emil"],
     date: "2026-07-27",
     time: "14:30",
     location: "Freibad Pankow",
