@@ -6,7 +6,7 @@ PlayDate ist ein mobile-first React-Prototyp, mit dem Eltern sichere und übersi
 
 **Stand: 17. Juli 2026 – Frontend-Prototyp, nicht für den Produktivbetrieb freigegeben.**
 
-Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Die Prüfkette besteht aktuell aus Oxlint, 18 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
+Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Die Prüfkette besteht aktuell aus Oxlint, 21 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
 
 Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos, produktive Datenlöschung und bidirektionale Kalendersynchronisation sind noch nicht umgesetzt. `localStorage` ist ausschließlich die lokale Persistenz des Prototyps.
 
@@ -23,6 +23,7 @@ Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, ser
 - PlayDates in einer responsiven Monatsansicht anzeigen und nach Tagen auswählen
 - Kalendertermine in einer modalen Detail-Ebene vergrößern
 - PlayDate-Listen ohne horizontales Überlaufen bis zur unterstützten Mindestbreite von 320 CSS-Pixeln nutzen
+- kompakte Navigation auf Mobilgeräten und Tablets bis einschließlich 1024 CSS-Pixel
 - einzelne PlayDates direkt in Google Kalender öffnen
 - Status für bestätigte und ausstehende Treffen
 - Datenschutz-Hinweise für Fotos, Kommentare und eingeladene Familien
@@ -106,6 +107,7 @@ Die Testbasis verwendet Vitest, Testing Library, jest-dom und jsdom. Abgedeckt s
 - Google-Kalender-Links und `.ics`-Download
 - Monatsraster, Terminzuordnung und Monatswechsel der Kalenderansicht
 - modale Kalenderdetails, Website-Verknüpfung und Theme-Kontrastregression
+- Viewport, Tablet-Breakpoint und schrumpfbare Navigation als Responsive-Regression
 - Darstellung bestätigter und ausstehender Status-Badges
 
 Die Tests haben bereits einen echten Zeitzonenfehler bei der Google-Kalender-Endzeit gefunden und abgesichert.

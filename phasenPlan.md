@@ -46,6 +46,7 @@ Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, 
 - [x] zentrale Karten, Buttons, Formulare, Badges, Alerts und Navigation auf DaisyUI umgestellt
 - [x] mobile-first Oberfläche umgesetzt
 - [x] mobile PlayDate-Liste bei 320 CSS-Pixeln gegen horizontales Überlaufen abgesichert
+- [x] Tablet- und kleine Laptopbreiten bis 1024 CSS-Pixel mit kompakter Navigation abgesichert
 - [x] PWA-Manifest und Service Worker eingerichtet
 - [x] App und Repository einheitlich in PlayDate umbenannt
 - [x] erste Unit- und Komponententests mit Vitest eingerichtet
@@ -588,7 +589,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 **Gesamtergebnis:** teilweise bestanden, noch keine Freigabe für Pilot- oder Produktivbetrieb
 
 - [x] Oxlint ausgeführt
-- [x] alle 18 vorhandenen automatisierten Tests bestanden
+- [x] alle 21 vorhandenen automatisierten Tests bestanden
 - [x] TypeScript-Prüfung bestanden
 - [x] Produktions-Build mit Vite erfolgreich erstellt
 - [x] Dependency-Audit für produktive npm-Abhängigkeiten ausgeführt
@@ -599,6 +600,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 - [x] responsive Regression der PlayDate-Liste anhand der gemeldeten schmalen Ansicht behoben
 - [x] Regressionstest für unsichtbare primäre Aktionen in Light und Dark Mode ergänzt
 - [x] Kalender-Detail-Layer und Website-Verknüpfung automatisiert geprüft
+- [x] Responsive-Regressionstest für Viewport, Tablet-Breakpoint und Navigation ergänzt
 - [ ] Testabdeckung für Authentifizierung, Formulare und vollständige Nutzerabläufe erweitern
 - [ ] Backend-, API- und Datenbank-Audit durchführen
 - [ ] formales Berechtigungs- und IDOR-Audit durchführen

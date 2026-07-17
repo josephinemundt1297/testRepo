@@ -86,6 +86,7 @@ Behaupte deshalb niemals, dass der aktuelle Stand produktionsreif oder rechtlich
 - Status darf nicht ausschließlich über Farbe vermittelt werden.
 - Prüfe Light und Dark Mode nach WCAG 2.2 AA: normaler Text benötigt mindestens 4,5:1, große Schrift und erkennbare Grenzen wichtiger Bedienelemente mindestens 3:1.
 - Plane Touch-Ziele möglichst mit mindestens 44 × 44 CSS-Pixeln.
+- Prüfe nach Änderungen an Header oder Navigation immer Mobilbreite, Tabletbreite und Desktop. Der kompakte Navigationsmodus beginnt spätestens bei 1024 CSS-Pixeln.
 - Beachte `prefers-reduced-motion`.
 - Neue Dialoge, Formulare und Statusmeldungen benötigen eine sinnvolle Screenreader-Ausgabe.
 
