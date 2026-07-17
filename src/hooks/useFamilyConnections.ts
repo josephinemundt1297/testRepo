@@ -22,6 +22,7 @@ export function readFamilyConnections(userId: string): familyConnection[] {
     key: connectionKey(userId),
     fallback: [],
   }).read();
+  // So funktionieren auch Verbindungen weiter, die vor der Mehrkind-Funktion gespeichert wurden.
   return stored.map((connection) =>
     "children" in connection
       ? connection
@@ -46,6 +47,7 @@ export function useFamilyConnections() {
   const [activeInvitation, setActiveInvitation] = useState<familyInvitation | null>(null);
   const [connectionMessage, setConnectionMessage] = useState("");
   const save = (next: familyConnection[]) => {
+    // Erst aktualisieren wir die Seite, dann merken wir uns denselben Stand im Browser.
     setConnections(next);
     repository.write(next);
   };
@@ -56,6 +58,7 @@ export function useFamilyConnections() {
   });
 
   const generateInvitation = (profile: familyProfile) => {
+    // Abgelaufene Codes brauchen wir nicht mitzuschleppen. Das hält den lokalen Speicher klein.
     const invitation = createFamilyInvitation(profile, user.id);
     const now = new Date();
     const usableInvitations = invitationRepository
@@ -67,6 +70,7 @@ export function useFamilyConnections() {
   };
 
   const redeemInvitation = (enteredToken: string) => {
+    // Großschreibung vermeidet Frust, wenn jemand den Code klein eintippt.
     const token = enteredToken.trim().toUpperCase();
     const invitations = invitationRepository.read();
     const invitation = invitations.find((item) => item.token === token);
@@ -76,6 +80,7 @@ export function useFamilyConnections() {
       return false;
     }
 
+    // Ein gültiger Code übernimmt nur die Daten, die beim Erstellen freigegeben wurden.
     save([
       ...connections,
       {

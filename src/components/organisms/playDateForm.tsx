@@ -1,5 +1,5 @@
 import { useState, type SyntheticEvent } from "react";
-import { CalendarDays, Check } from "lucide-react";
+import { CalendarDays, Check, Plus, Trash2, UsersRound } from "lucide-react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useUser } from "@clerk/clerk-react";
 import {
@@ -7,6 +7,7 @@ import {
   readPlayDates,
 } from "../../hooks/usePlayDates";
 import { readFamilyProfile } from "../../hooks/useFamilyProfile";
+import { readFamilyConnections } from "../../hooks/useFamilyConnections";
 import type { playDate } from "../../domain/playdates";
 import { initialPlayDates } from "../../domain/playdates";
 import { createLocalRepository } from "../../data/localRepository";
@@ -19,13 +20,21 @@ export function PlayDateForm({ editId }: { editId?: number }) {
   if (!user) throw new Error("Anmeldung erforderlich");
   const dates = readPlayDates(user.id);
   const family = readFamilyProfile(user.id);
+  // Nur bestätigte Verbindungen tauchen als Kontakt auf. Doppelte Namen zeigen wir nur einmal.
+  const contactNames = Array.from(
+    new Set(
+      readFamilyConnections(user.id)
+        .filter((connection) => connection.status === "Verbunden")
+        .flatMap((connection) => connection.children.map((child) => child.name)),
+    ),
+  );
   const existing = dates.find((date) => date.id === editId);
   const [form, setForm] = useState<playDate>(
     existing ?? {
       id: Date.now(),
       title: "",
       children: [],
-      friend: "",
+      friends: [],
       date: "",
       time: "",
       location: "",
@@ -39,19 +48,37 @@ export function PlayDateForm({ editId }: { editId?: number }) {
       comments: [],
     },
   );
+  // Kontakte und frei eingetragene Namen bleiben getrennt, bis das Formular gespeichert wird.
+  const [selectedContacts, setSelectedContacts] = useState<string[]>(
+    () => existing?.friends.filter((name) => contactNames.includes(name)) ?? [],
+  );
+  const [customFriends, setCustomFriends] = useState<string[]>(() => {
+    const existingCustom = existing?.friends.filter(
+      (name) => !contactNames.includes(name),
+    );
+    return existingCustom?.length ? existingCustom : [""];
+  });
   const [errors, setErrors] = useState<validationErrors>({});
+  // Kleine Textfelder landen alle über dieselbe Helferfunktion im Formular-State.
   const update = (key: keyof playDate, value: string) =>
     setForm((current) => ({ ...current, [key]: value }));
   // Beim Bearbeiten tauschen wir den passenden Eintrag aus, sonst hängen wir einen neuen hinten dran.
   const submit = (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
     event.preventDefault();
-    const validation = validatePlayDate(form, family.children.map((child) => child.name), Boolean(existing));
+    // Leere Zusatzfelder fliegen raus. Set verhindert doppelte Namen im fertigen Termin.
+    const friends = Array.from(
+      new Set([
+        ...selectedContacts,
+        ...customFriends.map((name) => name.trim()).filter(Boolean),
+      ]),
+    );
+    const candidate = { ...form, friends };
+    const validation = validatePlayDate(candidate, family.children.map((child) => child.name), Boolean(existing));
     setErrors(validation);
     if (Object.keys(validation).length) return;
     const cleaned = {
-      ...form,
+      ...candidate,
       title: form.title.trim(),
-      friend: form.friend.trim(),
       location: form.location.trim(),
       bring: form.bring.trim(),
       activity: [
@@ -110,7 +137,7 @@ export function PlayDateForm({ editId }: { editId?: number }) {
         {family.children.length ? (
           <div className="children-checklist" aria-invalid={Boolean(errors.children)}>
             {family.children.map((child) => (
-              <label className="check-row" key={child.id}>
+              <label className="selection-option" key={child.id}>
                 <input
                   className="checkbox checkbox-primary"
                   type="checkbox"
@@ -124,7 +151,8 @@ export function PlayDateForm({ editId }: { editId?: number }) {
                     }))
                   }
                 />
-                {child.name}
+                <span>{child.name}</span>
+                <Check className="selection-check" aria-hidden="true" />
               </label>
             ))}
           </div>
@@ -135,18 +163,80 @@ export function PlayDateForm({ editId }: { editId?: number }) {
           </span>
         )}
       </fieldset>
-      <label>
-        Trifft sich mit
-        <input
-          className="input input-bordered w-full"
-          required
-          maxLength={60}
-          aria-invalid={Boolean(errors.friend)}
-          value={form.friend}
-          onChange={(event) => update("friend", event.target.value)}
-          placeholder="Vorname"
-        />
-      </label>
+      {/* Kontakte kommen aus bestätigten Familienverbindungen. Freie Namen bleiben trotzdem möglich. */}
+      <fieldset className="friends-choice full">
+        <legend>Trifft sich mit</legend>
+        <span className="field-help">
+          Wähle verbundene Kontakte aus oder ergänze eigene Namen.
+        </span>
+        {contactNames.length > 0 && (
+          <div className="contact-options" aria-label="Verbundene Kontakte">
+            {contactNames.map((name) => (
+              <label className="selection-option" key={name}>
+                <input
+                  className="checkbox checkbox-primary"
+                  type="checkbox"
+                  checked={selectedContacts.includes(name)}
+                  onChange={(event) =>
+                    setSelectedContacts((current) =>
+                      event.target.checked
+                        ? [...current, name]
+                        : current.filter((item) => item !== name),
+                    )
+                  }
+                />
+                <UsersRound aria-hidden="true" />
+                <span>{name}</span>
+                <Check className="selection-check" aria-hidden="true" />
+              </label>
+            ))}
+          </div>
+        )}
+        <div className="custom-friends">
+          {customFriends.map((name, index) => (
+            <div className="custom-friend-row" key={`custom-friend-${index}`}>
+              <label htmlFor={`custom-friend-${index}`}>
+                Eigener Name {index + 1}
+              </label>
+              <input
+                id={`custom-friend-${index}`}
+                className="input input-bordered w-full"
+                maxLength={60}
+                aria-invalid={Boolean(errors.friends)}
+                value={name}
+                onChange={(event) =>
+                  setCustomFriends((current) =>
+                    current.map((item, itemIndex) =>
+                      itemIndex === index ? event.target.value : item,
+                    ),
+                  )
+                }
+                placeholder="Vorname"
+              />
+              <button
+                className="btn btn-ghost btn-square"
+                type="button"
+                aria-label={`Eigenen Namen ${index + 1} entfernen`}
+                disabled={customFriends.length === 1}
+                onClick={() =>
+                  setCustomFriends((current) =>
+                    current.filter((_, itemIndex) => itemIndex !== index),
+                  )
+                }
+              >
+                <Trash2 />
+              </button>
+            </div>
+          ))}
+          <button
+            className="btn btn-outline add-friend"
+            type="button"
+            onClick={() => setCustomFriends((current) => [...current, ""])}
+          >
+            <Plus /> Weiteren Namen ergänzen
+          </button>
+        </div>
+      </fieldset>
       <label>
         Datum
         <input

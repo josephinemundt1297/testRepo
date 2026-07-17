@@ -42,7 +42,7 @@ export function PlayDateDetailsDialog({
           </span>
           <dl className="playdate-dialog-details">
             <div><dt><Clock /> Termin</dt><dd>{new Date(`${date.date}T12:00:00`).toLocaleDateString("de-DE")} um {date.time} Uhr</dd></div>
-            <div><dt><Users /> Kinder</dt><dd>{date.children.join(", ")} und {date.friend}</dd></div>
+            <div><dt><Users /> Kinder</dt><dd>{date.children.join(", ")} und {date.friends.join(", ")}</dd></div>
             <div><dt><MapPin /> Treffpunkt</dt><dd>{date.location}</dd></div>
             <div><dt><Gift /> Mitbringen</dt><dd>{date.bring || "Noch nichts eingetragen"}</dd></div>
           </dl>

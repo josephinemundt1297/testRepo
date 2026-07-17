@@ -3,7 +3,7 @@ import type { childProfile } from "../domain/family";
 import type { playDate } from "../domain/playdates";
 import { validateFamily, validatePlayDate } from "./validation";
 
-const validDate: playDate = { id: 1, title: "Treffen im Park", children: ["Mila"], friend: "Noah", date: "2026-08-20", time: "15:00", location: "Stadtpark", bring: "Wasser", status: "Ausstehend", color: "mint" };
+const validDate: playDate = { id: 1, title: "Treffen im Park", children: ["Mila"], friends: ["Noah"], date: "2026-08-20", time: "15:00", location: "Stadtpark", bring: "Wasser", status: "Ausstehend", color: "mint" };
 const child = (patch: Partial<childProfile> = {}): childProfile => ({ id: "1", name: "Mila", birthday: "2020-03-02", shareBirthday: false, ...patch });
 
 describe("Formularvalidierung", () => {

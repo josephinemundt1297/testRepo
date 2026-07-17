@@ -14,6 +14,12 @@ vi.mock("../../hooks/useFamilyProfile", () => ({ readFamilyProfile: () => ({ fam
   { id: "1", name: "Mila", birthday: "", shareBirthday: false },
   { id: "2", name: "Lina", birthday: "", shareBirthday: false },
 ] }) }));
+vi.mock("../../hooks/useFamilyConnections", () => ({ readFamilyConnections: () => [{
+  id: "contact-1",
+  familyName: "Familie Kontakt",
+  children: [{ name: "Noah", birthday: "" }],
+  status: "Verbunden",
+}] }));
 import { PlayDateForm } from "./playDateForm";
 
 describe("PlayDateForm", () => {
@@ -28,7 +34,8 @@ describe("PlayDateForm", () => {
     await userEvent.type(screen.getByLabelText(/Titel/), "Treffen im Park");
     await userEvent.click(screen.getByRole("checkbox", { name: "Mila" }));
     await userEvent.click(screen.getByRole("checkbox", { name: "Lina" }));
-    await userEvent.type(screen.getByLabelText("Trifft sich mit"), "Noah");
+    await userEvent.click(screen.getByRole("checkbox", { name: /Noah/ }));
+    await userEvent.type(screen.getByLabelText("Eigener Name 1"), "Emma");
     await userEvent.type(screen.getByLabelText("Datum"), "2027-08-20");
     await userEvent.type(screen.getByLabelText("Uhrzeit"), "15:00");
     await userEvent.type(screen.getByLabelText("Treffpunkt"), "Stadtpark");
@@ -36,6 +43,7 @@ describe("PlayDateForm", () => {
     const stored = JSON.parse(localStorage.getItem("playdates-test") ?? "[]");
     expect(stored).toHaveLength(1);
     expect(stored[0].children).toEqual(["Mila", "Lina"]);
+    expect(stored[0].friends).toEqual(["Noah", "Emma"]);
     expect(formMock.navigate).toHaveBeenCalledWith({ to: "/" });
   });
 });

@@ -65,6 +65,8 @@ Da Backend noch nicht Teil meines Lernstands ist, werden ausgewählte Inhalte de
 - Demo-Familienverbindungen mit offenen, verbundenen und blockierten Zuständen
 - lokal erzeugte, einmal verwendbare Trainingscodes für bekannte Familien
 - Mehrfachauswahl eigener Kinder bei einem PlayDate mit Migration alter Termine
+- Mehrfachauswahl verbundener Kontakte plus frei ergänzbare Namen
+- gut sichtbare Auswahlzustände mit Haken sowie lockere Lernkommentare an den neuen Datenwegen
 - mehrere Sorgeberechtigte als dynamische React-Formularliste
 - Absagen, Mitbringsel-Zuständigkeiten und Aktivitätsverlauf
 - lokale Erinnerungsoptionen und Kommentare

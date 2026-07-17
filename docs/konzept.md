@@ -132,6 +132,7 @@ In der Familienübersicht sieht der Nutzer die freigegebenen Geburtstage eigener
 
 - erstellen, anzeigen, bearbeiten und löschen
 - ein oder mehrere eigene Kinder auswählen
+- einen oder mehrere verbundene Kontakte auswählen oder freie Namen ergänzen
 - anderes Kind beziehungsweise eingeladene Familie angeben
 - Datum, Uhrzeit und Treffpunkt festlegen
 - Mitbringsel und Aufgaben eintragen
@@ -321,6 +322,6 @@ Der vorhandene Frontend-Prototyp bildet bereits wesentliche Teile des Konzepts a
 - mobile PWA
 - Atomic-Design-Struktur und erste automatisierte Tests
 
-Die lokale Prüfkette aus Oxlint, 63 Vitest-Tests, TypeScript und Vite-Build läuft ohne Fehler. Eine Playwright-Strecke mit 40 Desktop-, Mobil-, Responsive- und PWA-Szenarien ist eingerichtet; reale Mehrbrowser- und Geräteläufe stehen noch aus. Der aktuelle Auditstand wird in [`phasenPlan.md`](phasenPlan.md) gepflegt.
+Die lokale Prüfkette aus Oxlint, 64 Vitest-Tests, TypeScript und Vite-Build läuft ohne Fehler. Eine Playwright-Strecke mit 40 Desktop-, Mobil-, Responsive- und PWA-Szenarien ist eingerichtet; reale Mehrbrowser- und Geräteläufe stehen noch aus. Der aktuelle Auditstand wird in [`phasenPlan.md`](phasenPlan.md) gepflegt.
 
 Noch nicht produktiv umgesetzt sind insbesondere ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos und eine dauerhafte Kalendersynchronisation.

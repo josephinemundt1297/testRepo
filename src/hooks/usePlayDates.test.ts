@@ -20,5 +20,6 @@ describe("PlayDate-Datenmigration", () => {
     );
 
     expect(readPlayDates("user-1")[0]?.children).toEqual(["Mila"]);
+    expect(readPlayDates("user-1")[0]?.friends).toEqual(["Noah"]);
   });
 });

@@ -118,7 +118,7 @@ Phase 1 ist für den Umfang des Übungsprojekts abgeschlossen. Annahmen und die 
 - [x] beliebig viele eigene Kinder lokal verwaltbar
 - [x] Geburtstag pro Kind speicherbar
 - [x] Freigabeeinstellung für Geburtstage vorhanden
-- [x] eigenes Kind im PlayDate-Formular auswählbar
+- [x] mehrere eigene Kinder im PlayDate-Formular mit erkennbarem Auswahlzustand auswählbar
 - [x] Oberfläche für freigegebene Geburtstage vorbereitet
 - [x] Verbindungsanfragen lokal als React-Zustände simulieren
 - [x] Demo-Verbindungen annehmen, blockieren und entfernen
@@ -139,7 +139,7 @@ Phase 1 ist für den Umfang des Übungsprojekts abgeschlossen. Annahmen und die 
 - [x] PlayDates lokal erstellen
 - [x] PlayDates lokal bearbeiten
 - [x] PlayDates nach Rückfrage lokal löschen
-- [x] eigenes Kind, anderes Kind, Datum und Uhrzeit erfassen
+- [x] eigene Kinder, verbundene Kontakte oder freie Namen, Datum und Uhrzeit erfassen
 - [x] Treffpunkt und Mitbringsel erfassen
 - [x] Status „Bestätigt“ und „Ausstehend“ anzeigen
 - [x] Teilen über Web Share beziehungsweise WhatsApp vorbereitet
