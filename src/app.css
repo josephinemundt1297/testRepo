@@ -411,6 +411,8 @@
   gap: 1rem;
 }
 .date-card {
+  min-width: 0;
+  max-width: 100%;
   position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -481,6 +483,7 @@
 .date-card h3 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  overflow-wrap: anywhere;
 }
 .date-card p {
   display: flex;
@@ -489,6 +492,7 @@
   color: var(--muted);
   font-size: 0.88rem;
   margin-bottom: 0.55rem;
+  overflow-wrap: anywhere;
 }
 .date-card p svg {
   width: 16px;
@@ -835,6 +839,24 @@
   .date-grid {
     grid-template-columns: 1fr;
   }
+  .section-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .section-heading .new-playdate-button {
+    width: 100%;
+  }
+  .card-top {
+    gap: 0.5rem;
+  }
+  .card-actions {
+    flex: 0 0 auto;
+  }
+  .invite-button {
+    min-width: 0;
+    white-space: normal;
+  }
   .section-heading h2 {
     font-size: 1.55rem;
   }
@@ -919,6 +941,19 @@
   }
   .settings-card .primary-button {
     width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .date-card {
+    padding: 1rem;
+  }
+  .card-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .card-actions {
+    align-self: flex-end;
   }
 }
 

@@ -44,6 +44,7 @@ Diese Checkliste zeigt den aktuellen Stand auf einen Blick. Ein Haken bedeutet, 
 - [x] eigene DaisyUI-Themes für Light und Dark Mode erstellt
 - [x] zentrale Karten, Buttons, Formulare, Badges, Alerts und Navigation auf DaisyUI umgestellt
 - [x] mobile-first Oberfläche umgesetzt
+- [x] mobile PlayDate-Liste bei 320 CSS-Pixeln gegen horizontales Überlaufen abgesichert
 - [x] PWA-Manifest und Service Worker eingerichtet
 - [x] App und Repository einheitlich in PlayDate umbenannt
 - [x] erste Unit- und Komponententests mit Vitest eingerichtet
@@ -591,6 +592,7 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 - [x] die beiden zuvor dokumentierten Oxlint-Warnungen behoben
 - [x] Monatsraster, Terminzuordnung und Monatswechsel automatisiert getestet
 - [x] zentrale Light-Mode-Kontraste für Text, Fokus und UI-Grenzen rechnerisch geprüft
+- [x] responsive Regression der PlayDate-Liste anhand der gemeldeten schmalen Ansicht behoben
 - [ ] Testabdeckung für Authentifizierung, Formulare und vollständige Nutzerabläufe erweitern
 - [ ] Backend-, API- und Datenbank-Audit durchführen
 - [ ] formales Berechtigungs- und IDOR-Audit durchführen

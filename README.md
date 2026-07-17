@@ -21,6 +21,7 @@ Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, ser
 - Einladungen über die Web Share-/WhatsApp-Schnittstelle vorbereiten
 - alle PlayDates als `.ics`-Kalenderdatei exportieren
 - PlayDates in einer responsiven Monatsansicht anzeigen und nach Tagen auswählen
+- PlayDate-Listen ohne horizontales Überlaufen bis zur unterstützten Mindestbreite von 320 CSS-Pixeln nutzen
 - einzelne PlayDates direkt in Google Kalender öffnen
 - Status für bestätigte und ausstehende Treffen
 - Datenschutz-Hinweise für Fotos, Kommentare und eingeladene Familien

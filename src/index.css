@@ -117,6 +117,12 @@ body {
     background 0.2s,
     color 0.2s;
 }
+#root,
+.app-shell,
+main {
+  min-width: 0;
+  max-width: 100%;
+}
 button,
 input,
 textarea {
