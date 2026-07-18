@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { PhotosPage } from "./photosPage";
-import { PrivacyPage } from "./privacyPage";
+import { PhotosPage } from "../components/pages/photosPage";
+import { PrivacyPage } from "../components/pages/privacyPage";
 
 describe("Sicherheitsseiten", () => {
   it.each([

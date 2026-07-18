@@ -5,7 +5,7 @@ import {
   formatCalendarMonth,
   getInitialCalendarMonth,
   shiftCalendarMonth,
-} from "./calendarGrid";
+} from "../utils/calendarGrid";
 
 const date: playDate = {
   id: 1,
@@ -25,6 +25,7 @@ describe("Kalenderansicht", () => {
     const days = buildCalendarDays(
       new Date(2026, 6, 1, 12),
       [date],
+      [],
       new Date(2026, 6, 17, 12),
     );
 
@@ -38,6 +39,18 @@ describe("Kalenderansicht", () => {
     const eventDay = days.find((day) => day.dateKey === date.date);
 
     expect(eventDay?.events).toEqual([date]);
+  });
+
+  it("zeigt einen Geburtstag jedes Jahr am passenden Tag", () => {
+    const days = buildCalendarDays(new Date(2026, 6, 1, 12), [], [{
+      id: "birthday-1",
+      childName: "Lina",
+      familyName: "Familie Demo",
+      birthday: "07-22",
+      own: false,
+    }]);
+
+    expect(days.find((day) => day.dateKey === "2026-07-22")?.birthdays[0]?.childName).toBe("Lina");
   });
 
   it("öffnet zuerst den nächsten anstehenden Termin", () => {

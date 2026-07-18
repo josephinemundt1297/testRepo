@@ -140,6 +140,9 @@ Phase 1 ist für den Umfang des Übungsprojekts abgeschlossen. Annahmen und die 
 - [x] PlayDates lokal bearbeiten
 - [x] PlayDates nach Rückfrage lokal löschen
 - [x] eigene Kinder, verbundene Kontakte oder freie Namen, Datum und Uhrzeit erfassen
+- [x] Auswahlgruppen semantisch mit Legende und gut lesbarem Hilfetext verknüpfen
+- [x] langes PlayDate-Formular in drei semantische, leicht scannbare Etappen gliedern
+- [x] Erinnerungscheckboxen reparieren und durch einen Interaktionstest absichern
 - [x] Treffpunkt und Mitbringsel erfassen
 - [x] Status „Bestätigt“ und „Ausstehend“ anzeigen
 - [x] Teilen über Web Share beziehungsweise WhatsApp vorbereitet
@@ -164,6 +167,7 @@ Phase 1 ist für den Umfang des Übungsprojekts abgeschlossen. Annahmen und die 
 - [x] Export aller PlayDates als `.ics`-Datei umgesetzt
 - [x] Link zum Öffnen eines PlayDates in Google Kalender umgesetzt
 - [x] Kalenderfunktionen durch erste Tests abgesichert
+- [x] eigene und freigegebene Geburtstage im Monatskalender und Tagesbereich anzeigen
 - [x] Erinnerungsoptionen im Formular dargestellt
 - [x] Erinnerungsoptionen im lokalen PlayDate-Modell speichern und bei Absage deaktivieren
 - [ ] `.ics`-Export mit mehreren Kalenderprogrammen prüfen
@@ -631,7 +635,8 @@ Der Auditplan begleitet die Entwicklung und ist nicht nur eine einmalige Kontrol
 **Gesamtergebnis:** Phase 0 und 1 als React-Trainingsprojekt bestanden; freiwillige Geräteprüfungen und spätere Full-Stack-Phasen offen; keine Freigabe für echte Daten oder Produktivbetrieb
 
 - [x] Oxlint ausgeführt
-- [x] alle 58 vorhandenen Vitest-Tests bestanden
+- [x] alle 71 vorhandenen Vitest-Tests bestanden
+- [x] alle Vitest-Dateien zentral nach `src/tests` verschoben
 - [x] 40 Playwright-Szenarien werden von der E2E-Konfiguration erkannt
 - [ ] Playwright-Szenarien in echten Browser-Engines ausführen
 - [x] TypeScript-Prüfung bestanden

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addPlayDateComment, cancelPlayDate, initialPlayDates } from "./playdates";
+import { addPlayDateComment, cancelPlayDate, initialPlayDates } from "../domain/playdates";
 
 describe("PlayDate-Zustandsänderungen", () => {
   it("deaktiviert Erinnerungen bei einer Absage und behält einen Verlauf", () => {

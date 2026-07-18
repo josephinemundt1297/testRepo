@@ -3,15 +3,15 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 const familyMock = vi.hoisted(() => ({ save: vi.fn() }));
-vi.mock("../../hooks/useFamilyProfile", () => ({
+vi.mock("../hooks/useFamilyProfile", () => ({
   useFamilyProfile: () => ({ profile: { familyName: "", children: [] }, sharedBirthdays: [], save: familyMock.save }),
 }));
-vi.mock("../organisms/familyConnections", () => ({ FamilyConnections: () => <section>Demo-Verbindungen</section> }));
-vi.mock("../../domain/family", async (original) => {
-  const module = await original<typeof import("../../domain/family")>();
+vi.mock("../components/organisms/familyConnections", () => ({ FamilyConnections: () => <section>Demo-Verbindungen</section> }));
+vi.mock("../domain/family", async (original) => {
+  const module = await original<typeof import("../domain/family")>();
   return { ...module, newChild: () => ({ id: "kind-1", name: "", birthday: "", shareBirthday: false }) };
 });
-import { FamiliesPage } from "./familiesPage";
+import { FamiliesPage } from "../components/pages/familiesPage";
 
 describe("FamiliesPage", () => {
   it("speichert ein gültiges Familienprofil", async () => {

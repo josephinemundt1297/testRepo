@@ -106,6 +106,9 @@ Für die aktuellen Lernphasen ist „React-Simulation, lokal zuerst“ festgeleg
 
 ## Tests und Qualitätsprüfung
 
+- Alle Vitest-Dateien liegen zentral in `src/tests`. Lege keine `*.test.ts`- oder `*.test.tsx`-Dateien neben Produktcode ab.
+- Benenne Tests nach dem geprüften Baustein, damit sie trotz des gemeinsamen Ordners schnell auffindbar bleiben.
+
 Führe nach Codeänderungen grundsätzlich aus:
 
 ```bash
@@ -117,7 +120,7 @@ Das umfasst Oxlint, Vitest, TypeScript und den Vite-Produktions-Build.
 Für Browserabläufe zusätzlich `npm run test:e2e` ausführen. Angemeldete Abläufe benötigen einen sicheren Clerk-Testlogin über `E2E_STORAGE_STATE`; diese Datei darf nie committed werden.
 
 - Ergänze Tests für neue Logik und behobene Fehler.
-- Der Test `remUsage.test.ts` schützt die skalierbaren CSS-Maße. Neue Pixelwerte benötigen eine nachvollziehbare Ausnahme.
+- Der Test `src/tests/remUsage.test.ts` schützt die skalierbaren CSS-Maße. Neue Pixelwerte benötigen eine nachvollziehbare Ausnahme.
 - Tests dürfen keine echten personenbezogenen Daten enthalten.
 - Prüfe Datums- und Kalenderlogik mit festen Testwerten und relevanten Zeitzonen.
 - Teste sowohl erfolgreiche Abläufe als auch Fehler- und Berechtigungsfälle.

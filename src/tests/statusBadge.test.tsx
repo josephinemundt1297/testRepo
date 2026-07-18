@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { StatusBadge } from './statusBadge'
+import { StatusBadge } from '../components/atoms/statusBadge'
 
 describe('StatusBadge', () => {
   it('zeigt einen bestätigten Termin verständlich an', () => {

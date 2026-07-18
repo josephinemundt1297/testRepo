@@ -3,24 +3,29 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import type { ReactNode } from "react";
 
-const formMock = vi.hoisted(() => ({ navigate: vi.fn() }));
+const formMock = vi.hoisted(() => ({
+  navigate: vi.fn(),
+  connections: [{
+    id: "contact-1",
+    familyName: "Familie Kontakt",
+    children: [{ name: "Noah", birthday: "" }],
+    status: "Verbunden",
+  }],
+}));
 vi.mock("@clerk/clerk-react", () => ({ useUser: () => ({ user: { id: "user-1" } }) }));
 vi.mock("@tanstack/react-router", () => ({
   useNavigate: () => formMock.navigate,
   Link: ({ children }: { children: ReactNode }) => <a href="/">{children}</a>,
 }));
-vi.mock("../../hooks/usePlayDates", () => ({ readPlayDates: () => [], playDatesStorageKey: () => "playdates-test" }));
-vi.mock("../../hooks/useFamilyProfile", () => ({ readFamilyProfile: () => ({ familyName: "Muster", children: [
+vi.mock("../hooks/usePlayDates", () => ({ readPlayDates: () => [], playDatesStorageKey: () => "playdates-test" }));
+vi.mock("../hooks/useFamilyProfile", () => ({ readFamilyProfile: () => ({ familyName: "Muster", children: [
   { id: "1", name: "Mila", birthday: "", shareBirthday: false },
   { id: "2", name: "Lina", birthday: "", shareBirthday: false },
 ] }) }));
-vi.mock("../../hooks/useFamilyConnections", () => ({ readFamilyConnections: () => [{
-  id: "contact-1",
-  familyName: "Familie Kontakt",
-  children: [{ name: "Noah", birthday: "" }],
-  status: "Verbunden",
-}] }));
-import { PlayDateForm } from "./playDateForm";
+vi.mock("../hooks/useFamilyConnections", () => ({
+  readFamilyConnections: () => formMock.connections,
+}));
+import { PlayDateForm } from "../components/organisms/playDateForm";
 
 describe("PlayDateForm", () => {
   it("blockiert unvollständige Angaben mit einer Fehlermeldung", async () => {
@@ -39,11 +44,36 @@ describe("PlayDateForm", () => {
     await userEvent.type(screen.getByLabelText("Datum"), "2027-08-20");
     await userEvent.type(screen.getByLabelText("Uhrzeit"), "15:00");
     await userEvent.type(screen.getByLabelText("Treffpunkt"), "Stadtpark");
+    await userEvent.click(screen.getByRole("checkbox", { name: "24 Stunden vorher erinnern" }));
+    await userEvent.click(screen.getByRole("checkbox", { name: "Auch per E-Mail erinnern" }));
     await userEvent.click(screen.getByRole("button", { name: "PlayDate erstellen" }));
     const stored = JSON.parse(localStorage.getItem("playdates-test") ?? "[]");
     expect(stored).toHaveLength(1);
     expect(stored[0].children).toEqual(["Mila", "Lina"]);
     expect(stored[0].friends).toEqual(["Noah", "Emma"]);
+    expect(stored[0].reminder).toBe("Keine");
+    expect(stored[0].emailReminder).toBe(true);
     expect(formMock.navigate).toHaveBeenCalledWith({ to: "/" });
+  });
+
+  it("erklärt den Weg zur Kontaktverwaltung, wenn noch niemand verbunden ist", () => {
+    formMock.connections = [];
+    render(<PlayDateForm />);
+
+    expect(screen.getByText("Noch keine Kontakte verbunden.", { exact: false })).toBeVisible();
+    expect(screen.getByRole("link", { name: "Kontakte verbinden" })).toBeVisible();
+  });
+
+  it("verknüpft die Hilfetexte semantisch mit den Auswahlgruppen", () => {
+    render(<PlayDateForm />);
+
+    expect(
+      screen.getByRole("group", { name: "Welche Kinder kommen mit?" }),
+    ).toHaveAccessibleDescription("Du kannst ein oder mehrere Kinder auswählen.");
+    expect(
+      screen.getByRole("group", { name: "Trifft sich mit" }),
+    ).toHaveAccessibleDescription(
+      "Wähle verbundene Kontakte aus oder ergänze eigene Namen.",
+    );
   });
 });

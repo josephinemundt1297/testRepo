@@ -16,12 +16,14 @@ export function createLocalRepository<data>({
   legacyKeys?: string[];
 }): localRepository<data> {
   const read = () => {
+    // Zuerst suchen wir unter dem aktuellen Schlüssel. Alte Schlüssel dienen nur als Umzugshilfe.
     const current = localStorage.getItem(key);
     const legacy = legacyKeys
       .map((legacyKey) => localStorage.getItem(legacyKey))
       .find((value): value is string => value !== null);
     const stored = current ?? legacy ?? null;
 
+    // Noch nie gespeichert? Dann bekommt die aufrufende Stelle einen sicheren Startwert zurück.
     if (stored === null) return fallback;
 
     try {
@@ -38,7 +40,9 @@ export function createLocalRepository<data>({
 
   return {
     read,
+    // JSON macht aus Arrays und Objekten einen Text, den localStorage speichern kann.
     write: (value) => localStorage.setItem(key, JSON.stringify(value)),
+    // remove löscht nur genau diesen Bereich und niemals pauschal den ganzen Browserspeicher.
     remove: () => localStorage.removeItem(key),
   };
 }

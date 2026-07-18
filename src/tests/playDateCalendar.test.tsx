@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import type { playDate } from "../../domain/playdates";
-import { PlayDateCalendar } from "./playDateCalendar";
+import type { playDate } from "../domain/playdates";
+import { PlayDateCalendar } from "../components/organisms/playDateCalendar";
 
 const date: playDate = {
   id: 1,
@@ -65,5 +65,24 @@ describe("PlayDateCalendar", () => {
     );
     expect(screen.getByRole("dialog")).toHaveTextContent("Mitbringen");
     expect(screen.getByRole("dialog")).toHaveTextContent(date.location);
+  });
+
+  it("zeigt eigene und freigegebene Geburtstage im Raster und Tagesbereich", () => {
+    render(
+      <PlayDateCalendar
+        dates={[]}
+        birthdays={[
+          { id: "own", childName: "Mila", familyName: "Meine Familie", birthday: "2020-07-18", own: true },
+          { id: "shared", childName: "Lina", familyName: "Familie Demo", birthday: "07-18", own: false },
+        ]}
+        initialMonth={new Date(2026, 6, 1, 12)}
+        onEdit={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByText("Geburtstag von Mila")).toBeVisible();
+    expect(screen.getByText("Eigenes Kind")).toBeVisible();
+    expect(screen.getByText("Geburtstag von Lina")).toBeVisible();
+    expect(screen.getByText("Familie Demo")).toBeVisible();
   });
 });

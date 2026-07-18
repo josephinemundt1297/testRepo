@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { AppErrorBoundary } from "./appErrorBoundary";
+import { AppErrorBoundary } from "../components/templates/appErrorBoundary";
 
 function BrokenView(): never { throw new Error("Testfehler"); }
 

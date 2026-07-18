@@ -4,7 +4,7 @@ import {
   createFamilyInvitation,
   invitationError,
   type familyConnection,
-} from "./family";
+} from "../domain/family";
 
 describe("lokale Familienverbindungen", () => {
   it("zeigt Geburtstage ausschließlich bei angenommenen Verbindungen", () => {

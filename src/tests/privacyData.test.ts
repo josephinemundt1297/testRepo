@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { collectLocalData, removeLocalData } from "./privacyData";
+import { collectLocalData, removeLocalData } from "../utils/privacyData";
 
 describe("lokale Datenschutzfunktionen", () => {
   it("exportiert nur die PlayDate-Daten des gewählten Trainingskontos", () => {

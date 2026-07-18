@@ -6,9 +6,9 @@ Die Oberfläche ist deutschsprachig, tastaturbedienbar und für kleine Displays 
 
 ## Aktueller Status
 
-**Stand: 17. Juli 2026 – Phase 0 und 1 des React-Trainingsprojekts sind abgeschlossen. Es dürfen ausschließlich erfundene Demo-Daten verwendet werden.**
+**Stand: 18. Juli 2026 – Phase 0 und 1 des React-Trainingsprojekts sind abgeschlossen. Es dürfen ausschließlich erfundene Demo-Daten verwendet werden.**
 
-Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit Detail-Dialog, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Eine lokale Repository-Schicht, Demo-Familienverbindungen mit Trainingscodes, Mehrfachauswahl eigener Kinder und Kontakte, Erinnerungsoptionen, Kommentare, Datenexport/-löschung, Error Boundary sowie Lade-, Leer- und Offline-Zustände sind vorhanden. Die Prüfkette besteht aktuell aus Oxlint, 64 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
+Login, lokale Familienprofile, Kindergeburtstage, lokale PlayDates, Monatskalender mit PlayDates und Geburtstagen, Kalenderexport, Teilen, technische Datenschutzseite, Foto-Konzeptbereich, eigene DaisyUI-Themes und PWA funktionieren. Eine lokale Repository-Schicht, Demo-Familienverbindungen mit Trainingscodes, Mehrfachauswahl eigener Kinder und Kontakte, Erinnerungsoptionen, Kommentare, Datenexport/-löschung, Error Boundary sowie Lade-, Leer- und Offline-Zustände sind vorhanden. Die Prüfkette besteht aktuell aus Oxlint, 71 Vitest-Tests, TypeScript und dem Vite-Produktions-Build und läuft ohne Fehler durch. `npm audit --omit=dev` meldet für die produktiven Abhängigkeiten 0 bekannte Schwachstellen.
 
 Ein Backend, echte Familienverbindungen, gemeinsam beantwortete Einladungen, serverseitige Erinnerungen, Kommentare, Fotos, produktive Datenlöschung und bidirektionale Kalendersynchronisation sind bewusst nicht Teil der abgeschlossenen React-Modul-Leistung. `localStorage` dient ausschließlich dazu, Persistenz im Frontend-Prototyp zu üben.
 
@@ -110,6 +110,8 @@ src/components/
 ```
 
 `src/app.tsx` enthält ausschließlich die minimale Verbindung aus Authentifizierungsgrenze und Router. Alle selbst angelegten Dateinamen verwenden lower camelCase. Geschäftsmodelle liegen in `src/domain`, wiederverwendbarer Zustand in `src/hooks` und globale UI-Zustände in `src/context`.
+
+Alle Vitest-Dateien liegen gemeinsam unter `src/tests`. So bleibt der Produktcode in den Atomic-, Domain-, Hook- und Utility-Ordnern frei von Testdateien, während die Tests trotzdem nach dem geprüften Baustein benannt sind.
 
 Der Code folgt KISS und soll auch für Junior-Entwickler gut lesbar bleiben. Selbst definierte TypeScript-Typen verwenden lower camelCase. React-Komponentenbezeichner bleiben wegen der JSX-Erkennung die technische Ausnahme; ihre Dateien verwenden weiterhin lower camelCase. DaisyUI stellt die semantischen UI-Bausteine bereit; eigenes CSS ergänzt nur das PlayDate-spezifische Layout und Branding.
 
