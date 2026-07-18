@@ -53,4 +53,14 @@ describe("Theme-Kontraste", () => {
       /\.playdate-form \.selection-option input\[type="checkbox"\] \{[\s\S]*?min-height: 1\.25rem;[\s\S]*?padding: 0;/,
     );
   });
+
+  it("lässt Hilfetexte und Auswahlbezeichnungen in gut lesbarer Größe", () => {
+    expect(appCss).toMatch(
+      /\.field-help \{[\s\S]*?font-size: 1rem;[\s\S]*?line-height: 1\.5;/,
+    );
+    expect(appCss).toMatch(
+      /\.selection-option \{[\s\S]*?font-size: 1rem;[\s\S]*?line-height: 1\.4;/,
+    );
+    expect(appCss).not.toContain(".playdate-form label span {");
+  });
 });

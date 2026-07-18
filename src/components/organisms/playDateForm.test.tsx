@@ -59,4 +59,17 @@ describe("PlayDateForm", () => {
     expect(screen.getByText("Noch keine Kontakte verbunden.", { exact: false })).toBeVisible();
     expect(screen.getByRole("link", { name: "Kontakte verbinden" })).toBeVisible();
   });
+
+  it("verknüpft die Hilfetexte semantisch mit den Auswahlgruppen", () => {
+    render(<PlayDateForm />);
+
+    expect(
+      screen.getByRole("group", { name: "Welche Kinder kommen mit?" }),
+    ).toHaveAccessibleDescription("Du kannst ein oder mehrere Kinder auswählen.");
+    expect(
+      screen.getByRole("group", { name: "Trifft sich mit" }),
+    ).toHaveAccessibleDescription(
+      "Wähle verbundene Kontakte aus oder ergänze eigene Namen.",
+    );
+  });
 });

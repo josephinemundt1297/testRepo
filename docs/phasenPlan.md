@@ -140,6 +140,7 @@ Phase 1 ist für den Umfang des Übungsprojekts abgeschlossen. Annahmen und die 
 - [x] PlayDates lokal bearbeiten
 - [x] PlayDates nach Rückfrage lokal löschen
 - [x] eigene Kinder, verbundene Kontakte oder freie Namen, Datum und Uhrzeit erfassen
+- [x] Auswahlgruppen semantisch mit Legende und gut lesbarem Hilfetext verknüpfen
 - [x] Treffpunkt und Mitbringsel erfassen
 - [x] Status „Bestätigt“ und „Ausstehend“ anzeigen
 - [x] Teilen über Web Share beziehungsweise WhatsApp vorbereitet

@@ -131,9 +131,11 @@ export function PlayDateForm({ editId }: { editId?: number }) {
           <option>Gemeinsam</option>
         </select>
       </label>
-      <fieldset className="children-choice">
+      <fieldset className="children-choice" aria-describedby="children-choice-help">
         <legend>Welche Kinder kommen mit?</legend>
-        <span className="field-help">Du kannst ein oder mehrere Kinder auswählen.</span>
+        <p className="field-help" id="children-choice-help">
+          Du kannst ein oder mehrere Kinder auswählen.
+        </p>
         {family.children.length ? (
           <div className="children-checklist" aria-invalid={Boolean(errors.children)}>
             {family.children.map((child) => (
@@ -164,11 +166,11 @@ export function PlayDateForm({ editId }: { editId?: number }) {
         )}
       </fieldset>
       {/* Kontakte kommen aus bestätigten Familienverbindungen. Freie Namen bleiben trotzdem möglich. */}
-      <fieldset className="friends-choice full">
+      <fieldset className="friends-choice full" aria-describedby="friends-choice-help">
         <legend>Trifft sich mit</legend>
-        <span className="field-help">
+        <p className="field-help" id="friends-choice-help">
           Wähle verbundene Kontakte aus oder ergänze eigene Namen.
-        </span>
+        </p>
         <div className="contact-picker">
           <strong>Verbundene Kontakte</strong>
           {contactNames.length > 0 ? (
