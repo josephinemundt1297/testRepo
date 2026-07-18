@@ -1,11 +1,22 @@
 import type { playDate } from "../domain/playdates";
 
+// Der Kalender braucht für Geburtstage nur Anzeigeinfos und Tag/Monat.
+// Das Geburtsjahr verbundener Kinder bleibt absichtlich draußen.
+export type calendarBirthday = {
+  id: string;
+  childName: string;
+  familyName: string;
+  birthday: string;
+  own: boolean;
+};
+
 export type calendarDay = {
   date: Date;
   dateKey: string;
   isCurrentMonth: boolean;
   isToday: boolean;
   events: playDate[];
+  birthdays: calendarBirthday[];
 };
 
 const pad = (value: number) => String(value).padStart(2, "0");
@@ -17,6 +28,7 @@ export const toLocalDateKey = (date: Date) =>
 export function buildCalendarDays(
   month: Date,
   dates: playDate[],
+  birthdays: calendarBirthday[] = [],
   today = new Date(),
 ): calendarDay[] {
   const firstDay = new Date(month.getFullYear(), month.getMonth(), 1, 12);
@@ -31,12 +43,18 @@ export function buildCalendarDays(
     date.setDate(gridStart.getDate() + index);
     const dateKey = toLocalDateKey(date);
 
+    // Für wiederkehrende Geburtstage vergleichen wir nur Monat und Tag.
+    // So taucht der Geburtstag automatisch jedes Jahr wieder auf.
+    const birthdayKey = dateKey.slice(5);
     return {
       date,
       dateKey,
       isCurrentMonth: date.getMonth() === month.getMonth(),
       isToday: dateKey === todayKey,
       events: dates.filter((playDate) => playDate.date === dateKey),
+      birthdays: birthdays.filter((birthday) =>
+        birthday.birthday.endsWith(birthdayKey),
+      ),
     };
   });
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { readFamilyProfile, readSharedBirthdays } from './useFamilyProfile'
+import { readFamilyProfile, readSharedBirthdays } from '../hooks/useFamilyProfile'
 
 describe('Familienprofil', () => {
   it('liefert ein leeres Profil, wenn noch nichts gespeichert wurde', () => {

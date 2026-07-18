@@ -12,12 +12,20 @@ import type { playDate } from "../../domain/playdates";
 import { initialPlayDates } from "../../domain/playdates";
 import { createLocalRepository } from "../../data/localRepository";
 import { validatePlayDate, type validationErrors } from "../../utils/validation";
+import { FormStep } from "../molecules/formStep";
+
+type editableTextField = "title" | "date" | "time" | "location" | "bring";
 
 // Das Formular kann beides: einen neuen Termin anlegen oder einen vorhandenen bearbeiten.
 export function PlayDateForm({ editId }: { editId?: number }) {
   const navigate = useNavigate();
   const { user } = useUser();
+  // Ohne User-ID könnten Daten verschiedener Konten im selben Browser vermischt werden.
+  // Deshalb brechen wir lieber klar ab, falls das Formular außerhalb der Auth-Grenze landet.
   if (!user) throw new Error("Anmeldung erforderlich");
+
+  // Diese drei Lesezugriffe holen nur den lokalen Trainingsstand des angemeldeten Kontos.
+  // In einer Full-Stack-Version würden hier später geschützte API-Aufrufe stehen.
   const dates = readPlayDates(user.id);
   const family = readFamilyProfile(user.id);
   // Nur bestätigte Verbindungen tauchen als Kontakt auf. Doppelte Namen zeigen wir nur einmal.
@@ -29,6 +37,8 @@ export function PlayDateForm({ editId }: { editId?: number }) {
     ),
   );
   const existing = dates.find((date) => date.id === editId);
+  // Gibt es eine editId, startet der State mit dem vorhandenen Termin.
+  // Ohne editId bauen wir ein frisches Objekt mit verständlichen Standardwerten.
   const [form, setForm] = useState<playDate>(
     existing ?? {
       id: Date.now(),
@@ -59,8 +69,9 @@ export function PlayDateForm({ editId }: { editId?: number }) {
     return existingCustom?.length ? existingCustom : [""];
   });
   const [errors, setErrors] = useState<validationErrors>({});
-  // Kleine Textfelder landen alle über dieselbe Helferfunktion im Formular-State.
-  const update = (key: keyof playDate, value: string) =>
+  // Nur echte Textfelder dürfen durch diese kleine Helferfunktion geändert werden.
+  // Listen wie children oder friends besitzen eigene Funktionen, weil dort mehr Logik nötig ist.
+  const update = (key: editableTextField, value: string) =>
     setForm((current) => ({ ...current, [key]: value }));
   // Beim Bearbeiten tauschen wir den passenden Eintrag aus, sonst hängen wir einen neuen hinten dran.
   const submit = (event: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
@@ -75,6 +86,8 @@ export function PlayDateForm({ editId }: { editId?: number }) {
     const candidate = { ...form, friends };
     const validation = validatePlayDate(candidate, family.children.map((child) => child.name), Boolean(existing));
     setErrors(validation);
+    // Solange mindestens eine Meldung vorhanden ist, speichern wir bewusst gar nichts.
+    // So landet kein halbfertiger Termin im localStorage.
     if (Object.keys(validation).length) return;
     const cleaned = {
       ...candidate,
@@ -83,6 +96,7 @@ export function PlayDateForm({ editId }: { editId?: number }) {
       bring: form.bring.trim(),
       activity: [
         ...(form.activity ?? []),
+        // Der Verlauf macht später nachvollziehbar, wann der Termin angelegt oder geändert wurde.
         {
           id: crypto.randomUUID(),
           message: existing ? "PlayDate bearbeitet" : "PlayDate erstellt",
@@ -91,7 +105,9 @@ export function PlayDateForm({ editId }: { editId?: number }) {
       ],
     };
     const next = existing
+      // Beim Bearbeiten ersetzen wir genau den Treffer. Alle anderen Termine bleiben unverändert.
       ? dates.map((date) => (date.id === existing.id ? cleaned : date))
+      // Beim Erstellen hängen wir den neuen Termin hinten an die vorhandene Liste.
       : [...dates, cleaned];
     createLocalRepository({
       key: playDatesStorageKey(user.id),
@@ -102,6 +118,11 @@ export function PlayDateForm({ editId }: { editId?: number }) {
   return (
     <form noValidate onSubmit={submit} className="card bg-base-100 border border-base-300 playdate-form">
       {Object.keys(errors).length > 0 && <div className="alert alert-error validation-summary full" role="alert"><strong>Bitte prüfe deine Angaben.</strong><span>{Object.values(errors)[0]}</span></div>}
+      <FormStep
+        number={1}
+        title="Wer ist dabei?"
+        description="Gib dem Treffen einen Namen und wähle die Kinder aus."
+      >
       <label className="full">
         Titel<span>Wie soll euer Treffen heißen?</span>
         <input
@@ -113,23 +134,6 @@ export function PlayDateForm({ editId }: { editId?: number }) {
           onChange={(event) => update("title", event.target.value)}
           placeholder="z. B. Abenteuer im Stadtpark"
         />
-      </label>
-      <label>
-        Zuständig für Mitbringsel
-        <select
-          className="select select-bordered w-full"
-          value={form.bringOwner ?? "Gemeinsam"}
-          onChange={(event) =>
-            setForm((current) => ({
-              ...current,
-              bringOwner: event.target.value as playDate["bringOwner"],
-            }))
-          }
-        >
-          <option>Wir</option>
-          <option>Andere Familie</option>
-          <option>Gemeinsam</option>
-        </select>
       </label>
       <fieldset className="children-choice" aria-describedby="children-choice-help">
         <legend>Welche Kinder kommen mit?</legend>
@@ -154,7 +158,6 @@ export function PlayDateForm({ editId }: { editId?: number }) {
                   }
                 />
                 <span>{child.name}</span>
-                <Check className="selection-check" aria-hidden="true" />
               </label>
             ))}
           </div>
@@ -191,7 +194,6 @@ export function PlayDateForm({ editId }: { editId?: number }) {
                   />
                   <UsersRound aria-hidden="true" />
                   <span>{name}</span>
-                  <Check className="selection-check" aria-hidden="true" />
                 </label>
               ))}
             </div>
@@ -253,6 +255,12 @@ export function PlayDateForm({ editId }: { editId?: number }) {
           </button>
         </div>
       </fieldset>
+      </FormStep>
+      <FormStep
+        number={2}
+        title="Wann und wo?"
+        description="Lege Termin und Treffpunkt fest."
+      >
       <label>
         Datum
         <input
@@ -288,6 +296,29 @@ export function PlayDateForm({ editId }: { editId?: number }) {
           placeholder="Adresse oder Lieblingsplatz"
         />
       </label>
+      </FormStep>
+      <FormStep
+        number={3}
+        title="Organisation"
+        description="Verteilt Mitbringsel und entscheidet, ob ihr erinnert werden möchtet."
+      >
+      <label>
+        Zuständig für Mitbringsel
+        <select
+          className="select select-bordered w-full"
+          value={form.bringOwner ?? "Gemeinsam"}
+          onChange={(event) =>
+            setForm((current) => ({
+              ...current,
+              bringOwner: event.target.value as playDate["bringOwner"],
+            }))
+          }
+        >
+          <option>Wir</option>
+          <option>Andere Familie</option>
+          <option>Gemeinsam</option>
+        </select>
+      </label>
       <label className="full">
         Wer bringt was mit?
         <textarea
@@ -301,6 +332,7 @@ export function PlayDateForm({ editId }: { editId?: number }) {
       </label>
       <fieldset className="full">
         <legend>Erinnerung</legend>
+        {/* Beide Checkboxen sind kontrolliert: Der sichtbare Haken und der React-State bleiben gleich. */}
         <label className="check-row">
           <input
             className="checkbox checkbox-primary"
@@ -327,6 +359,7 @@ export function PlayDateForm({ editId }: { editId?: number }) {
           per E-Mail erinnern
         </label>
       </fieldset>
+      </FormStep>
       <div className="consent full">
         <Check />
         <p>

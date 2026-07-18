@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createLocalRepository } from "./localRepository";
+import { createLocalRepository } from "../data/localRepository";
 
 describe("lokale Repository-Schicht", () => {
   it("liest und schreibt typisierte Trainingsdaten", () => {

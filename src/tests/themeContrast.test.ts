@@ -39,13 +39,11 @@ describe("Theme-Kontraste", () => {
     );
   });
 
-  it("macht ausgewählte Kinder und Kontakte zusätzlich mit einem Haken sichtbar", () => {
+  it("macht ausgewählte Kinder und Kontakte als aktive Karte sichtbar", () => {
     expect(appCss).toMatch(
       /\.selection-option:has\(input:checked\) \{[\s\S]*?border-color: var\(--color-primary\);[\s\S]*?background:/,
     );
-    expect(appCss).toMatch(
-      /\.selection-option input:checked ~ \.selection-check \{[\s\S]*?opacity: 1;/,
-    );
+    expect(appCss).not.toContain(".selection-check");
   });
 
   it("hält Auswahl-Checkboxen kompakt statt sie wie Textfelder aufzublasen", () => {

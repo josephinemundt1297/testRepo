@@ -1,6 +1,6 @@
 import { act, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { ConnectionStatus } from "./connectionStatus";
+import { ConnectionStatus } from "../components/molecules/connectionStatus";
 
 describe("ConnectionStatus", () => {
   it("meldet einen Offline-Zustand verständlich", () => {

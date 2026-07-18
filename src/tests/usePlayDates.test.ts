@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { playDatesStorageKey, readPlayDates } from "./usePlayDates";
+import { playDatesStorageKey, readPlayDates } from "../hooks/usePlayDates";
 
 describe("PlayDate-Datenmigration", () => {
   it("übernimmt ein altes einzelnes Kind in die neue Kinderliste", () => {

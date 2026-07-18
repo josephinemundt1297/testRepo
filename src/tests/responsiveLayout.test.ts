@@ -46,6 +46,9 @@ describe("Responsive Layout", () => {
     expect(appCss).toMatch(
       /@media \(max-width: 380px\)[\s\S]*\.calendar-page-actions \{[\s\S]*flex-direction: column/,
     );
+    expect(appCss).toMatch(
+      /@media \(max-width: 1024px\)[\s\S]*\.form-step-grid \{[\s\S]*grid-template-columns: 1fr/,
+    );
   });
 
   it("erzwingt keine feste Mindestbreite für den Seitenkörper", () => {

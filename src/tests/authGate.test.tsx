@@ -10,7 +10,7 @@ vi.mock("@clerk/clerk-react", () => ({
   SignedOut: ({ children }: { children: ReactNode }) => clerkState.signedIn ? null : children,
   SignInButton: ({ children }: { children: ReactNode }) => children,
 }));
-import { AuthGate } from "./authGate";
+import { AuthGate } from "../components/templates/authGate";
 
 describe("AuthGate", () => {
   it("versteckt private Inhalte ohne Anmeldung", () => {
